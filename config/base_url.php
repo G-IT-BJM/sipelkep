@@ -1,0 +1,1 @@
+<?php define("base_url","http://localhost/gudang-it/son/"); ?>
