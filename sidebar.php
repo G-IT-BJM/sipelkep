@@ -83,8 +83,14 @@
 				<em class="fa fa-navicon">&nbsp;</em> Informasi <span data-toggle="collapse" href="#sub-item-3" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-3">
-					<li><a class="" href="">
-						<span class="fa fa-arrow-right">&nbsp;</span> Pelayanan Surat
+					<li><a class="" href="pembuatan-surat.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Pembuatan Surat
+					</a></li>
+					<li><a class="" href="penyelesaian-surat.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Penyelesaian Surat
+					</a></li>
+					<li><a class="" href="keberadaan-lurah.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Keberadaan Lurah
 					</a></li>
 				</ul>
             </li>
@@ -92,8 +98,11 @@
 				<em class="fa fa-navicon">&nbsp;</em> Laporan <span data-toggle="collapse" href="#sub-item-4" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-4">
-					<li><a class="" href="">
-						<span class="fa fa-arrow-right">&nbsp;</span> Pelayanan Surat
+					<li><a class="" href="laporan-data-penduduk.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Laporan Data Penduduk
+					</a></li>
+					<li><a class="" href="laporan-data-surat.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Laporan Data Surat
 					</a></li>
 				</ul>
             </li>
@@ -101,8 +110,11 @@
 				<em class="fa fa-navicon">&nbsp;</em> Pengaturan <span data-toggle="collapse" href="#sub-item-5" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-5">
-					<li><a class="" href="">
-						<span class="fa fa-arrow-right">&nbsp;</span> Pelayanan Surat
+					<li><a class="" href="ubah-sandi.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Ubah Sandi
+					</a></li>
+					<li><a class="" href="salin-data.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Salin Data
 					</a></li>
 				</ul>
 			</li>
