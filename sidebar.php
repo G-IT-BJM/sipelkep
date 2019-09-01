@@ -56,6 +56,24 @@
 					<li><a class="" href="surat-kehilangan.php">
 						<span class="fa fa-arrow-right">&nbsp;</span> Surat Kehilangan
 					</a></li>
+					<li><a class="" href="surat-ket-belum-nikah.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Surat Ket. Belum Nikah
+					</a></li>
+					<li><a class="" href="surat-pengantar-nikah.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Surat Pengantar Nikah
+					</a></li>
+					<li><a class="" href="surat-ket-tidak-mampu.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Surat Ket. Tidak Mampu
+					</a></li>
+					<li><a class="" href="surat-ahli-waris.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Surat Ahli Waris
+					</a></li>
+					<li><a class="" href="surat-imb.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Surat IMB
+					</a></li>
+					<li><a class="" href="surat-izin-tempat-usaha.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Surat Izin Tempat Usaha
+					</a></li>
 				</ul>
             </li>
             <li class="parent "><a data-toggle="collapse" href="#sub-item-3">
