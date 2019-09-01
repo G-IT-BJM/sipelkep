@@ -47,6 +47,15 @@
 					<li><a class="" href="surat-ket-domisili.php">
 						<span class="fa fa-arrow-right">&nbsp;</span> Surat Ket. Domisili
 					</a></li>
+					<li><a class="" href="surat-pengantar-kk.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Surat Pengantar KK
+					</a></li>
+					<li><a class="" href="surat-pengantar-ktp.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Surat Pengantar KTP
+					</a></li>
+					<li><a class="" href="surat-kehilangan.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Surat Kehilangan
+					</a></li>
 				</ul>
             </li>
             <li class="parent "><a data-toggle="collapse" href="#sub-item-3">
