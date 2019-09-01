@@ -74,6 +74,9 @@
 					<li><a class="" href="surat-izin-tempat-usaha.php">
 						<span class="fa fa-arrow-right">&nbsp;</span> Surat Izin Tempat Usaha
 					</a></li>
+					<li><a class="" href="surat-ket-usaha.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Surat Keterangan Usaha
+					</a></li>
 				</ul>
             </li>
             <li class="parent "><a data-toggle="collapse" href="#sub-item-3">
