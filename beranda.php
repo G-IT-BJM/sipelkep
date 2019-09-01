@@ -2,7 +2,63 @@
 		include "header.php"; 
 		include "sidebar.php"; 
 	?>
-		
+	<?php 
+		include "koneksi.php";
+		$cek = mysqli_fetch_array(mysqli_query($conn, "SELECT status FROM tb_admin"));
+		if($cek["status"] == "1") {
+	?>
+			<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+			<div class="row">
+				<ol class="breadcrumb">
+					<li><a href="#">
+						<em class="fa fa-home"></em>
+					</a></li>
+					<li class="active">Beranda</li>
+				</ol>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12">
+					<h1 class="page-header">HALAMAN ADMINISTRATOR</h1>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-xs-6 col-md-3">
+					<div class="panel panel-default">
+						<div class="panel-body easypiechart-panel">
+							<div class="easypiechart" ></div>
+							<p>Jumlah Penduduk</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3">
+					<div class="panel panel-default">
+						<div class="panel-body easypiechart-panel">
+							<div class="easypiechart" ></div>
+							<p>Jumlah Surat</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3">
+					<div class="panel panel-default">
+						<div class="panel-body easypiechart-panel">
+							<div class="easypiechart" id="easypiechart-orange" data-percent="65" ><span class="percent">65%</span></div>
+							<p>Registrasi Pelayanan Surat</p>
+						</div>
+					</div>
+				</div>
+			</div><!--/.row-->
+			
+			<div class="row">
+				<?php include "footer.php"; ?>
+			</div>
+		</div>	<!--/.main-->
+
+	<?php
+		} else {
+	?>
+
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
@@ -43,7 +99,15 @@
 			<?php include "footer.php"; ?>
 		</div><!--/.row-->
 	</div>	<!--/.main-->
-	
+		
+
+
+	<?php
+		}
+	?>
+
+</body>
+</html>
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/chart.min.js"></script>
@@ -63,6 +127,3 @@
 	});
 };
 	</script>
-		
-</body>
-</html>
