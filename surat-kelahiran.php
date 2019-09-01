@@ -9,7 +9,7 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Master / Data Penduduk</li>
+				<li class="active">Transaksi / Surat Kelahiran</li>
 			</ol>
 		</div>
 		
@@ -22,7 +22,7 @@
 		<div class="row">
             <div class="panel panel-default col-md-10 col-md-offset-1">
                 <div class="panel-heading">
-                    Data Penduduk
+                    Surat Kelahiran
                     <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
                 </div>
                 <div class="panel-body">
@@ -33,7 +33,7 @@
                                     
                                     <div class="col-md-3">
                                         <div class="input-group">
-                                            <a href="tambah-data-penduduk.php"><button type="button" class="btn btn-primary btn-lg">Tambah Data</button></a>
+                                            <a href="tambah-data-surat-kelahiran.php"><button type="button" class="btn btn-primary btn-lg">Tambah Data</button></a>
                                         </div>
                                     </div>
 
@@ -54,9 +54,9 @@
                                             <thead>
                                                 <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">NIK</th>
+                                                <th scope="col">NO SURAT</th>
+                                                <th scope="col">NO. REGISTRASI</th>
                                                 <th scope="col">NAMA</th>
-                                                <th scope="col">TEMPAT LAHIR</th>
                                                 <th scope="col">AKSI</th>
                                                 </tr>
                                             </thead>

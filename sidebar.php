@@ -38,14 +38,14 @@
 				<em class="fa fa-navicon">&nbsp;</em> Transaksi <span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-2">
-					<li><a class="" href="info-pembuatan-surat-user.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Pembuatan Surat
+					<li><a class="" href="surat-pindah.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Surat Pindah
 					</a></li>
-					<li><a class="" href="info-penyelesaian-surat-user.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Penyelesaian Surat
+					<li><a class="" href="surat-kelahiran.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Surat Kelahiran
 					</a></li>
-					<li><a class="" href="info-keberadaan-lurah.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Keberadaan Lurah
+					<li><a class="" href="surat-ket-domisili.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Surat Ket. Domisili
 					</a></li>
 				</ul>
             </li>
