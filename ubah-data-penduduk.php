@@ -64,8 +64,19 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="jenis_kelamin">Jenis Kelamin</label>
                                 <div class="col-md-9">
-                                    <input id="jenis_kelamin" name="jenis_kelamin" value="L" type="radio" > Laki -Laki
-                                    <input id="jenis_kelamin" name="jenis_kelamin" value="P" type="radio" > Perempuan
+                                    <?php 
+                                        if($data["jk"] == "L") {
+                                            echo '
+                                                <input id="jenis_kelamin" name="jenis_kelamin" value="L" type="radio" checked> Laki -Laki
+                                                <input id="jenis_kelamin" name="jenis_kelamin" value="P" type="radio" > Perempuan
+                                            ';
+                                        } else {
+                                            echo '
+                                                <input id="jenis_kelamin" name="jenis_kelamin" value="L" type="radio" > Laki -Laki
+                                                <input id="jenis_kelamin" name="jenis_kelamin" value="P" type="radio" checked> Perempuan
+                                            ';
+                                        }
+                                    ?>
                                 </div>
                             </div>
 
@@ -73,7 +84,8 @@
                                 <label class="col-md-3 control-label" for="gol_darah">Gol Darah</label>
                                 <div class="col-md-9">
                                     <select class="form-control" id="gol_darah" name="gol_darah">
-                                        <option value="" selected disabled>~ Gol. Darah ~</option>
+                                        <option value="<?php echo $data["gol_dar"]; ?>" selected><?php echo $data["gol_dar"]; ?></option>
+                                        <option value="" disabled>~ Gol. Darah ~</option>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
                                         <option value="AB">AB</option>
@@ -119,7 +131,8 @@
                                 <label class="col-md-3 control-label" for="agama">Agama</label>
                                 <div class="col-md-9">
                                     <select class="form-control" id="agama" name="agama">
-                                        <option value="" selected disabled>~ Agama ~</option>
+                                        <option value="<?php echo $data["agama"]; ?>" selected><?php echo $data["agama"]; ?></option>
+                                        <option value="" disabled>~ Agama ~</option>
                                         <option value="ISLAM">ISLAM</option>
                                         <option value="KRISTEN PROTESTAN">KRISTEN PROTESTAN</option>
                                         <option value="KATOLIK">KATOLIK</option>
