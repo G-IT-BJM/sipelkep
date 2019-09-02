@@ -1,6 +1,10 @@
     <?php
 		include "header.php"; 
-		include "sidebar.php"; 
+        include "sidebar.php"; 
+        include "koneksi.php";
+
+        $id = $_GET['id'];
+        $data = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_data_penduduk WHERE id = '$id'"));
 	?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -26,42 +30,42 @@
                     <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" action="" method="post">
+                    <form class="form-horizontal" action="proses.php?id=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
                         <fieldset>
-                            
+                            <input type="hidden" id="id" name="id" value="<?php echo $data["id"]; ?>">
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="nik">NIK</label>
                                 <div class="col-md-9">
-                                    <input id="nik" name="nik" type="text" placeholder="NIK" class="form-control">
+                                    <input id="nik" name="nik" type="text" value="<?php echo $data["nik"]; ?>" placeholder="NIK" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="nama">Nama</label>
                                 <div class="col-md-9">
-                                    <input id="nama" name="nama" type="text" placeholder="Nama" class="form-control">
+                                    <input id="nama" name="nama" type="text" value="<?php echo $data["nama"]; ?>" placeholder="Nama" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="tempat_lahir">Tempat Lahir</label>
                                 <div class="col-md-9">
-                                    <input id="tempat_lahir" name="tempat_lahir" type="text" placeholder="Tempat Lahir" class="form-control">
+                                    <input id="tempat_lahir" name="tempat_lahir" type="text" value="<?php echo $data["t_lahir"]; ?>" placeholder="Tempat Lahir" class="form-control">
                                 </div>
                             </div>
                             
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="tgl_lahir">Tanggal Lahir</label>
                                 <div class="col-md-3">
-                                    <input id="tgl_lahir" name="tgl_lahir" type="date" placeholder="Tgl Lahir" class="form-control">
+                                    <input id="tgl_lahir" name="tgl_lahir" value="<?php echo $data["tgl_lahir"]; ?>" type="date" placeholder="Tgl Lahir" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="jenis_kelamin">Jenis Kelamin</label>
                                 <div class="col-md-9">
-                                    <input id="jenis_kelamin" name="jenis_kelamin" type="radio" > Laki -Laki
-                                    <input id="jenis_kelamin" name="jenis_kelamin" type="radio" > Perempuan
+                                    <input id="jenis_kelamin" name="jenis_kelamin" value="L" type="radio" > Laki -Laki
+                                    <input id="jenis_kelamin" name="jenis_kelamin" value="P" type="radio" > Perempuan
                                 </div>
                             </div>
 
@@ -69,10 +73,11 @@
                                 <label class="col-md-3 control-label" for="gol_darah">Gol Darah</label>
                                 <div class="col-md-9">
                                     <select class="form-control" id="gol_darah" name="gol_darah">
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
-                                        <option>Option 4</option>
+                                        <option value="" selected disabled>~ Gol. Darah ~</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="AB">AB</option>
+                                        <option value="O">O</option>
                                     </select>
                                 </div>
                             </div>
@@ -80,35 +85,33 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="alamat">Alamat</label>
                                 <div class="col-md-9">
-                                    <input id="alamat" name="alamat" type="text" placeholder="Alamat" class="form-control">
+                                    <input id="alamat" name="alamat" type="text" value="<?php echo $data["alamat"]; ?>" placeholder="Alamat" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="rt">Rt</label>
-                                <div class="col-md-9">
-                                    <input id="rt" name="rt" type="text" placeholder="Rt" class="form-control">
+                                <div class="col-md-2">
+                                    <input id="rt" name="rt" type="text" value="<?php echo $data["rt"]; ?>" placeholder="Rt" class="form-control">
+                                </div>
+                            
+                                <label class="col-md-1 control-label" for="rw">Rw</label>
+                                <div class="col-md-2">
+                                    <input id="rw" name="rw" type="text" value="<?php echo $data["rw"]; ?>" placeholder="Rw" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="rw">Rw</label>
+                                <label class="col-md-3 control-label" for="kelurahan">Kelurahan</label>
                                 <div class="col-md-9">
-                                    <input id="rw" name="rw" type="text" placeholder="Rw" class="form-control">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-3 control-label" for="keluarahan">Keluarahan</label>
-                                <div class="col-md-9">
-                                    <input id="keluarahan" name="keluarahan" type="text" placeholder="Keluarahan" class="form-control">
+                                    <input id="kelurahan" name="kelurahan" type="text" value="<?php echo $data["kel"]; ?>" placeholder="Kelurahan" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="kecamatan">Kecamatan</label>
                                 <div class="col-md-9">
-                                    <input id="kecamatan" name="kecamatan" type="text" placeholder="Kecamatan" class="form-control">
+                                    <input id="kecamatan" name="kecamatan" type="text" value="<?php echo $data["kec"]; ?>" placeholder="Kecamatan" class="form-control">
                                 </div>
                             </div>
 
@@ -116,10 +119,13 @@
                                 <label class="col-md-3 control-label" for="agama">Agama</label>
                                 <div class="col-md-9">
                                     <select class="form-control" id="agama" name="agama">
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
-                                        <option>Option 4</option>
+                                        <option value="" selected disabled>~ Agama ~</option>
+                                        <option value="ISLAM">ISLAM</option>
+                                        <option value="KRISTEN PROTESTAN">KRISTEN PROTESTAN</option>
+                                        <option value="KATOLIK">KATOLIK</option>
+                                        <option value="HINDU">HINDU</option>
+                                        <option value="BUDDHA">BUDDHA</option>
+                                        <option value="KONG HU CU">KONG HU CU</option>
                                     </select>
                                 </div>
                             </div>
@@ -127,35 +133,35 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="status">Status</label>
                                 <div class="col-md-9">
-                                    <input id="status" name="status" type="text" placeholder="Status" class="form-control">
+                                    <input id="status" name="status" type="text" value="<?php echo $data["status_p"]; ?>" placeholder="Status" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="pekerjaan">Pekerjaan</label>
                                 <div class="col-md-9">
-                                    <input id="pekerjaan" name="pekerjaan" type="text" placeholder="Pekerjaan" class="form-control">
+                                    <input id="pekerjaan" name="pekerjaan" type="text" value="<?php echo $data["kerja"]; ?>" placeholder="Pekerjaan" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="kewarganegaraan">Kewarganegaraan</label>
-                                <div class="col-md-9">
-                                    <input id="kewarganegaraan" name="kewarganegaraan" type="text" placeholder="Kewarganegaraan" class="form-control">
+                                <div class="col-md-3">
+                                    <input id="kewarganegaraan" name="kewarganegaraan" type="text" value="<?php echo $data["warga"]; ?>" placeholder="Kewarganegaraan" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="telp">Telp / HP</label>
                                 <div class="col-md-9">
-                                    <input id="telp" name="telp" type="text" placeholder="Telp / HP" class="form-control">
+                                    <input id="telp" name="telp" type="text" value="<?php echo $data["telp"]; ?>" placeholder="Telp / HP" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="keterangan">Keterangan</label>
                                 <div class="col-md-9">
-                                    <input id="keterangan" name="keterangan" type="text" placeholder="Keterangan" class="form-control">
+                                    <input id="keterangan" name="keterangan" type="text" value="<?php echo $data["ket"]; ?>" placeholder="Keterangan" class="form-control">
                                 </div>
                             </div>
                             
@@ -163,10 +169,10 @@
                                 <div class="col-md-12">
                                     <div class="col-md-8"></div>
                                     <div class="col-md-2">
-                                        <button type="submit" class="btn btn-danger btn-md pull-right">Kembali</button>
+                                        <a href="data-penduduk.php"><button type="button" class="btn btn-danger btn-md pull-right">Kembali</button></a>
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="submit" class="btn btn-success btn-md pull-right">Perbarui</button>
+                                        <button type="submit" name="ubah_data_penduduk" class="btn btn-success btn-md pull-right">Perbarui</button>
                                     </div>
                                 </div>
                             </div>

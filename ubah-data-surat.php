@@ -1,6 +1,10 @@
     <?php
 		include "header.php"; 
-		include "sidebar.php"; 
+        include "sidebar.php"; 
+        include "koneksi.php";
+
+        $id = $_GET['id'];
+        $data = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_data_surat WHERE id = '$id'"));
 	?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -26,34 +30,34 @@
                     <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" action="" method="post">
+                    <form class="form-horizontal" action="proses.php?id=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
                         <fieldset>
-                            
+                            <input type="hidden" id="id" name="id" value="<?php echo $data["id"]; ?>">
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="kode_surat">Kode Surat</label>
                                 <div class="col-md-9">
-                                    <input id="kode_surat" name="kode_surat" type="text" placeholder="Kode Surat" class="form-control">
+                                    <input id="kode_surat" name="kode_surat" type="text" value="<?php echo $data["kd_surat"]; ?>" placeholder="Kode Surat" class="form-control" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="surat">Surat</label>
                                 <div class="col-md-9">
-                                    <input id="surat" name="surat" type="text" placeholder="Surat" class="form-control">
+                                    <input id="surat" name="surat" type="text" value="<?php echo $data["surat"]; ?>" placeholder="Surat" class="form-control" required>
                                 </div>
                             </div>
                             
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="syarat">Syarat</label>
                                 <div class="col-md-9">
-                                    <input id="syarat" name="syarat" type="text" placeholder="Syarat" class="form-control">
+                                    <textarea class="form-control" id="syarat" name="syarat" placeholder="Syarat" rows="5" required><?php echo $data["syarat"]; ?></textarea>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="keterangan">Keterangan</label>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" rows="5"></textarea>
+                                    <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" rows="5"><?php echo $data["ket"]; ?></textarea>
                                 </div>
                             </div>
                             
@@ -61,10 +65,10 @@
                                 <div class="col-md-12">
                                     <div class="col-md-8"></div>
                                     <div class="col-md-2">
-                                        <button type="submit" class="btn btn-danger btn-md pull-right">Kembali</button>
+                                        <a href="data-surat.php"><button type="button" class="btn btn-danger btn-md pull-right">Kembali</button></a>
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="submit" class="btn btn-success btn-md pull-right">Perbarui</button>
+                                        <button type="submit" name="ubah_data_surat" class="btn btn-success btn-md pull-right">Perbarui</button>
                                     </div>
                                 </div>
                             </div>

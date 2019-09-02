@@ -1,6 +1,9 @@
     <?php
 		include "header.php"; 
-		include "sidebar.php"; 
+        include "sidebar.php"; 
+        include "koneksi.php";
+
+        $sql = mysqli_query($conn, "SELECT * FROM tb_data_penduduk");
 	?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -61,15 +64,26 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>aa</td>
-                                                    <td>cc</td>
-                                                    <td>efef</td>
-                                                    <td>
-                                                        edit || hapus
-                                                    </td>
-                                                </tr>
+                                                <?php 
+                                                    $no = 1;
+                                                    while($data = mysqli_fetch_array($sql))
+                                                    {
+                                                        echo '
+                                                        <tr>
+                                                            <td>'.$no.'</td>
+                                                            <td>'.$data["nik"].'</td>
+                                                            <td>'.$data["nama"].'</td>
+                                                            <td>'.$data["t_lahir"].'</td>
+                                                            <td>
+                                                                <a href="ubah-data-penduduk.php?id='.$data["id"].'"><button type="button" class="btn btn-primary"><span class="fa fa-edit"></span></button></a> 
+                                                                || 
+                                                                <a href=""><button type="button" class="btn btn-danger"><span class="fa fa-trash"></span></button></a> 
+                                                            </td>
+                                                        </tr>
+                                                        ';
+                                                        $no++;
+                                                    }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>

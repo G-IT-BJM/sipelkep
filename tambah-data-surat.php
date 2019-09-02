@@ -26,27 +26,27 @@
                     <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" action="" method="post">
+                    <form class="form-horizontal" action="proses.php" method="post" enctype="multipart/form-data">
                         <fieldset>
                             
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="kode_surat">Kode Surat</label>
                                 <div class="col-md-9">
-                                    <input id="kode_surat" name="kode_surat" type="text" placeholder="Kode Surat" class="form-control">
+                                    <input id="kode_surat" name="kode_surat" type="text" placeholder="Kode Surat" class="form-control" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="surat">Surat</label>
                                 <div class="col-md-9">
-                                    <input id="surat" name="surat" type="text" placeholder="Surat" class="form-control">
+                                    <input id="surat" name="surat" type="text" placeholder="Surat" class="form-control" required>
                                 </div>
                             </div>
                             
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="syarat">Syarat</label>
                                 <div class="col-md-9">
-                                    <input id="syarat" name="syarat" type="text" placeholder="Syarat" class="form-control">
+                                    <textarea class="form-control" id="syarat" name="syarat" placeholder="Syarat" rows="5" required></textarea>
                                 </div>
                             </div>
 
@@ -61,10 +61,10 @@
                                 <div class="col-md-12">
                                     <div class="col-md-8"></div>
                                     <div class="col-md-2">
-                                        <button type="submit" class="btn btn-danger btn-md pull-right">Kembali</button>
+                                        <a href="data-surat.php"><button type="button" class="btn btn-danger btn-md pull-right">Kembali</button></a>
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="submit" class="btn btn-success btn-md pull-right">Simpan</button>
+                                        <button type="submit" name="simpan_data_surat" class="btn btn-success btn-md pull-right">Simpan</button>
                                     </div>
                                 </div>
                             </div>
