@@ -61,7 +61,7 @@
                                         <a href="beranda.php"><button type="button" class="btn btn-danger btn-md pull-right">Kembali</button></a>
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="submit" name="ubah_kata_sandi" class="btn btn-success btn-md pull-right">Simpan</button>
+                                        <button type="submit"  name="ubah_kata_sandi" class="btn btn-success btn-md pull-right">Simpan</button>
                                     </div>
                                 </div>
                             </div>
