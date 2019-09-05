@@ -1,6 +1,9 @@
     <?php
 		include "header.php"; 
-		include "sidebar.php"; 
+        include "sidebar.php"; 
+        include "koneksi.php";
+
+        $sql = mysqli_query($conn, "SELECT * FROM tb_keberadaan_lurah_admin");
 	?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -57,19 +60,32 @@
                                                 <th scope="col">KODE</th>
                                                 <th scope="col">TANGGAL</th>
                                                 <th scope="col">STATUS</th>
+                                                <th scope="col">KETERANGAN</th>
                                                 <th scope="col">AKSI</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>aa</td>
-                                                    <td>cc</td>
-                                                    <td>efef</td>
-                                                    <td>
-                                                        edit || hapus
-                                                    </td>
-                                                </tr>
+                                                <?php 
+                                                    $no = 1;
+                                                    while($data = mysqli_fetch_array($sql))
+                                                    {
+                                                        echo '
+                                                        <tr>
+                                                            <td>'.$no.'</td>
+                                                            <td>'.$data["kd_lurah"].'</td>
+                                                            <td>'.$data["tgl"].'</td>
+                                                            <td>'.$data["status"].'</td>
+                                                            <td>'.$data["ket"].'</td>
+                                                            <td>
+                                                                <a href="ubah-data-keberadaan-lurah.php?id='.$data["id"].'"><button type="button" class="btn btn-primary"><span class="fa fa-edit"></span></button></a> 
+                                                                || 
+                                                                <a href=""><button type="button" class="btn btn-danger"><span class="fa fa-trash"></span></button></a> 
+                                                            </td>
+                                                        </tr>
+                                                        ';
+                                                        $no++;
+                                                    }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>

@@ -67,7 +67,7 @@
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="gol_darah">Gol Darah</label>
-                                <div class="col-md-9">
+                                <div class="col-md-3">
                                     <select class="form-control" required id="gol_darah" name="gol_darah">
                                         <option value="" selected disabled>~ Gol. Darah ~</option>
                                         <option value="A">A</option>
@@ -113,7 +113,7 @@
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="agama">Agama</label>
-                                <div class="col-md-9">
+                                <div class="col-md-3">
                                     <select class="form-control" required id="agama" name="agama">
                                         <option value="" selected disabled>~ Agama ~</option>
                                         <option value="ISLAM">ISLAM</option>
@@ -149,7 +149,7 @@
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="telp">Telp / HP</label>
-                                <div class="col-md-9">
+                                <div class="col-md-5">
                                     <input id="telp" name="telp" type="text" placeholder="Telp / HP" class="form-control" required>
                                 </div>
                             </div>

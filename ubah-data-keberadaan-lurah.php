@@ -1,6 +1,10 @@
     <?php
 		include "header.php"; 
-		include "sidebar.php"; 
+        include "sidebar.php"; 
+        include "koneksi.php";
+
+        $id = $_GET['id'];
+        $data = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_keberadaan_lurah_admin WHERE id = '$id'"));
 	?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -26,35 +30,46 @@
                     <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" action="" method="post">
+                    <form class="form-horizontal" action="proses.php?id=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
                         <fieldset>
-                            
+                            <input type="hidden" id="id" name="id" value="<?php echo $data["id"]; ?>">
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="kode">Kode</label>
                                 <div class="col-md-9">
-                                    <input id="kode" name="kode" type="text" placeholder="Kode" class="form-control">
+                                    <input id="kode" name="kode" type="text" value="<?php echo $data["kd_lurah"]; ?>" placeholder="Kode" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="tgl">Tanggal</label>
                                 <div class="col-md-4">
-                                    <input id="tgl" name="tgl" type="date" placeholder="Tanggal" class="form-control">
+                                    <input id="tgl" name="tgl" type="date" value="<?php echo $data["tgl"]; ?>" placeholder="Tanggal" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="status">Status</label>
                                 <div class="col-md-9">
-                                    <input id="status" name="status" type="radio"> Ada
-                                    <input id="status" name="status" type="radio"> Tidak Ada
+                                    <?php 
+                                        if($data["status"] == "TIDAK ADA") {
+                                            echo '
+                                                <input id="status" name="status" value="ADA" type="radio"> Ada
+                                                <input id="status" name="status" value="TIDAK ADA" type="radio" checked> Tidak Ada
+                                            ';
+                                        } else {
+                                            echo '
+                                                <input id="status" name="status" value="ADA" type="radio" checked> Ada
+                                                <input id="status" name="status" value="TIDAK ADA" type="radio"> Tidak Ada
+                                            ';
+                                        }
+                                    ?>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="keterangan">Keterangan</label>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" rows="5"></textarea>
+                                    <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" rows="5"><?php echo $data["ket"]; ?></textarea>
                                 </div>
                             </div>
                             
@@ -62,10 +77,10 @@
                                 <div class="col-md-12">
                                     <div class="col-md-8"></div>
                                     <div class="col-md-2">
-                                        <button type="submit" class="btn btn-danger btn-md pull-right">Kembali</button>
+                                        <a href="keberadaan-lurah.php"><button type="button" class="btn btn-danger btn-md pull-right">Kembali</button></a>
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="submit" class="btn btn-success btn-md pull-right">Perbarui</button>
+                                        <button type="submit" name="ubah_keberadaan_lurah" class="btn btn-success btn-md pull-right">Perbarui</button>
                                     </div>
                                 </div>
                             </div>

@@ -129,4 +129,55 @@
             ";
         }
     }
+    /** 
+     * @Author: G_IT_BJM 
+     * @Date: 2019-09-05 17:07:36 
+     * @Desc: SIMPAN KEBERADAAN LURAH 
+     */
+    else if(isset($_POST['simpan_keberadaan_lurah'])) 
+    {
+        $kd        = $_POST['kode'];
+        $tgl       = $_POST['tgl'];
+        $stts      = $_POST['status'];
+        $ket       = $_POST['keterangan'];
+
+        $simpan = mysqli_query($conn, "INSERT INTO tb_keberadaan_lurah_admin VALUES('','$kd','$tgl','$stts','$ket')");
+
+        if($simpan) {
+            header("location: keberadaan-lurah.php");
+        } else {
+            echo "
+                <script>
+                    alert('Data Gagal Di Simpan . . . ');
+                    window.location = 'tambah-data-keberadaan-lurah.php';
+                </script>
+            ";
+        }
+    } 
+    /** 
+     * @Author: G_IT_BJM 
+     * @Date: 2019-09-05 17:51:36 
+     * @Desc: UBAH KEBERADAAN LURAH 
+     */    
+    else if(isset($_POST['ubah_keberadaan_lurah'])) 
+    {
+        $id        = $_POST['id']; 
+        $kd        = $_POST['kode'];
+        $tgl       = $_POST['tgl'];
+        $stts      = $_POST['status'];
+        $ket       = $_POST['keterangan'];
+
+        $simpan = mysqli_query($conn, "UPDATE tb_keberadaan_lurah_admin SET kd_lurah = '$kd', tgl = '$tgl', status = '$stts', ket = '$ket' WHERE id = '$id'");
+
+        if($simpan) {
+            header("location: keberadaan-lurah.php");
+        } else {
+            echo "
+                <script>
+                    alert('Data Gagal Di Ubah . . . ');
+                    window.location = 'ubah-data-keberadaan-lurah.php';
+                </script>
+            ";
+        }
+    } 
 ?>
