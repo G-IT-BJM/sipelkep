@@ -26,7 +26,7 @@
                     <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" action="" method="post">
+                    <form class="form-horizontal" action="proses.php" method="post" enctype="multipart/form-data">
                         <fieldset>
                             
                             <div class="form-group">
@@ -58,9 +58,9 @@
                             </div>
                             
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="surat_pengantar_rt">Surat Pengantar Rt</label>
+                                <label class="col-md-3 control-label" for="pengantar_rt">Surat Pengantar Rt</label>
                                 <div class="col-md-5">
-                                    <input id="surat_pengantar_rt" name="surat_pengantar_rt" type="file" class="form-control">
+                                    <input id="pengantar_rt" name="pengantar_rt" type="file" class="form-control">
                                 </div>
                             </div>
 
@@ -81,7 +81,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="surat_kuasa_bermaterai">Surat Kuasa Bermaterai</label>
                                 <div class="col-md-5">
-                                    <input id="surat_kuasa_bermaterai" name="surat_kuasa_bermaterai" type="file" class="form-control">
+                                    <input id="surat_kuasa" name="surat_kuasa" type="file" class="form-control">
                                 </div>
                             </div>
 
@@ -96,10 +96,10 @@
                                 <div class="col-md-12">
                                     <div class="col-md-8"></div>
                                     <div class="col-md-2">
-                                        <button type="submit" class="btn btn-danger btn-md pull-right">Kembali</button>
+                                    <a href="surat-pindah.php"><button type="button" class="btn btn-danger btn-md pull-right">Kembali</button></a>
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="submit" class="btn btn-success btn-md pull-right">Simpan</button>
+                                        <button type="submit" name="simpan_surat_pindah" class="btn btn-success btn-md pull-right">Simpan</button>
                                     </div>
                                 </div>
                             </div>

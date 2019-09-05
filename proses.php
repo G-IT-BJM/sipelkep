@@ -1,5 +1,52 @@
 <?php 
     include "koneksi.php";
+/**
+ * [uploadImg description]
+ *
+ * @param   array  $data    Data Foto
+ * @param   string  $no_reg  Nomor Registrasi
+ *
+ * @return  boolean         Status Upload
+ */
+    function uploadImg($data = array(),$no_reg)
+    {
+
+        $files = '';
+
+        foreach ($data as $val) {      
+        
+            $name = $_FILES[$val]['name'];
+            $tmp = $_FILES[$val]['tmp_name'];
+            $tipe = $_FILES[$val]['type'];
+            
+            $ext = substr($name, -4); //.png
+            if ($ext == ".png" || $ext == ".jpg") {
+                $filename = $no_reg.'-'.$val.$ext;                
+            } else {
+                $ext = substr($name, -5); //.jpeg
+                $filename = $no_reg.'-'.$val.$ext;                
+            }
+
+            $path = "img/".$filename;
+
+            if (file_exists($path)) {
+                unlink($path);
+                move_uploaded_file($tmp, $path);
+            } else {
+                move_uploaded_file($tmp, $path);
+            } 
+            
+            if ($files == '') {
+                $files = "'".$filename."'";
+            } else {
+                $files .= ",'".$filename."'";
+            }
+
+        }
+
+        return $files;
+
+    }
     
     /** 
      * @Author: G_IT_BJM 
@@ -226,5 +273,49 @@
         }
         
         
-    } 
+    }     
+
+    /**
+     * [SIMPAN DATA SURAT PINDAH]
+     *
+     * @return  [type]  [return description]
+     */
+    elseif (isset($_POST['simpan_surat_pindah'])) {                       
+        
+        $no_surat = $_POST['no_surat'];
+        $no_registrasi = $_POST['no_registrasi'];
+        $nama = $_POST['nama'];
+        $tgl_keluar = $_POST['tgl_keluar'];
+        $keterangan = $_POST['keterangan'];
+
+        $lampiran = array('pengantar_rt','ktp','kk','surat_kuasa');
+
+        $cek = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_surat_pindah WHERE no_surat_pindah='$no_surat' && no_registrasi='$no_registrasi'"));
+
+        if ($cek < 1) {
+
+            $uploadImg = uploadImg($lampiran,$no_registrasi);            
+
+            if ($uploadImg) {                
+
+                $sql = "INSERT INTO tb_surat_pindah VALUES ('','$no_surat','$no_registrasi','$tgl_keluar',".$uploadImg.",'$keterangan')";                
+
+                mysqli_query($conn,$sql);
+
+                header('location:surat-pindah.php');
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Data Sudah Dipakai!');
+                    window.location = 'tambah-data-surat-pindah.php';
+                </script>
+            ";
+
+        }
+
+    }
 ?>

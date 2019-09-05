@@ -1,6 +1,9 @@
     <?php
 		include "header.php"; 
-		include "sidebar.php"; 
+        include "sidebar.php"; 
+        
+        $sql = mysqli_query($conn, "SELECT * FROM tb_surat_pindah");
+
 	?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -61,15 +64,20 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php 
+                                                    $no = 1;
+                                                    while ($row = mysqli_fetch_array($sql)) { 
+                                                ?>
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>aa</td>
-                                                    <td>cc</td>
-                                                    <td>efef</td>
+                                                    <td><?=$no?></td>
+                                                    <td><?=$row['no_surat_pindah']?></td>
+                                                    <td><?=$row['no_registrasi']?></td>
+                                                    <td></td>
                                                     <td>
                                                         edit || hapus
                                                     </td>
                                                 </tr>
+                                                <?php } ?>
                                             </tbody>
                                         </table>
                                     </div>
