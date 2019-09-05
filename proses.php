@@ -180,4 +180,51 @@
             ";
         }
     } 
+    /** 
+     * @Author: G_IT_BJM 
+     * @Date: 2019-09-05 18:19:13 
+     * @Desc: UBAH SANDI ADMIN 
+     */    
+    else if(isset($_POST['ubah_kata_sandi'])) 
+    {
+        $id        = $_POST['id']; 
+        $nm        = $_POST['nama'];
+        $p_lama    = $_POST['kata_sandi_lama'];
+        $p_baru    = $_POST['kata_sandi_baru'];
+        $k_p_baru  = $_POST['konfirm_kata_sandi_baru'];
+
+        $cek = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_admin WHERE id = '$id' AND nama_pengguna = '$nm'"));
+        if($cek["kata_sandi"] == $p_lama) {
+            if($p_baru == $k_p_baru) {
+                $ubah = mysqli_query($conn, "UPDATE tb_admin SET kata_sandi = '$p_baru' WHERE id = '$id' AND nama_pengguna = '$nm'");
+    
+                if($ubah) {
+                    header("location: beranda.php");
+                } else {
+                    echo "
+                        <script>
+                            alert('Data Gagal Di Ubah . . . ');
+                            window.location = 'ubah-sandi.php';
+                        </script>
+                    ";
+                }
+            } else {
+                echo "
+                    <script>
+                        alert('Konfirmasi Password Salah . . . ');
+                        window.location = 'ubah-sandi.php';
+                    </script>
+                ";
+            }
+        } else {
+            echo "
+                <script>
+                    alert(' Password Lama Salah . . . ');
+                    window.location = 'ubah-sandi.php';
+                </script>
+            ";
+        }
+        
+        
+    } 
 ?>

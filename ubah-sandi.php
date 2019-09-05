@@ -1,6 +1,9 @@
     <?php
 		include "header.php"; 
-		include "sidebar.php"; 
+        include "sidebar.php"; 
+        include "koneksi.php";
+
+        $sql = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_admin WHERE status = 1"));
 	?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -26,9 +29,10 @@
                     <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal" action="proses.php" method="post" enctype="multipart/form-data">
                         <fieldset>
-                            
+                            <input type="hidden" value="<?php echo $sql["id"]; ?>" name="id" id="id">
+                            <input type="hidden" value="<?php echo $sql["nama_pengguna"]; ?>" name="nama" id="nama">
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="kata_sandi_lama">Kata Sandi Lama</label>
                                 <div class="col-md-9">
