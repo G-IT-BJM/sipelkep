@@ -17,7 +17,6 @@
         
             $name = $_FILES[$val]['name'];
             $tmp = $_FILES[$val]['tmp_name'];
-            $tipe = $_FILES[$val]['type'];
             
             $ext = substr($name, -4); //.png
             if ($ext == ".png" || $ext == ".jpg") {
@@ -46,6 +45,56 @@
 
         return $files;
 
+    }
+
+    function cekFoto($data = array())
+    {        
+        
+        foreach ($data as $val) {
+            
+            $tipe = $_FILES[$val]['type'];
+
+            if ($tipe == "image/jpeg" || $tipe == "image/jpg" || $tipe == "image/png") {
+
+                $size = $_FILES[$val]['size'];
+                
+                if ($size <= 3000000) {
+                    
+                    $return = true;
+
+                } else {
+
+                    $return = false;
+                    break;
+
+                }
+
+            } else {
+
+                $return = false;
+                break;
+
+            }
+
+        }
+
+        return $return;
+
+    }
+
+    function deleteFoto($no_reg)
+    {
+        
+        $files = scandir('img');
+        
+        foreach ($files as $file) {
+        
+            if (strpos($file, $no_reg) !== false) {
+        
+                unlink('img/'.$file);
+            
+            }
+        }
     }
     
     /** 
@@ -323,15 +372,30 @@
 
         if ($cek < 1) {
 
-            $uploadImg = uploadImg($lampiran,$no_registrasi);            
+            $cekFoto = cekFoto($lampiran);
 
-            if ($uploadImg) {                
+            if ($cekFoto) {                            
 
-                $sql = "INSERT INTO tb_surat_pindah VALUES ('','$no_surat','$no_registrasi','$tgl_keluar',".$uploadImg.",'$keterangan')";                
+                $uploadImg = uploadImg($lampiran,$no_registrasi);            
 
-                mysqli_query($conn,$sql);
+                if ($uploadImg) {                
 
-                header('location:surat-pindah.php');
+                    $sql = "INSERT INTO tb_surat_pindah VALUES ('','$no_surat','$no_registrasi','$tgl_keluar',".$uploadImg.",'$keterangan')";                
+
+                    mysqli_query($conn,$sql);
+
+                    header('location:surat-pindah.php');
+
+                }
+
+            } else {
+
+                echo "
+                    <script>
+                        alert('Foto tidak memenuhi persyaratan!');
+                        window.location = 'tambah-data-surat-pindah.php';
+                    </script>
+                ";
 
             }
 
