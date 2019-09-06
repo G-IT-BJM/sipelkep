@@ -6,6 +6,9 @@
 		include "koneksi.php";
 		$cek = mysqli_fetch_array(mysqli_query($conn, "SELECT status FROM tb_admin"));
 		if($cek["status"] == "1") {
+			$j_penduduk = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_data_penduduk"));
+			$j_surat = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_data_surat"));
+			$j_pel_surat = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_register_pelayanan_surat"));
 	?>
 			<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 			<div class="row">
@@ -27,7 +30,7 @@
 				<div class="col-xs-6 col-md-3">
 					<div class="panel panel-default">
 						<div class="panel-body easypiechart-panel">
-							<div class="easypiechart" ></div>
+							<div class="easypiechart" id="easypiechart-blue" data-percent="<?php echo $j_penduduk; ?>" ><span class="percent"><?php echo $j_penduduk; ?></span></div>
 							<p>Jumlah Penduduk</p>
 						</div>
 					</div>
@@ -35,7 +38,7 @@
 				<div class="col-xs-6 col-md-3">
 					<div class="panel panel-default">
 						<div class="panel-body easypiechart-panel">
-							<div class="easypiechart" ></div>
+							<div class="easypiechart" id="easypiechart-orange" data-percent="<?php echo $j_surat; ?>" ><span class="percent"><?php echo $j_surat; ?></span></div>
 							<p>Jumlah Surat</p>
 						</div>
 					</div>
@@ -43,7 +46,7 @@
 				<div class="col-xs-6 col-md-3">
 					<div class="panel panel-default">
 						<div class="panel-body easypiechart-panel">
-							<div class="easypiechart" id="easypiechart-orange" data-percent="65" ><span class="percent">65%</span></div>
+							<div class="easypiechart" id="easypiechart-red" data-percent="<?php echo $j_pel_surat; ?>" ><span class="percent"><?php echo $j_pel_surat; ?></span></div>
 							<p>Registrasi Pelayanan Surat</p>
 						</div>
 					</div>

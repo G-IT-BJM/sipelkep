@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 01, 2019 at 06:11 AM
+-- Generation Time: Sep 06, 2019 at 03:38 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -38,7 +38,7 @@ CREATE TABLE `tb_admin` (
 --
 
 INSERT INTO `tb_admin` (`id`, `nama_pengguna`, `kata_sandi`, `status`) VALUES
-(1, 'a', 'a', '0');
+(1, 'a', 'q', '0');
 
 -- --------------------------------------------------------
 
@@ -67,6 +67,13 @@ CREATE TABLE `tb_data_penduduk` (
   `ket` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_data_penduduk`
+--
+
+INSERT INTO `tb_data_penduduk` (`id`, `nik`, `nama`, `t_lahir`, `tgl_lahir`, `jk`, `gol_dar`, `alamat`, `rt`, `rw`, `kel`, `kec`, `agama`, `status_p`, `kerja`, `warga`, `telp`, `ket`) VALUES
+(1, '5104387654128764', 'Miko', 'Denpasar', '1997-05-02', 'L', 'O', 'jl. perintis bandaira no 12 x', '07', '08', 'Pasar Lama', 'Banjarmasin Tengah', 'ISLAM', 'Lajang', 'Pengusaha', 'WNI', '081339674916', '');
+
 -- --------------------------------------------------------
 
 --
@@ -80,6 +87,15 @@ CREATE TABLE `tb_data_surat` (
   `syarat` text NOT NULL,
   `ket` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_data_surat`
+--
+
+INSERT INTO `tb_data_surat` (`id`, `kd_surat`, `surat`, `syarat`, `ket`) VALUES
+(1, 'KDS-0001', 'Surat Pindah', '1. Surat Pengantar RT\r\n2. FC KTP\r\n3. FC KK\r\n4. Surat Kuasa Bermaterai (Jika DiWakilkan)', ''),
+(2, 'KDS-0002', 'Surat Kelahiran', '1. Surat Pengantar RT\r\n2. FC KTP Bapak dan Ibu Kandung', ''),
+(3, 'KDS-0003', 'Surat Keterangan Domisili', '1. Surat Pengantar RT\r\n2. FC KTP Pemohon', '');
 
 -- --------------------------------------------------------
 
@@ -115,7 +131,9 @@ CREATE TABLE `tb_informasi_pembuatan_surat_user` (
 CREATE TABLE `tb_informasi_penyelesaian_surat_admin` (
   `id` int(11) NOT NULL,
   `kd` varchar(20) NOT NULL,
+  `no_registrasi` varchar(20) NOT NULL,
   `nik` varchar(16) NOT NULL,
+  `nama` varchar(60) NOT NULL,
   `kd_surat` varchar(20) NOT NULL,
   `tgl_selesai` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -146,6 +164,13 @@ CREATE TABLE `tb_keberadaan_lurah_admin` (
   `ket` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_keberadaan_lurah_admin`
+--
+
+INSERT INTO `tb_keberadaan_lurah_admin` (`id`, `kd_lurah`, `tgl`, `status`, `ket`) VALUES
+(1, 'KD-L-0001', '2019-08-25', 'TIDAK ADA', 'Sedang Dinas Keluar Kota selama 3 Hari');
+
 -- --------------------------------------------------------
 
 --
@@ -168,6 +193,7 @@ CREATE TABLE `tb_register_pelayanan_surat` (
   `id` int(11) NOT NULL,
   `no_registrasi` varchar(18) NOT NULL,
   `nik` varchar(16) NOT NULL,
+  `nama` varchar(60) NOT NULL,
   `kd_surat` varchar(20) NOT NULL,
   `tgl_registrasi` date NOT NULL,
   `ket` text NOT NULL
@@ -183,6 +209,8 @@ CREATE TABLE `tb_surat_ahli_waris` (
   `id` int(11) NOT NULL,
   `no_surat_ahli_waris` varchar(20) NOT NULL,
   `no_registrasi` varchar(20) NOT NULL,
+  `nik` varchar(16) NOT NULL,
+  `nama` varchar(60) NOT NULL,
   `tgl_keluar` date NOT NULL,
   `fc_ahli_waris` text NOT NULL,
   `fc_pengantar_rt` text NOT NULL,
@@ -204,6 +232,8 @@ CREATE TABLE `tb_surat_izin_mendirikan_bangunan` (
   `id` int(11) NOT NULL,
   `no_surat_imb` varchar(20) NOT NULL,
   `no_registrasi` varchar(20) NOT NULL,
+  `nik` varchar(16) NOT NULL,
+  `nama` varchar(60) NOT NULL,
   `tgl_keluar` date NOT NULL,
   `fc_pengantar_rt` text NOT NULL,
   `fc_sertifikat_tanah` text NOT NULL,
@@ -223,6 +253,8 @@ CREATE TABLE `tb_surat_izin_tempat_usaha` (
   `id` int(11) NOT NULL,
   `no_surat_izin_usaha` varchar(20) NOT NULL,
   `no_registrasi` varchar(20) NOT NULL,
+  `nik` varchar(16) NOT NULL,
+  `nama` varchar(60) NOT NULL,
   `tgl_keluar` date NOT NULL,
   `fc_pengantar_rt` text NOT NULL,
   `fc_ktp` text NOT NULL,
@@ -247,6 +279,8 @@ CREATE TABLE `tb_surat_kehilangan` (
   `id` int(11) NOT NULL,
   `no_surat_kehilangan` varchar(20) NOT NULL,
   `no_registrasi` varchar(20) NOT NULL,
+  `nik` varchar(16) NOT NULL,
+  `nama` varchar(60) NOT NULL,
   `tgl_keluar` date NOT NULL,
   `fc_ktp` text NOT NULL,
   `ket` text NOT NULL
@@ -262,6 +296,8 @@ CREATE TABLE `tb_surat_kelahiran` (
   `id` int(11) NOT NULL,
   `no_surat_kelahiran` varchar(20) NOT NULL,
   `no_registrasi` varchar(20) NOT NULL,
+  `nik` varchar(16) NOT NULL,
+  `nama` varchar(60) NOT NULL,
   `tgl_keluar` date NOT NULL,
   `fc_pengantar_rt` text NOT NULL,
   `fc_ktp_bapak` text NOT NULL,
@@ -279,6 +315,8 @@ CREATE TABLE `tb_surat_keterangan_belum_menikah` (
   `id` int(11) NOT NULL,
   `no_surat_belum_menikah` varchar(20) NOT NULL,
   `no_registrasi` varchar(20) NOT NULL,
+  `nik` varchar(16) NOT NULL,
+  `nama` varchar(60) NOT NULL,
   `tgl_keluar` date NOT NULL,
   `fc_pengantar_rt` text NOT NULL,
   `ket` text NOT NULL
@@ -293,6 +331,9 @@ CREATE TABLE `tb_surat_keterangan_belum_menikah` (
 CREATE TABLE `tb_surat_keterangan_domisili` (
   `id` int(11) NOT NULL,
   `no_surat_keterangan_domisili` varchar(20) NOT NULL,
+  `no_registrasi` varchar(20) NOT NULL,
+  `nik` varchar(16) NOT NULL,
+  `nama` varchar(60) NOT NULL,
   `tgl_keluar` date NOT NULL,
   `fc_pengantar_rt` text NOT NULL,
   `fc_ktp` text NOT NULL,
@@ -309,6 +350,8 @@ CREATE TABLE `tb_surat_keterangan_tidak_mampu` (
   `id` int(11) NOT NULL,
   `no_surat_tidak_mampu` varchar(20) NOT NULL,
   `no_registrasi` varchar(20) NOT NULL,
+  `nik` varchar(16) NOT NULL,
+  `nama` varchar(60) NOT NULL,
   `tgl_keluar` date NOT NULL,
   `fc_pengantar_rt` text NOT NULL,
   `fc_ktp` text NOT NULL,
@@ -325,6 +368,8 @@ CREATE TABLE `tb_surat_keterangan_usaha` (
   `id` int(11) NOT NULL,
   `no_surat_ket_usaha` varchar(20) NOT NULL,
   `no_registrasi` varchar(20) NOT NULL,
+  `nik` varchar(16) NOT NULL,
+  `nama` varchar(60) NOT NULL,
   `tgl_keluar` date NOT NULL,
   `fc_pengantar_rt` text NOT NULL,
   `fc_ktp` text NOT NULL,
@@ -342,6 +387,8 @@ CREATE TABLE `tb_surat_pengantar_kartu_keluarga` (
   `id` int(11) NOT NULL,
   `no_surat_pengantar_kk` varchar(20) NOT NULL,
   `no_registrasi` varchar(20) NOT NULL,
+  `nik` varchar(16) NOT NULL,
+  `nama` varchar(60) NOT NULL,
   `tgl_keluar` date NOT NULL,
   `fc_surat_ket_ahli_waris` text NOT NULL,
   `fc_pengantar_rt` text NOT NULL,
@@ -362,6 +409,8 @@ CREATE TABLE `tb_surat_pengantar_ktp` (
   `id` int(11) NOT NULL,
   `no_surat_pengantar_ktp` varchar(20) NOT NULL,
   `no_registrasi` varchar(20) NOT NULL,
+  `nik` varchar(16) NOT NULL,
+  `nama` varchar(60) NOT NULL,
   `tgl_keluar` date NOT NULL,
   `fc_pengantar_rt` text NOT NULL,
   `fc_ktp_bapak` text NOT NULL,
@@ -379,6 +428,8 @@ CREATE TABLE `tb_surat_pengantar_nikah` (
   `id` int(11) NOT NULL,
   `no_surat_nikah` varchar(20) NOT NULL,
   `no_registrasi` varchar(20) NOT NULL,
+  `nik` varchar(16) NOT NULL,
+  `nama` varchar(60) NOT NULL,
   `tgl_keluar` date NOT NULL,
   `fc_pengantar_rt` text NOT NULL,
   `fc_ktp` text NOT NULL,
@@ -395,6 +446,8 @@ CREATE TABLE `tb_surat_pindah` (
   `id` int(11) NOT NULL,
   `no_surat_pindah` varchar(10) NOT NULL,
   `no_registrasi` varchar(20) NOT NULL,
+  `nik` varchar(16) NOT NULL,
+  `nama` varchar(60) NOT NULL,
   `tgl_keluar` date NOT NULL,
   `fc_pengantar_rt` text NOT NULL,
   `fc_ktp` text NOT NULL,
@@ -558,12 +611,12 @@ ALTER TABLE `tb_admin`
 -- AUTO_INCREMENT for table `tb_data_penduduk`
 --
 ALTER TABLE `tb_data_penduduk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tb_data_surat`
 --
 ALTER TABLE `tb_data_surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tb_informasi_pembuatan_surat_admin`
 --
@@ -588,7 +641,7 @@ ALTER TABLE `tb_informasi_penyelesaian_surat_user`
 -- AUTO_INCREMENT for table `tb_keberadaan_lurah_admin`
 --
 ALTER TABLE `tb_keberadaan_lurah_admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tb_keberadaan_lurah_user`
 --

@@ -57,6 +57,7 @@
                                                 <th scope="col">KODE</th>
                                                 <th scope="col">JENIS SURAT</th>
                                                 <th scope="col">NO REGISTRASI</th>
+                                                <th scope="col">NIK</th>
                                                 <th scope="col">AKSI</th>
                                                 </tr>
                                             </thead>
@@ -65,6 +66,7 @@
                                                     <td>1</td>
                                                     <td>aa</td>
                                                     <td>cc</td>
+                                                    <td>efef</td>
                                                     <td>efef</td>
                                                     <td>
                                                         edit || hapus

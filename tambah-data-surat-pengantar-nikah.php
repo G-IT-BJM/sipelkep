@@ -44,6 +44,13 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="col-md-3 control-label" for="nik">NIK</label>
+                                <div class="col-md-9">
+                                    <input id="nik" name="nik" type="text" placeholder="Nik" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="col-md-3 control-label" for="nama">Nama</label>
                                 <div class="col-md-9">
                                     <input id="nama" name="nama" type="text" placeholder="Nama" class="form-control">

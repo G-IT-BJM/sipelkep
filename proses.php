@@ -4,9 +4,9 @@
  * [uploadImg description]
  *
  * @param   array  $data    Data Foto
- * @param   string  $no_reg  Nomor Registrasi
+ * @param   string $no_reg  Nomor Registrasi
  *
- * @return  boolean         Status Upload
+ * @return  boolean Status Upload
  */
     function uploadImg($data = array(),$no_reg)
     {
@@ -274,6 +274,35 @@
         
         
     }     
+    /** 
+     * @Author: G_IT_BJM 
+     * @Date: 2019-09-06 19:13:47 
+     * @Desc: LOGIN 
+     */    
+    else if(isset($_POST['login'])) 
+    {
+        $nm        = $_POST['nama_pengguna'];
+        $sandi     = $_POST['kata_sandi'];
+        $stts      = 1;
+
+        $q = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_admin"));
+        if($q["nama_pengguna"] == $nm && $q["kata_sandi"] == $sandi) {
+            mysqli_query($conn, "UPDATE tb_admin SET status = '$stts' WHERE nama_pengguna = '$nm' AND kata_sandi = '$sandi'");
+            echo "
+                <script>
+                    alert('Berhasil Login . . . ');
+                    window.location = 'beranda.php';
+                </script>
+            ";
+        } else {
+            echo "
+                <script>
+                    alert('Gagal Login . . . ');
+                    window.location = 'beranda.php';
+                </script>
+            ";
+        }
+    } 
 
     /**
      * [SIMPAN DATA SURAT PINDAH]

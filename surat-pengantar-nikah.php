@@ -56,7 +56,7 @@
                                                 <th scope="col">#</th>
                                                 <th scope="col">NO SURAT</th>
                                                 <th scope="col">NO. REGISTRASI</th>
-                                                <th scope="col">NAMA</th>
+                                                <th scope="col">NIK</th>
                                                 <th scope="col">AKSI</th>
                                                 </tr>
                                             </thead>

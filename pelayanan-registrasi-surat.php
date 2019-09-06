@@ -41,6 +41,13 @@
                                     <input id="nik" name="nik" type="text" placeholder="NIK" class="form-control">
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="nama">Nama</label>
+                                <div class="col-md-9">
+                                    <input id="nama" name="nama" type="text" placeholder="Nama" class="form-control">
+                                </div>
+                            </div>
                             
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="jenis_surat">Jenis Surat</label>
@@ -55,9 +62,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="kalender">Kalender</label>
+                                <label class="col-md-3 control-label" for="tgl_regis">Tgl Register</label>
                                 <div class="col-md-3">
-                                    <input id="kalender" name="kalender" type="date" placeholder="Kalender" class="form-control">
+                                    <input id="tgl_regis" name="tgl_regis" type="date" placeholder="Tgl Register" class="form-control">
                                 </div>
                             </div>
 

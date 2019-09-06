@@ -41,7 +41,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="surat">Surat</label>
+                                <label class="col-md-3 control-label" for="surat">Jenis Surat</label>
                                 <div class="col-md-9">
                                     <input id="surat" name="surat" type="text" value="<?php echo $data["surat"]; ?>" placeholder="Surat" class="form-control" required>
                                 </div>

@@ -58,7 +58,7 @@
                                                 <tr>
                                                 <th scope="col">#</th>
                                                 <th scope="col">KD SURAT</th>
-                                                <th scope="col">SURAT</th>
+                                                <th scope="col">JENIS SURAT</th>
                                                 <th scope="col">SYARAT</th>
                                                 <th scope="col">KETERANGAN</th>
                                                 <th scope="col">AKSI</th>

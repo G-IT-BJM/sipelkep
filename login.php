@@ -19,7 +19,7 @@
 				<div class="panel-heading">Masuk Sebagai Admin</div>
 				<div class="panel-body">
 					<p class="text-danger">Mohon gunakan Nama pengguna dan Kata Sandi yang Valid</p>
-					<form role="form" action="" method="post">
+					<form role="form" action="proses.php" method="post" enctype="multipart/form-data">
 						<fieldset>
 							<div class="form-group">
 								<input class="form-control" placeholder="Nama Pengguna" name="nama_pengguna" type="text">
@@ -27,8 +27,8 @@
 							<div class="form-group">
 								<input class="form-control" placeholder="Kata Sandi" name="kata_sandi" type="password">
 							</div>
-							<button type="submit" class="btn btn-primary">Masuk</button>
-							<button class="btn btn-danger">Batal</button>
+							<button type="submit" name="login" class="btn btn-primary">Masuk</button>
+							<a href="beranda.php"><button type="button" class="btn btn-danger">Batal</button></a>
 						</fieldset>
 					</form>
 				</div>
@@ -37,6 +37,6 @@
 	</div>
 	
 <script src="js/jquery-1.11.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
