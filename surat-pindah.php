@@ -72,9 +72,11 @@
                                                     <td><?=$no?></td>
                                                     <td><?=$row['no_surat_pindah']?></td>
                                                     <td><?=$row['no_registrasi']?></td>
-                                                    <td></td>
+                                                    <td><?=$row['nik']?></td>
                                                     <td>
-                                                        edit || hapus
+                                                        <a href=""><button type="button" class="btn btn-primary"><span class="fa fa-edit"></span></button></a> 
+                                                        || 
+                                                        <a href="proses.php?jenis_surat=surat-pindah&no_surat=<?=$row['no_surat_pindah'] ?>" onclick="return confirm('Apakah anda ingin menghapus data ini?')"><button type="button" class="btn btn-danger"><span class="fa fa-trash"></span></button></a> 
                                                     </td>
                                                 </tr>
                                                 <?php } ?>

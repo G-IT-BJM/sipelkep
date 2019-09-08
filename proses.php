@@ -4,11 +4,11 @@
  * [uploadImg description]
  *
  * @param   array  $data    Data Foto
- * @param   string $no_reg  Nomor Registrasi
+ * @param   string $no_surat  Nomor surat
  *
  * @return  boolean Status Upload
  */
-    function uploadImg($data = array(),$no_reg)
+    function uploadImg($data = array(),$no_surat)
     {
 
         $files = '';
@@ -20,10 +20,10 @@
             
             $ext = substr($name, -4); //.png
             if ($ext == ".png" || $ext == ".jpg") {
-                $filename = $no_reg.'-'.$val.$ext;                
+                $filename = $no_surat.'-'.$val.$ext;                
             } else {
                 $ext = substr($name, -5); //.jpeg
-                $filename = $no_reg.'-'.$val.$ext;                
+                $filename = $no_surat.'-'.$val.$ext;                
             }
 
             $path = "img/".$filename;
@@ -46,7 +46,13 @@
         return $files;
 
     }
-
+/**
+ * [cekFoto description]
+ *
+ * @param   array  $data  cek size dan tipe foto
+ *
+ * @return  boolean         [return description]
+ */
     function cekFoto($data = array())
     {        
         
@@ -81,20 +87,29 @@
         return $return;
 
     }
-
-    function deleteFoto($no_reg)
+/**
+ * [deleteFoto description]
+ *
+ * @param   string  $no_surat  nomor surat
+ *
+ * @return  [type]           [return description]
+ */
+    function deleteFoto($no_surat)
     {
         
         $files = scandir('img');
         
         foreach ($files as $file) {
         
-            if (strpos($file, $no_reg) !== false) {
+            if (strpos($file, $no_surat) !== false) {
         
                 unlink('img/'.$file);
             
             }
         }
+        
+        return true;
+
     }
     
     /** 
@@ -362,6 +377,7 @@
         
         $no_surat = $_POST['no_surat'];
         $no_registrasi = $_POST['no_registrasi'];
+        $nik = $_POST['nik'];
         $nama = $_POST['nama'];
         $tgl_keluar = $_POST['tgl_keluar'];
         $keterangan = $_POST['keterangan'];
@@ -376,11 +392,11 @@
 
             if ($cekFoto) {                            
 
-                $uploadImg = uploadImg($lampiran,$no_registrasi);            
+                $uploadImg = uploadImg($lampiran,$no_surat);
 
                 if ($uploadImg) {                
 
-                    $sql = "INSERT INTO tb_surat_pindah VALUES ('','$no_surat','$no_registrasi','$tgl_keluar',".$uploadImg.",'$keterangan')";                
+                    $sql = "INSERT INTO tb_surat_pindah VALUES ('','$no_surat','$no_registrasi','$nik','$nama','$tgl_keluar',".$uploadImg.",'$keterangan')";                
 
                     mysqli_query($conn,$sql);
 
@@ -409,6 +425,24 @@
             ";
 
         }
+
+    } elseif (isset($_GET['jenis_surat']) == 'surat-pindah') {
+
+        $no_surat = $_GET['no_surat'];
+        
+        $exec = mysqli_query($conn, "DELETE FROM tb_surat_pindah WHERE no_surat_pindah = '$no_surat'");
+
+        if ($exec) {
+            
+            deleteFoto($no_surat);
+
+            echo "
+                <script>                    
+                    window.location = 'surat-pindah.php';
+                </script>
+            ";
+
+        } 
 
     }
 ?>
