@@ -83,13 +83,9 @@
         $files = scandir('img');
         
         foreach ($files as $file) {
-<<<<<<< HEAD
-            if (strpos($file, $no_reg) !== false) {
-=======
         
             if (strpos($file, $no_surat) !== false) {
         
->>>>>>> 5569fd12d45c806df62e40b2d49d36a804ee0b75
                 unlink('img/'.$file);
             }
         }
@@ -411,15 +407,9 @@
     elseif (isset($_POST['simpan_surat_pindah'])) {                       
         
         $no_surat = $_POST['no_surat'];
-<<<<<<< HEAD
-        $no_registrasi  = $_POST['no_registrasi'];
-        $nik = $_POST['nik'];
-        $nama  = $_POST['nama'];
-=======
         $no_registrasi = $_POST['no_registrasi'];
         $nik = $_POST['nik'];
         $nama = $_POST['nama'];
->>>>>>> 5569fd12d45c806df62e40b2d49d36a804ee0b75
         $tgl_keluar = $_POST['tgl_keluar'];
         $keterangan = $_POST['keterangan'];
         $lampiran = array('pengantar_rt','ktp','kk','surat_kuasa');
