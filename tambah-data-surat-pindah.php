@@ -67,28 +67,28 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="pengantar_rt">Surat Pengantar Rt</label>
                                 <div class="col-md-5">
-                                    <input id="pengantar_rt" name="pengantar_rt" type="file" class="form-control">
+                                    <input id="pengantar_rt" name="pengantar_rt" type="file" class="form-control" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="ktp">Kartu Tanda Penduduk</label>
                                 <div class="col-md-5">
-                                    <input id="ktp" name="ktp" type="file" class="form-control">
+                                    <input id="ktp" name="ktp" type="file" class="form-control" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="kk">Kartu Keluarga</label>
                                 <div class="col-md-5">
-                                    <input id="kk" name="kk" type="file" class="form-control">
+                                    <input id="kk" name="kk" type="file" class="form-control" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="surat_kuasa_bermaterai">Surat Kuasa Bermaterai</label>
                                 <div class="col-md-5">
-                                    <input id="surat_kuasa" name="surat_kuasa" type="file" class="form-control">
+                                    <input id="surat_kuasa" name="surat_kuasa" type="file" class="form-control" required>
                                 </div>
                             </div>
 

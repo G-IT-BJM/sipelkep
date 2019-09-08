@@ -1,10 +1,11 @@
-    <?php
+<?php
 		include "header.php"; 
         include "sidebar.php"; 
+        
         include "koneksi.php";
 
-        $noreg = $_GET['noreg-surat-pindah'];
-        $data = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_surat_pindah WHERE no_registrasi = '$noreg'"));
+        $id = $_GET['id'];
+        $data = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_surat_pindah WHERE id = '$id'"));
 	?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -30,76 +31,92 @@
                     <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" action="proses.php?noreg-surat-pindah=<?= $noreg; ?>" method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal" action="proses.php" method="post" enctype="multipart/form-data">
                         <fieldset>
-                            
+                            <input type="hidden" id="id" name="id" value="<?php echo $data["id"]; ?>">
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="no_surat">No Surat</label>
                                 <div class="col-md-9">
-                                    <input id="no_surat" name="no_surat" type="text" placeholder="No Surat" value="<?= $data["no_surat_pindah"]; ?>" class="form-control">
+                                    <input readonly id="no_surat" name="no_surat" type="text" value="<?php echo $data["no_surat_pindah"]; ?>" placeholder="No Surat" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="no_registrasi">No. Registrasi</label>
                                 <div class="col-md-9">
-                                    <input id="no_registrasi" name="no_registrasi" type="text" value="<?= $data["no_registrasi"]; ?>" placeholder="No. Registrasi" class="form-control">
+                                    <input readonly id="no_registrasi" name="no_registrasi" type="text" value="<?php echo $data["no_registrasi"]; ?>" placeholder="No. Registrasi" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="nik">NIK</label>
                                 <div class="col-md-9">
-                                    <input id="nik" name="nik" type="text" value="<?= $data["nik"]; ?>" placeholder="Nik" class="form-control">
+                                    <input id="nik" name="nik" type="text" value="<?php echo $data["nik"]; ?>" placeholder="Nik" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="nama">Nama</label>
                                 <div class="col-md-9">
-                                    <input id="nama" name="nama" type="text" value="<?= $data["nama"]; ?>" placeholder="Nama" class="form-control">
+                                    <input id="nama" name="nama" type="text" value="<?php echo $data["nama"]; ?>" placeholder="Nama" class="form-control">
                                 </div>
                             </div>
                             
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="tgl_keluar">Tanggal Keluar</label>
                                 <div class="col-md-3">
-                                    <input id="tgl_keluar" name="tgl_keluar" value="<?= $data["tgl_keluar"]; ?>" type="date" placeholder="Tgl Keluar" class="form-control">
+                                    <input id="tgl_keluar" name="tgl_keluar" type="date" value="<?php echo $data["tgl_keluar"]; ?>" placeholder="Tgl Keluar" class="form-control">
                                 </div>
                             </div>
                             
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="surat_pengantar_rt">Surat Pengantar Rt</label>
+                                <label class="col-md-3 control-label" for="pengantar_rt">Surat Pengantar Rt</label>                                
                                 <div class="col-md-5">
-                                    <input id="surat_pengantar_rt" name="surat_pengantar_rt" type="file" class="form-control">
+                                    <img src="img/<?=$data['fc_pengantar_rt']?>" class="img-rounded">
+                                    <br><br>
+                                    <input type="Checkbox" id="chk_pengantar_rt" onclick="checkboxs(this.value)" name="ubah_foto[]" value='pengantar_rt'> Ceklist Ubah Foto
+                                    <br><br>
+                                    <input id="pengantar_rt" name="pengantar_rt" type="file" class="form-control" disabled>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="ktp">Kartu Tanda Penduduk</label>
                                 <div class="col-md-5">
-                                    <input id="ktp" name="ktp" type="file" class="form-control">
+                                    <img src="img/<?=$data['fc_ktp']?>" class="img-rounded">
+                                    <br><br>
+                                    <input type="Checkbox" id="chk_ktp" onclick="checkboxs(this.value)"  name="ubah_foto[]" value='ktp'> Ceklist Ubah Foto
+                                    <br><br>
+                                    <input id="ktp" name="ktp" type="file" class="form-control" disabled>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="kk">Kartu Keluarga</label>
                                 <div class="col-md-5">
-                                    <input id="kk" name="kk" type="file" class="form-control">
+                                    <img src="img/<?=$data['fc_kk']?>" class="img-rounded">
+                                    <br><br>
+                                    <input id='chk_kk' type="Checkbox" id="chk_kk" onclick="checkboxs(this.value)" name="ubah_foto[]" value='kk'> Ceklist Ubah Foto
+                                    <br><br>
+                                    <input id="kk" name="kk" type="file" class="form-control" disabled>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="surat_kuasa_bermaterai">Surat Kuasa Bermaterai</label>
+                                <label class="col-md-3 control-label" for="surat_kuasa">Surat Kuasa Bermaterai</label>
                                 <div class="col-md-5">
-                                    <input id="surat_kuasa_bermaterai" name="surat_kuasa_bermaterai" type="file" class="form-control">
+                                    <img src="img/<?=$data['fc_surat_kuasa']?>" class="img-rounded">
+                                    <br><br>
+                                    <input type="Checkbox" id="chk_surat_kuasa" onclick="checkboxs(this.value)" name="ubah_foto[]" value='surat_kuasa'> Ceklist Ubah Foto
+                                    <br><br>
+                                    <input id="surat_kuasa" name="surat_kuasa" type="file" class="form-control" disabled>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="keterangan">Keterangan</label>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" rows="5"><?= $data["ket"]; ?></textarea>
+                                    <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" rows="5"><?=$data['ket']?></textarea>
                                 </div>
                             </div>
                             
@@ -107,7 +124,7 @@
                                 <div class="col-md-12">
                                     <div class="col-md-8"></div>
                                     <div class="col-md-2">
-                                        <a href="surat-pindah.php"><button type="button" class="btn btn-danger btn-md pull-right">Kembali</button></a>
+                                        <button type="submit" class="btn btn-danger btn-md pull-right">Kembali</button>
                                     </div>
                                     <div class="col-md-2">
                                         <button type="submit" name="ubah_surat_pindah" class="btn btn-success btn-md pull-right">Perbarui</button>
@@ -136,17 +153,24 @@
 	<script src="js/easypiechart-data.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/custom.js"></script>
-	<script>
-		window.onload = function () {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-};
-	</script>
-		
+
+    <script>        
+        
+        function checkboxs(params) {            
+                    
+            var ckbox = $('#chk_'+params);
+            
+            if (ckbox.is(':checked')) {
+                $('#'+params).removeAttr('disabled');
+                $('#'+params).attr('required','');
+            } else {
+                $('#'+params).attr('disabled','');
+                $('#'+params).removeAttr('required');
+            }            
+
+        }
+
+    </script>
+
 </body>
 </html>

@@ -8,7 +8,7 @@
  *
  * @return  boolean Status Upload
  */
-    function uploadImg($data = array(),$no_surat)
+    function uploadImg($data = array(),$no_surat,$result = NULL)
     {
         $files = '';
 
@@ -41,7 +41,13 @@
             }
 
         }
-        return $files;
+
+        if ($result == TRUE) {
+            return $files;
+        } else {
+            return true;
+        }
+                
     }
 /**
  * [cekFoto description]
@@ -422,7 +428,7 @@
 
             if ($cekFoto) {                            
 
-                $uploadImg = uploadImg($lampiran,$no_surat);
+                $uploadImg = uploadImg($lampiran,$no_surat,'TRUE');
 
                 if ($uploadImg) {                
 
@@ -455,6 +461,42 @@
             ";
 
         }
+
+    } elseif (isset($_POST['ubah_surat_pindah'])) {
+
+        $id = $_POST['id'];
+        $no_surat = $_POST['no_surat'];
+        $no_registrasi = $_POST['no_registrasi'];
+        $nik = $_POST['nik'];
+        $nama = $_POST['nama'];
+        $tgl_keluar = $_POST['tgl_keluar'];
+        $keterangan = $_POST['keterangan'];
+        $lampiran = $_POST['ubah_foto'];
+
+        $cekFoto = $lampiran != '' ? cekFoto($lampiran) : TRUE;
+
+        if ($cekFoto) {         
+
+            $uploadImg = $lampiran != '' ? uploadImg($lampiran,$no_surat) : TRUE;
+
+            if ($uploadImg) {
+
+                $sql = "UPDATE tb_surat_pindah SET no_surat_pindah = '$no_surat', no_registrasi='$no_registrasi', nik='$nik', nama='$nama', tgl_keluar='$tgl_keluar', ket='$keterangan' WHERE id='$id'";                
+                mysqli_query($conn,$sql);
+                header('location:surat-pindah.php');
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Foto tidak memenuhi persyaratan!');
+                    window.location = 'ubah-data-surat-pindah.php?id=$id';
+                </script>
+            ";
+            
+        }     
 
     } elseif (isset($_GET['jenis_surat']) == 'surat-pindah') {
 
