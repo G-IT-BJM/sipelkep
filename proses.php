@@ -10,7 +10,6 @@
  */
     function uploadImg($data = array(),$no_reg)
     {
-
         $files = '';
 
         foreach ($data as $val) {      
@@ -42,60 +41,42 @@
             }
 
         }
-
         return $files;
-
     }
 
     function cekFoto($data = array())
     {        
-        
         foreach ($data as $val) {
             
             $tipe = $_FILES[$val]['type'];
 
             if ($tipe == "image/jpeg" || $tipe == "image/jpg" || $tipe == "image/png") {
-
                 $size = $_FILES[$val]['size'];
-                
                 if ($size <= 3000000) {
-                    
                     $return = true;
-
                 } else {
-
                     $return = false;
                     break;
-
                 }
-
             } else {
-
                 $return = false;
                 break;
-
             }
-
         }
-
         return $return;
-
     }
 
     function deleteFoto($no_reg)
     {
-        
         $files = scandir('img');
         
         foreach ($files as $file) {
-        
             if (strpos($file, $no_reg) !== false) {
-        
                 unlink('img/'.$file);
-            
             }
         }
     }
+
     
     /** 
      * @Author: G_IT_BJM 
@@ -112,16 +93,21 @@
         $simpan = mysqli_query($conn, "INSERT INTO tb_data_surat VALUES('','$kd_surat','$surat','$syarat','$ket')");
 
         if($simpan) {
+
             header("location: data-surat.php");
+
         } else {
+
             echo "
                 <script>
                     alert('Data Gagal Di Simpan . . . ');
                     window.location = 'tambah-data-surat.php';
                 </script>
             ";
+
         }
     }
+
     /** 
      * @Author: G_IT_BJM 
      * @Date: 2019-09-02 18:32:12 
@@ -138,16 +124,21 @@
         $ubah = mysqli_query($conn, "UPDATE tb_data_surat SET kd_surat = '$kd_surat', surat = '$surat', syarat = '$syarat', ket = '$ket' WHERE id  = '$id'");
 
         if($ubah) {
+
             header("location: data-surat.php");
+
         } else {
+
             echo "
                 <script>
                     alert('Data Gagal Di Ubah . . . ');
                     window.location = 'data-surat.php';
                 </script>
             ";
+
         }
     }
+
     /** 
      * @Author: G_IT_BJM 
      * @Date: 2019-09-02 19:55:04 
@@ -176,16 +167,21 @@
         $simpan = mysqli_query($conn, "INSERT INTO tb_data_penduduk VALUES('','$nik','$nama','$t_lahir','$tgl_lahir','$jk','$gol_darah','$alamat','$rt','$rw','$kel','$kec','$agama','$stts','$pekerjaan','$warga','$telp','$ket')");
 
         if($simpan) {
+
             header("location: data-penduduk.php");
+
         } else {
+
             echo "
                 <script>
                     alert('Data Gagal Di Simpan . . . ');
                     window.location = 'tambah-data-penduduk.php';
                 </script>
             ";
+
         }
     }
+
     /** 
      * @Author: G_IT_BJM 
      * @Date: 2019-09-02 19:55:30 
@@ -193,7 +189,7 @@
      */    
     else if(isset($_POST['ubah_data_penduduk'])) 
     {
-        $id         = $_POST['id'];
+        // $id         = $_POST['id'];
         $nik        = $_POST['nik'];
         $nama       = $_POST['nama'];
         $t_lahir    = $_POST['tempat_lahir'];
@@ -212,19 +208,24 @@
         $telp       = $_POST['telp'];
         $ket        = $_POST['keterangan'];
 
-        $ubah = mysqli_query($conn, "UPDATE tb_data_penduduk SET nik = '$nik', nama = '$nama', t_lahir = '$t_lahir', tgl_lahir = '$tgl_lahir', jk = '$jk', gol_dar = '$gol_darah', alamat = '$alamat', rt = '$rt', rw = '$rw', kel = '$kel', kec = '$kec', agama = '$agama', status_p = '$stts', kerja = '$pekerjaan', warga = '$warga', telp = '$telp', ket = '$ket' WHERE id = '$id'");
+        $ubah = mysqli_query($conn, "UPDATE tb_data_penduduk SET nik = '$nik', nama = '$nama', t_lahir = '$t_lahir', tgl_lahir = '$tgl_lahir', jk = '$jk', gol_dar = '$gol_darah', alamat = '$alamat', rt = '$rt', rw = '$rw', kel = '$kel', kec = '$kec', agama = '$agama', status_p = '$stts', kerja = '$pekerjaan', warga = '$warga', telp = '$telp', ket = '$ket' WHERE nik = '$nik'");
 
         if($ubah) {
+
             header("location: data-penduduk.php");
+
         } else {
+
             echo "
                 <script>
                     alert('Data Gagal Di Simpan . . . ');
                     window.location = 'data-penduduk.php';
                 </script>
             ";
+
         }
     }
+
     /** 
      * @Author: G_IT_BJM 
      * @Date: 2019-09-05 17:07:36 
@@ -240,16 +241,21 @@
         $simpan = mysqli_query($conn, "INSERT INTO tb_keberadaan_lurah_admin VALUES('','$kd','$tgl','$stts','$ket')");
 
         if($simpan) {
+
             header("location: keberadaan-lurah.php");
+
         } else {
+
             echo "
                 <script>
                     alert('Data Gagal Di Simpan . . . ');
                     window.location = 'tambah-data-keberadaan-lurah.php';
                 </script>
             ";
+
         }
     } 
+
     /** 
      * @Author: G_IT_BJM 
      * @Date: 2019-09-05 17:51:36 
@@ -263,19 +269,24 @@
         $stts      = $_POST['status'];
         $ket       = $_POST['keterangan'];
 
-        $simpan = mysqli_query($conn, "UPDATE tb_keberadaan_lurah_admin SET kd_lurah = '$kd', tgl = '$tgl', status = '$stts', ket = '$ket' WHERE id = '$id'");
+        $ubah = mysqli_query($conn, "UPDATE tb_keberadaan_lurah_admin SET kd_lurah = '$kd', tgl = '$tgl', status = '$stts', ket = '$ket' WHERE id = '$id'");
 
-        if($simpan) {
+        if($ubah) {
+
             header("location: keberadaan-lurah.php");
+
         } else {
+
             echo "
                 <script>
                     alert('Data Gagal Di Ubah . . . ');
                     window.location = 'ubah-data-keberadaan-lurah.php';
                 </script>
             ";
+
         }
     } 
+
     /** 
      * @Author: G_IT_BJM 
      * @Date: 2019-09-05 18:19:13 
@@ -290,39 +301,51 @@
         $k_p_baru  = $_POST['konfirm_kata_sandi_baru'];
 
         $cek = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_admin WHERE id = '$id' AND nama_pengguna = '$nm'"));
+
         if($cek["kata_sandi"] == $p_lama) {
+
             if($p_baru == $k_p_baru) {
+
                 $ubah = mysqli_query($conn, "UPDATE tb_admin SET kata_sandi = '$p_baru' WHERE id = '$id' AND nama_pengguna = '$nm'");
     
                 if($ubah) {
+
                     header("location: beranda.php");
+
                 } else {
+
                     echo "
                         <script>
                             alert('Data Gagal Di Ubah . . . ');
                             window.location = 'ubah-sandi.php';
                         </script>
                     ";
+
                 }
+
             } else {
+
                 echo "
                     <script>
                         alert('Konfirmasi Password Salah . . . ');
                         window.location = 'ubah-sandi.php';
                     </script>
                 ";
+
             }
+
         } else {
+
             echo "
                 <script>
                     alert(' Password Lama Salah . . . ');
                     window.location = 'ubah-sandi.php';
                 </script>
             ";
+            
         }
-        
-        
-    }     
+    }
+
     /** 
      * @Author: G_IT_BJM 
      * @Date: 2019-09-06 19:13:47 
@@ -335,21 +358,27 @@
         $stts      = 1;
 
         $q = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_admin"));
+
         if($q["nama_pengguna"] == $nm && $q["kata_sandi"] == $sandi) {
+
             mysqli_query($conn, "UPDATE tb_admin SET status = '$stts' WHERE nama_pengguna = '$nm' AND kata_sandi = '$sandi'");
+
             echo "
                 <script>
                     alert('Berhasil Login . . . ');
                     window.location = 'beranda.php';
                 </script>
             ";
+
         } else {
+
             echo "
                 <script>
                     alert('Gagal Login . . . ');
                     window.location = 'beranda.php';
                 </script>
             ";
+
         }
     } 
 
@@ -361,14 +390,14 @@
     elseif (isset($_POST['simpan_surat_pindah'])) {                       
         
         $no_surat = $_POST['no_surat'];
-        $no_registrasi = $_POST['no_registrasi'];
-        $nama = $_POST['nama'];
+        $no_registrasi  = $_POST['no_registrasi'];
+        $nik = $_POST['nik'];
+        $nama  = $_POST['nama'];
         $tgl_keluar = $_POST['tgl_keluar'];
         $keterangan = $_POST['keterangan'];
-
         $lampiran = array('pengantar_rt','ktp','kk','surat_kuasa');
 
-        $cek = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_surat_pindah WHERE no_surat_pindah='$no_surat' && no_registrasi='$no_registrasi'"));
+        $cek = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_surat_pindah WHERE no_surat_pindah = '$no_surat' AND no_registrasi = '$no_registrasi'"));
 
         if ($cek < 1) {
 
@@ -380,7 +409,7 @@
 
                 if ($uploadImg) {                
 
-                    $sql = "INSERT INTO tb_surat_pindah VALUES ('','$no_surat','$no_registrasi','$tgl_keluar',".$uploadImg.",'$keterangan')";                
+                    $sql = "INSERT INTO tb_surat_pindah VALUES ('','$no_surat','$no_registrasi','$nik','$nama','$tgl_keluar',".$uploadImg.",'$keterangan')";                
 
                     mysqli_query($conn,$sql);
 
@@ -411,4 +440,5 @@
         }
 
     }
+
 ?>

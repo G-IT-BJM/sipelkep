@@ -1,7 +1,8 @@
     <?php
 		include "header.php"; 
         include "sidebar.php"; 
-        
+        include "koneksi.php";
+
         $sql = mysqli_query($conn, "SELECT * FROM tb_surat_pindah");
 
 	?>
@@ -72,10 +73,8 @@
                                                     <td><?=$no?></td>
                                                     <td><?=$row['no_surat_pindah']?></td>
                                                     <td><?=$row['no_registrasi']?></td>
-                                                    <td></td>
-                                                    <td>
-                                                        edit || hapus
-                                                    </td>
+                                                    <td><?=$row['nik']?></td>
+                                                    
                                                 </tr>
                                                 <?php } ?>
                                             </tbody>
@@ -105,14 +104,14 @@
 	<script src="js/custom.js"></script>
 	<script>
 		window.onload = function () {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-};
+            var chart1 = document.getElementById("line-chart").getContext("2d");
+            window.myLine = new Chart(chart1).Line(lineChartData, {
+            responsive: true,
+            scaleLineColor: "rgba(0,0,0,.2)",
+            scaleGridLineColor: "rgba(0,0,0,.05)",
+            scaleFontColor: "#c5c7cc"
+            });
+        };
 	</script>
 		
 </body>

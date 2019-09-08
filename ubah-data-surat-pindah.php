@@ -1,6 +1,10 @@
     <?php
 		include "header.php"; 
-		include "sidebar.php"; 
+        include "sidebar.php"; 
+        include "koneksi.php";
+
+        $noreg = $_GET['noreg-surat-pindah'];
+        $data = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_surat_pindah WHERE no_registrasi = '$noreg'"));
 	?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -26,41 +30,41 @@
                     <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" action="" method="post">
+                    <form class="form-horizontal" action="proses.php?noreg-surat-pindah=<?= $noreg; ?>" method="post" enctype="multipart/form-data">
                         <fieldset>
                             
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="no_surat">No Surat</label>
                                 <div class="col-md-9">
-                                    <input id="no_surat" name="no_surat" type="text" placeholder="No Surat" class="form-control">
+                                    <input id="no_surat" name="no_surat" type="text" placeholder="No Surat" value="<?= $data["no_surat_pindah"]; ?>" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="no_registrasi">No. Registrasi</label>
                                 <div class="col-md-9">
-                                    <input id="no_registrasi" name="no_registrasi" type="text" placeholder="No. Registrasi" class="form-control">
+                                    <input id="no_registrasi" name="no_registrasi" type="text" value="<?= $data["no_registrasi"]; ?>" placeholder="No. Registrasi" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="nik">NIK</label>
                                 <div class="col-md-9">
-                                    <input id="nik" name="nik" type="text" placeholder="Nik" class="form-control">
+                                    <input id="nik" name="nik" type="text" value="<?= $data["nik"]; ?>" placeholder="Nik" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="nama">Nama</label>
                                 <div class="col-md-9">
-                                    <input id="nama" name="nama" type="text" placeholder="Nama" class="form-control">
+                                    <input id="nama" name="nama" type="text" value="<?= $data["nama"]; ?>" placeholder="Nama" class="form-control">
                                 </div>
                             </div>
                             
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="tgl_keluar">Tanggal Keluar</label>
                                 <div class="col-md-3">
-                                    <input id="tgl_keluar" name="tgl_keluar" type="date" placeholder="Tgl Keluar" class="form-control">
+                                    <input id="tgl_keluar" name="tgl_keluar" value="<?= $data["tgl_keluar"]; ?>" type="date" placeholder="Tgl Keluar" class="form-control">
                                 </div>
                             </div>
                             
@@ -95,7 +99,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="keterangan">Keterangan</label>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" rows="5"></textarea>
+                                    <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" rows="5"><?= $data["ket"]; ?></textarea>
                                 </div>
                             </div>
                             
@@ -103,10 +107,10 @@
                                 <div class="col-md-12">
                                     <div class="col-md-8"></div>
                                     <div class="col-md-2">
-                                        <button type="submit" class="btn btn-danger btn-md pull-right">Kembali</button>
+                                        <a href="surat-pindah.php"><button type="button" class="btn btn-danger btn-md pull-right">Kembali</button></a>
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="submit" class="btn btn-success btn-md pull-right">Perbarui</button>
+                                        <button type="submit" name="ubah_surat_pindah" class="btn btn-success btn-md pull-right">Perbarui</button>
                                     </div>
                                 </div>
                             </div>

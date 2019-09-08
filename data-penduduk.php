@@ -75,7 +75,7 @@
                                                             <td>'.$data["nama"].'</td>
                                                             <td>'.$data["t_lahir"].'</td>
                                                             <td>
-                                                                <a href="ubah-data-penduduk.php?id='.$data["id"].'"><button type="button" class="btn btn-primary"><span class="fa fa-edit"></span></button></a> 
+                                                                <a href="ubah-data-penduduk.php?nik='.$data["nik"].'"><button type="button" class="btn btn-primary"><span class="fa fa-edit"></span></button></a> 
                                                                 || 
                                                                 <a href=""><button type="button" class="btn btn-danger"><span class="fa fa-trash"></span></button></a> 
                                                             </td>

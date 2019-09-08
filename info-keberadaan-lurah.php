@@ -1,6 +1,9 @@
     <?php
 		include "header.php"; 
 		include "sidebar.php"; 
+		include "koneksi.php";
+
+		$data = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_keberadaan_lurah_admin ORDER BY id DESC LIMIT 1"));
 	?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -31,7 +34,13 @@
                             <div class="form-group">
                                 <!-- <label class="col-md-3 control-label" for="message"></label> -->
                                 <div class="col-md-12">
-                                    <textarea class="form-control" id="isi" name="isi" rows="5"></textarea>
+									<textarea class="form-control" id="isi" name="isi" rows="5" readonly><?php 
+										echo 
+										'Tanggal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: '.$data["tgl"].
+										'&#13;&#10;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: '.$data["status"].
+										'&#13;&#10;Keterangan&nbsp;: '.$data["ket"].' 
+										';?>
+									</textarea>
                                 </div>
                             </div>
                         </fieldset>
