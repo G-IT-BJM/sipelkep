@@ -38,8 +38,19 @@
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="no_registrasi">No. Registrasi</label>
-                                <div class="col-md-9">
-                                    <input id="no_registrasi" name="no_registrasi" type="text" placeholder="No. Registrasi" class="form-control">
+                                <div class="col-md-7">
+                                    <!-- <input id="no_registrasi" name="no_registrasi" type="text" placeholder="No. Registrasi" class="form-control"> -->
+                                    <select class="form-control" onchange="cek_()" id="no_registrasi" name="no_registrasi">
+                                        <option value="" selected>Pilih No. Reg ---</option>
+                                        <?php 
+                                            $sql = mysqli_query($conn, "SELECT * FROM tb_data_surat AS a INNER JOIN tb_register_pelayanan_surat AS b ON a.kd_surat = b.kd_surat WHERE b.kd_surat = 'KDS-0001'");
+                                            while($data = mysqli_fetch_array($sql)) {
+                                                echo '
+                                                    <option value="'.$data["no_registrasi"].'">'.$data["no_registrasi"].'</option>
+                                                ';
+                                            }
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
 
@@ -132,6 +143,7 @@
 	<script src="js/easypiechart-data.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/custom.js"></script>
+    
 	<script>
 		window.onload = function () {
 	var chart1 = document.getElementById("line-chart").getContext("2d");
@@ -142,6 +154,19 @@
 	scaleFontColor: "#c5c7cc"
 	});
 };
+
+    function cek_(){
+        var noreg = $("#no_registrasi").val();
+        $.ajax({
+            url: 'ajax_cek.php',
+            data:"no_registrasi="+noreg ,
+        }).success(function (data) {
+            var json = data,
+            obj = JSON.parse(json);
+            $('#nik').val(obj.nik);
+            $('#nama').val(obj.nama);
+        });
+    }
 	</script>
 		
 </body>

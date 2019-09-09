@@ -1,6 +1,9 @@
     <?php
 		include "header.php"; 
-		include "sidebar.php"; 
+        include "sidebar.php"; 
+        include "koneksi.php";
+
+        $sql = mysqli_query($conn, "SELECT * FROM tb_data_surat");
 	?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -26,18 +29,18 @@
                     <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" action="" method="post">
+                    <form class="form-horizontal" action="proses.php" method="post" enctype="multipart/form-data">
                         <fieldset>
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="kd_regis">Kode Registrasi</label>
-                                <div class="col-md-9">
+                                <div class="col-md-5">
                                     <input id="kd_regis" name="kd_regis" type="text" placeholder="Kode Registrasi" class="form-control">
                                 </div>
                             </div>
                             
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="nik">NIK</label>
-                                <div class="col-md-9">
+                                <div class="col-md-5">
                                     <input id="nik" name="nik" type="text" placeholder="NIK" class="form-control">
                                 </div>
                             </div>
@@ -51,12 +54,16 @@
                             
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="jenis_surat">Jenis Surat</label>
-                                <div class="col-md-9">
+                                <div class="col-md-7">
                                     <select class="form-control" id="jenis_surat" name="jenis_surat">
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
-                                        <option>Option 4</option>
+                                        <option value="" selected>Pilih Surat ---</option>
+                                        <?php 
+                                            while($data = mysqli_fetch_array($sql)) {
+                                                echo '
+                                                    <option value="'.$data["kd_surat"].'">'.$data["surat"].'</option>
+                                                ';
+                                            }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -71,7 +78,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="keterangan">Keterangan</label>
                                 <div class="col-md-9">
-                                    <input id="keterangan" name="keterangan" type="text" placeholder="Keterangan" class="form-control">
+                                    <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" rows="5"></textarea>
                                 </div>
                             </div>
                             
@@ -79,10 +86,10 @@
                                 <div class="col-md-12">
                                     <div class="col-md-8"></div>
                                     <div class="col-md-2">
-                                        <button type="submit" class="btn btn-danger btn-md pull-right">Kembali</button>
+                                        <a href="pelayanan-surat.php"><button type="button" class="btn btn-danger btn-md pull-right">Kembali</button></a>
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="submit" class="btn btn-success btn-md pull-right">Simpan</button>
+                                        <button type="submit" name="simpan_pelayanan_regis_surat" class="btn btn-success btn-md pull-right">Simpan</button>
                                     </div>
                                 </div>
                             </div>
@@ -91,9 +98,7 @@
                 </div>
             </div>
         </div>
-        
-		
-		
+
 		<div class="row">
             <br><br><br>
 			<?php include "footer.php"; ?>
@@ -118,6 +123,36 @@
 	scaleFontColor: "#c5c7cc"
 	});
 };
+
+        $(function() {
+			$("#nik").change(function(){
+				var nik = $("#nik").val();
+ 
+				$.ajax({
+					url: 'ajax_cek.php',
+					type: 'POST',
+					dataType: 'json',
+					data: {
+						'nik': nik
+					},
+					success: function (siswa) {
+						$("#nama").val(siswa['nama']);
+ 
+						// var $jenis_kelamin = $('input:radio[name=jenis_kelamin]');
+ 
+						// if(siswa['jenis_kelamin'] == 'laki-laki'){
+						// 	$jenis_kelamin.filter('[value=laki-laki]').prop('checked', true);
+						// }else{
+						// 	$jenis_kelamin.filter('[value=perempuan]').prop('checked', true);
+						// }
+					}
+				});
+			});
+ 
+			// $("form").submit(function(){
+			// 	alert("Keep learning");
+			// });
+		});
 	</script>
 		
 </body>

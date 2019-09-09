@@ -157,7 +157,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="keterangan">Keterangan</label>
                                 <div class="col-md-9">
-                                    <input id="keterangan" name="keterangan" type="text" placeholder="Keterangan" class="form-control">
+                                    <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" rows="5"></textarea>
                                 </div>
                             </div>
                             

@@ -1,7 +1,7 @@
 <?php 
 	include "koneksi.php";
-	$cek = mysqli_fetch_array(mysqli_query($conn, "SELECT status FROM tb_admin"));
-	if ($cek["status"] == "1") {
+	session_start();
+	if(!empty($_SESSION['nama_pengguna'])) {
 ?>
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<div class="profile-sidebar">

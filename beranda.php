@@ -4,8 +4,7 @@
 	?>
 	<?php 
 		include "koneksi.php";
-		$cek = mysqli_fetch_array(mysqli_query($conn, "SELECT status FROM tb_admin"));
-		if($cek["status"] == "1") {
+		if(!empty($_SESSION['nama_pengguna'])) {
 			$j_penduduk = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_data_penduduk"));
 			$j_surat = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_data_surat"));
 			$j_pel_surat = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_register_pelayanan_surat"));

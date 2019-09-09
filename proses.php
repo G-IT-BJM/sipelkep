@@ -1,13 +1,15 @@
 <?php 
     include "koneksi.php";
-/**
- * [uploadImg description]
- *
- * @param   array  $data    Data Foto
- * @param   string $no_surat  Nomor surat
- *
- * @return  boolean Status Upload
- */
+    session_start();
+
+    /**
+     * [uploadImg description]
+     *
+     * @param   array  $data    Data Foto
+     * @param   string $no_surat  Nomor surat
+     *
+     * @return  boolean Status Upload
+     */
     function uploadImg($data = array(),$no_surat,$result = NULL)
     {
         $files = '';
@@ -49,13 +51,13 @@
         }
                 
     }
-/**
- * [cekFoto description]
- *
- * @param   array  $data  cek size dan tipe foto
- *
- * @return  boolean         [return description]
- */
+    /**
+     * [cekFoto description]
+     *
+     * @param   array  $data  cek size dan tipe foto
+     *
+     * @return  boolean         [return description]
+     */
     function cekFoto($data = array())
     {        
         foreach ($data as $val) {
@@ -77,13 +79,13 @@
         }
         return $return;
     }
-/**
- * [deleteFoto description]
- *
- * @param   string  $no_surat  nomor surat
- *
- * @return  [type]           [return description]
- */
+    /**
+     * [deleteFoto description]
+     *
+     * @param   string  $no_surat  nomor surat
+     *
+     * @return  [type]           [return description]
+     */
     function deleteFoto($no_surat)
     {
         $files = scandir('img');
@@ -384,7 +386,8 @@
 
         if($q["nama_pengguna"] == $nm && $q["kata_sandi"] == $sandi) {
 
-            mysqli_query($conn, "UPDATE tb_admin SET status = '$stts' WHERE nama_pengguna = '$nm' AND kata_sandi = '$sandi'");
+            // mysqli_query($conn, "UPDATE tb_admin SET status = '$stts' WHERE nama_pengguna = '$nm' AND kata_sandi = '$sandi'");
+            $_SESSION['nama_pengguna'] = $username;
 
             echo "
                 <script>
@@ -518,4 +521,40 @@
 
     }
 
+    /** 
+     * @Author: G_IT_BJM 
+     * @Date: 2019-09-09 18:12:57 
+     * @Desc: PELAYANAN REGISTRASI SURAT 
+     */    
+    elseif (isset($_POST['simpan_pelayanan_regis_surat']))
+    {
+        $kd     = $_POST['kd_regis'];
+        $nik    = $_POST['nik'];
+        $nama   = $_POST['nama'];
+        $js     = $_POST['jenis_surat'];
+        $tgl    = $_POST['tgl_regis'];
+        $ket    = $_POST['keterangan'];
+
+        $simpan = mysqli_query($conn, "INSERT INTO tb_register_pelayanan_surat VALUES('','$kd','$nik','$nama','$js','$tgl','$ket')");
+
+        if($simpan) {
+
+            echo "
+                <script>
+                    alert('Data Berhasil Di Simpan . . . ');
+                    window.location = 'beranda.php';
+                </script>
+            ";
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Data Gagal Di Simpan . . . ');
+                    window.location = 'pelayanan-registrasi-surat.php';
+                </script>
+            ";
+
+        }
+    }
 ?>
