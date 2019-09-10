@@ -124,7 +124,7 @@
                                 <div class="col-md-12">
                                     <div class="col-md-8"></div>
                                     <div class="col-md-2">
-                                        <button type="submit" class="btn btn-danger btn-md pull-right">Kembali</button>
+                                        <a href="surat-pindah.php"><button type="button" class="btn btn-danger btn-md pull-right">Kembali</button></a>
                                     </div>
                                     <div class="col-md-2">
                                         <button type="submit" name="ubah_surat_pindah" class="btn btn-success btn-md pull-right">Perbarui</button>

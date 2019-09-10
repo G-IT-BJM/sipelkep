@@ -135,8 +135,8 @@
 					data: {
 						'nik': nik
 					},
-					success: function (siswa) {
-						$("#nama").val(siswa['nama']);
+					success: function (data) {
+						$("#nama").val(data['nama']);
  
 						// var $jenis_kelamin = $('input:radio[name=jenis_kelamin]');
  

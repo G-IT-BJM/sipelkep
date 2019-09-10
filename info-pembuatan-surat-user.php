@@ -1,6 +1,7 @@
     <?php
 		include "header.php"; 
 		include "sidebar.php"; 
+
 	?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -30,17 +31,26 @@
                         <fieldset>
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="jenis_surat">Pilih Jenis Surat</label>
-                                <div class="col-md-9">
-                                    <select class="form-control" id="jenis_surat" name="jenis_surat">
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
-                                        <option>Option 4</option>
+                                <div class="col-md-7">
+									<select class="form-control" onchange="cek_()" id="jenis_surat" name="jenis_surat">
+                                        <option value="" selected>Pilih Jenis Surat ---</option>
+                                        <?php 
+                                            $sql = mysqli_query($conn, "SELECT * FROM tb_data_surat");
+                                            while($data = mysqli_fetch_array($sql)) {
+                                                echo '
+                                                    <option value="'.$data["kd_surat"].'">'.$data["surat"].'</option>
+                                                ';
+                                            }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
-
-                            <div class="form-group">
+							<div class="form-group">
+                                <label class="col-md-3 control-label" for="message"></label>
+                                <div class="col-md-9">
+									<label >Persyaratan :</label>
+                                </div>
+                            
                                 <label class="col-md-3 control-label" for="message"></label>
                                 <div class="col-md-9">
                                     <textarea class="form-control" id="isi" name="isi" rows="5"></textarea>
@@ -52,8 +62,6 @@
             </div>
         </div>
         
-		
-		
 		<div class="row">
             <br><br><br>
 			<?php include "footer.php"; ?>
@@ -78,6 +86,18 @@
 	scaleFontColor: "#c5c7cc"
 	});
 };
+
+	function cek_(){
+        var js = $("#jenis_surat").val();
+        $.ajax({
+            url: 'ajax_cek.php',
+            data:"jenis_surat="+js ,
+        }).success(function (data) {
+            var json = data,
+            obj = JSON.parse(json);
+            $('#isi').val(obj.isi);
+        });
+    }
 	</script>
 		
 </body>
