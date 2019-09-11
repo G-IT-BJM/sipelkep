@@ -72,7 +72,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="pengantar_rt">Surat Pengantar Rt</label>                                
                                 <div class="col-md-5">
-                                    <img src="img/<?=$data['fc_pengantar_rt']?>" class="img-rounded">
+                                    <img src="img/<?=$data['fc_pengantar_rt']?>" class="img-rounded" width="150" height="150">
                                     <br><br>
                                     <input type="Checkbox" id="chk_pengantar_rt" onclick="checkboxs(this.value)" name="ubah_foto[]" value='pengantar_rt'> Ceklist Ubah Foto
                                     <br><br>
@@ -83,7 +83,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="ktp">Kartu Tanda Penduduk</label>
                                 <div class="col-md-5">
-                                    <img src="img/<?=$data['fc_ktp']?>" class="img-rounded">
+                                    <img src="img/<?=$data['fc_ktp']?>" class="img-rounded" width="150" height="150">
                                     <br><br>
                                     <input type="Checkbox" id="chk_ktp" onclick="checkboxs(this.value)"  name="ubah_foto[]" value='ktp'> Ceklist Ubah Foto
                                     <br><br>
@@ -94,7 +94,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="kk">Kartu Keluarga</label>
                                 <div class="col-md-5">
-                                    <img src="img/<?=$data['fc_kk']?>" class="img-rounded">
+                                    <img src="img/<?=$data['fc_kk']?>" class="img-rounded" width="150" height="150">
                                     <br><br>
                                     <input id='chk_kk' type="Checkbox" id="chk_kk" onclick="checkboxs(this.value)" name="ubah_foto[]" value='kk'> Ceklist Ubah Foto
                                     <br><br>
@@ -105,7 +105,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="surat_kuasa">Surat Kuasa Bermaterai</label>
                                 <div class="col-md-5">
-                                    <img src="img/<?=$data['fc_surat_kuasa']?>" class="img-rounded">
+                                    <img src="img/<?=$data['fc_surat_kuasa']?>" class="img-rounded" width="150" height="150">
                                     <br><br>
                                     <input type="Checkbox" id="chk_surat_kuasa" onclick="checkboxs(this.value)" name="ubah_foto[]" value='surat_kuasa'> Ceklist Ubah Foto
                                     <br><br>
