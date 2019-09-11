@@ -535,26 +535,40 @@
         $tgl    = $_POST['tgl_regis'];
         $ket    = $_POST['keterangan'];
 
-        $simpan = mysqli_query($conn, "INSERT INTO tb_register_pelayanan_surat VALUES('','$kd','$nik','$nama','$js','$tgl','$ket')");
+        $cek = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_data_penduduk WHERE nik = '$nik' AND nama = '$nama'"));
+        if($cek > 0) {
 
-        if($simpan) {
+            $simpan = mysqli_query($conn, "INSERT INTO tb_register_pelayanan_surat VALUES('','$kd','$nik','$nama','$js','$tgl','$ket')");
 
-            echo "
-                <script>
-                    alert('Data Berhasil Di Simpan . . . ');
-                    window.location = 'beranda.php';
-                </script>
-            ";
+            if($simpan) {
 
+                echo "
+                    <script>
+                        alert('Data Berhasil Di Simpan . . . ');
+                        window.location = 'beranda.php';
+                    </script>
+                ";
+
+            } else {
+
+                echo "
+                    <script>
+                        alert('Data Gagal Di Simpan . . . ');
+                        window.location = 'pelayanan-registrasi-surat.php';
+                    </script>
+                ";
+
+            }
         } else {
 
             echo "
                 <script>
-                    alert('Data Gagal Di Simpan . . . ');
-                    window.location = 'pelayanan-registrasi-surat.php';
+                    alert('Anda belum Terdaftar sebagai Penduduk . . . ');
+                    window.location = 'beranda.php';
                 </script>
             ";
 
         }
+        
     }
 ?>

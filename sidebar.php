@@ -21,16 +21,17 @@
 			</div>
 		</form> -->
 		<ul class="nav menu">
-			<li class=""><a href="beranda.php"><em class="fa fa-home">&nbsp;</em> Beranda</a></li>
+			<li><a href="beranda.php"><em class="fa fa-home">&nbsp;</em> Beranda</a></li>
 			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
 				<em class="fa fa-navicon">&nbsp;</em> Master <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-1">
-					<li><a class="" href="data-penduduk.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Data Penduduk
+					<li><a href="data-penduduk.php">
+						 Data Penduduk
+						<!-- <span class="fa fa-arrow-right">&nbsp;</span> Data Penduduk -->
 					</a></li>
-					<li><a class="" href="data-surat.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Data Surat
+					<li><a href="data-surat.php">
+						 Data Surat
 					</a></li>
 				</ul>
 			</li>
@@ -38,44 +39,44 @@
 				<em class="fa fa-navicon">&nbsp;</em> Transaksi <span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-2">
-					<li><a class="" href="surat-pindah.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Surat Pindah
+					<li><a href="surat-pindah.php">
+						 Surat Pindah
 					</a></li>
-					<li><a class="" href="surat-kelahiran.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Surat Kelahiran
+					<li><a href="surat-kelahiran.php">
+						 Surat Kelahiran
 					</a></li>
-					<li><a class="" href="surat-ket-domisili.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Surat Ket. Domisili
+					<li><a href="surat-ket-domisili.php">
+						 Surat Ket. Domisili
 					</a></li>
-					<li><a class="" href="surat-pengantar-kk.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Surat Pengantar KK
+					<li><a href="surat-pengantar-kk.php">
+						 Surat Pengantar KK
 					</a></li>
-					<li><a class="" href="surat-pengantar-ktp.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Surat Pengantar KTP
+					<li><a href="surat-pengantar-ktp.php">
+						 Surat Pengantar KTP
 					</a></li>
-					<li><a class="" href="surat-kehilangan.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Surat Kehilangan
+					<li><a href="surat-kehilangan.php">
+						 Surat Kehilangan
 					</a></li>
-					<li><a class="" href="surat-ket-belum-nikah.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Surat Ket. Belum Nikah
+					<li><a href="surat-ket-belum-nikah.php">
+						 Surat Ket. Belum Nikah
 					</a></li>
-					<li><a class="" href="surat-pengantar-nikah.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Surat Pengantar Nikah
+					<li><a href="surat-pengantar-nikah.php">
+						 Surat Pengantar Nikah
 					</a></li>
-					<li><a class="" href="surat-ket-tidak-mampu.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Surat Ket. Tidak Mampu
+					<li><a href="surat-ket-tidak-mampu.php">
+						 Surat Ket. Tidak Mampu
 					</a></li>
-					<li><a class="" href="surat-ahli-waris.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Surat Ahli Waris
+					<li><a href="surat-ahli-waris.php">
+						 Surat Ahli Waris
 					</a></li>
-					<li><a class="" href="surat-imb.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Surat IMB
+					<li><a href="surat-imb.php">
+						 Surat IMB
 					</a></li>
-					<li><a class="" href="surat-izin-tempat-usaha.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Surat Izin Tempat Usaha
+					<li><a href="surat-izin-tempat-usaha.php">
+						 Surat Izin Tempat Usaha
 					</a></li>
-					<li><a class="" href="surat-ket-usaha.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Surat Keterangan Usaha
+					<li><a href="surat-ket-usaha.php">
+						 Surat Keterangan Usaha
 					</a></li>
 				</ul>
             </li>
@@ -83,14 +84,14 @@
 				<em class="fa fa-navicon">&nbsp;</em> Informasi <span data-toggle="collapse" href="#sub-item-3" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-3">
-					<li><a class="" href="pembuatan-surat.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Pembuatan Surat
+					<li><a href="pembuatan-surat.php">
+						 Pembuatan Surat
 					</a></li>
-					<li><a class="" href="penyelesaian-surat.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Penyelesaian Surat
+					<li><a href="penyelesaian-surat.php">
+						 Penyelesaian Surat
 					</a></li>
-					<li><a class="" href="keberadaan-lurah.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Keberadaan Lurah
+					<li><a href="keberadaan-lurah.php">
+						 Keberadaan Lurah
 					</a></li>
 				</ul>
             </li>
@@ -98,11 +99,11 @@
 				<em class="fa fa-navicon">&nbsp;</em> Laporan <span data-toggle="collapse" href="#sub-item-4" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-4">
-					<li><a class="" href="laporan-data-penduduk.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Laporan Data Penduduk
+					<li><a href="laporan-data-penduduk.php">
+						 Laporan Data Penduduk
 					</a></li>
-					<li><a class="" href="laporan-data-surat.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Laporan Data Surat
+					<li><a href="laporan-data-surat.php">
+						 Laporan Data Surat
 					</a></li>
 				</ul>
             </li>
@@ -110,11 +111,11 @@
 				<em class="fa fa-navicon">&nbsp;</em> Pengaturan <span data-toggle="collapse" href="#sub-item-5" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-5">
-					<li><a class="" href="ubah-sandi.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Ubah Sandi
+					<li><a href="ubah-sandi.php">
+						 Ubah Sandi
 					</a></li>
-					<li><a class="" href="salin-data.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Salin Data
+					<li><a href="salin-data.php">
+						 Salin Data
 					</a></li>
 				</ul>
 			</li>
@@ -136,13 +137,13 @@
 		<div class="divider"></div>
 		
 		<ul class="nav menu">
-			<li class=""><a href="beranda.php"><em class="fa fa-home">&nbsp;</em> Beranda</a></li>
+			<li><a href="beranda.php"><em class="fa fa-home">&nbsp;</em> Beranda</a></li>
 			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
 				<em class="fa fa-navicon">&nbsp;</em> Registrasi <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-1">
-					<li><a class="" href="pelayanan-surat.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Pelayanan Surat
+					<li><a href="pelayanan-surat.php">
+						 Pelayanan Surat
 					</a></li>
 				</ul>
 			</li>
@@ -150,14 +151,14 @@
 				<em class="fa fa-navicon">&nbsp;</em> Informasi <span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-2">
-					<li><a class="" href="info-pembuatan-surat-user.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Pembuatan Surat
+					<li><a href="info-pembuatan-surat-user.php">
+						 Pembuatan Surat
 					</a></li>
-					<li><a class="" href="info-penyelesaian-surat-user.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Penyelesaian Surat
+					<li><a href="info-penyelesaian-surat-user.php">
+						 Penyelesaian Surat
 					</a></li>
-					<li><a class="" href="info-keberadaan-lurah.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Keberadaan Lurah
+					<li><a href="info-keberadaan-lurah.php">
+						 Keberadaan Lurah
 					</a></li>
 				</ul>
 			</li>

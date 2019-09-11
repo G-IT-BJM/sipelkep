@@ -38,7 +38,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="message"></label>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="isi" name="isi" rows="5"></textarea>
+                                    <textarea class="form-control" id="isi" name="isi" rows="5" readonly></textarea>
                                 </div>
                             </div>
                         </fieldset>

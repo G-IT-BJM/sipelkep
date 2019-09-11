@@ -26,7 +26,7 @@
                     <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" action="" method="post">
+                    <form class="form-horizontal" action="proses.php" method="post" enctype="multipart/form-data">
                         <fieldset>
                             
                             <div class="form-group">
@@ -38,8 +38,18 @@
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="no_registrasi">No. Registrasi</label>
-                                <div class="col-md-9">
-                                    <input id="no_registrasi" name="no_registrasi" type="text" placeholder="No. Registrasi" class="form-control">
+                                <div class="col-md-7">
+                                    <select class="form-control" onchange="cek_()" id="no_registrasi" name="no_registrasi">
+                                        <option value="" selected>Pilih No. Reg ---</option>
+                                        <?php 
+                                            $sql = mysqli_query($conn, "SELECT * FROM tb_data_surat AS a INNER JOIN tb_register_pelayanan_surat AS b ON a.kd_surat = b.kd_surat WHERE b.kd_surat = 'KDS-0002' AND b.no_registrasi NOT IN (SELECT no_registrasi FROM tb_surat_kelahiran)");
+                                            while($data = mysqli_fetch_array($sql)) {
+                                                echo '
+                                                    <option value="'.$data["no_registrasi"].'">'.$data["no_registrasi"].'</option>
+                                                ';
+                                            }
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
 
@@ -96,10 +106,10 @@
                                 <div class="col-md-12">
                                     <div class="col-md-8"></div>
                                     <div class="col-md-2">
-                                        <button type="submit" class="btn btn-danger btn-md pull-right">Kembali</button>
+                                        <a href="surat-kelahiran.php"><button type="button" class="btn btn-danger btn-md pull-right">Kembali</button></a>
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="submit" class="btn btn-success btn-md pull-right">Simpan</button>
+                                        <button type="submit" name="simpan_surat_kelahiran" class="btn btn-success btn-md pull-right">Simpan</button>
                                     </div>
                                 </div>
                             </div>
@@ -127,14 +137,27 @@
 	<script src="js/custom.js"></script>
 	<script>
 		window.onload = function () {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-};
+            var chart1 = document.getElementById("line-chart").getContext("2d");
+            window.myLine = new Chart(chart1).Line(lineChartData, {
+            responsive: true,
+            scaleLineColor: "rgba(0,0,0,.2)",
+            scaleGridLineColor: "rgba(0,0,0,.05)",
+            scaleFontColor: "#c5c7cc"
+            });
+        };
+
+        function cek_(){
+            var noreg = $("#no_registrasi").val();
+            $.ajax({
+                url: 'ajax_cek.php',
+                data:"no_registrasi="+noreg ,
+            }).success(function (data) {
+                var json = data,
+                obj = JSON.parse(json);
+                $('#nik').val(obj.nik);
+                $('#nama').val(obj.nama);
+            });
+        }
 	</script>
 		
 </body>

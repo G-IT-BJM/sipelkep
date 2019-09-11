@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2019 at 03:44 PM
+-- Generation Time: Sep 11, 2019 at 01:24 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -198,6 +198,14 @@ CREATE TABLE `tb_register_pelayanan_surat` (
   `tgl_registrasi` date NOT NULL,
   `ket` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_register_pelayanan_surat`
+--
+
+INSERT INTO `tb_register_pelayanan_surat` (`id`, `no_registrasi`, `nik`, `nama`, `kd_surat`, `tgl_registrasi`, `ket`) VALUES
+(1, 'KDR-001', '5104387654128764', 'Miko', 'KDS-0001', '2019-09-08', ''),
+(4, 'KDR-002', '5104387654128000', 'Miko andri', 'KDS-0003', '2019-05-19', '');
 
 -- --------------------------------------------------------
 
@@ -457,6 +465,13 @@ CREATE TABLE `tb_surat_pindah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `tb_surat_pindah`
+--
+
+INSERT INTO `tb_surat_pindah` (`id`, `no_surat_pindah`, `no_registrasi`, `nik`, `nama`, `tgl_keluar`, `fc_pengantar_rt`, `fc_ktp`, `fc_kk`, `fc_surat_kuasa`, `ket`) VALUES
+(12, 'KD-S-001', 'KDR-001', '5104387654128764', 'Miko', '2019-09-11', 'KD-S-001-pengantar_rt.jpg', 'KD-S-001-ktp.jpg', 'KD-S-001-kk.jpg', 'KD-S-001-surat_kuasa.jpg', '-');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -651,7 +666,7 @@ ALTER TABLE `tb_keberadaan_lurah_user`
 -- AUTO_INCREMENT for table `tb_register_pelayanan_surat`
 --
 ALTER TABLE `tb_register_pelayanan_surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tb_surat_ahli_waris`
 --
@@ -716,7 +731,7 @@ ALTER TABLE `tb_surat_pengantar_nikah`
 -- AUTO_INCREMENT for table `tb_surat_pindah`
 --
 ALTER TABLE `tb_surat_pindah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

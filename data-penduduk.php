@@ -63,7 +63,7 @@
                                                 <th scope="col">AKSI</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="myTable">
                                                 <?php 
                                                     $no = 1;
                                                     while($data = mysqli_fetch_array($sql))
@@ -119,6 +119,15 @@
 	scaleFontColor: "#c5c7cc"
 	});
 };
+
+    $(document).ready(function(){
+        $("#search").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
 	</script>
 		
 </body>

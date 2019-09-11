@@ -137,8 +137,6 @@
             </div>
         </div>
         
-		
-		
 		<div class="row">
             <br><br><br>
 			<?php include "footer.php"; ?>
