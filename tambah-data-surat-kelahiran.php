@@ -75,9 +75,9 @@
                             </div>
                             
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="surat_pengantar_rt">Surat Pengantar Rt</label>
+                                <label class="col-md-3 control-label" for="pengantar_rt">Surat Pengantar Rt</label>
                                 <div class="col-md-5">
-                                    <input id="surat_pengantar_rt" name="surat_pengantar_rt" type="file" class="form-control">
+                                    <input id="pengantar_rt" name="pengantar_rt" type="file" class="form-control">
                                 </div>
                             </div>
 
