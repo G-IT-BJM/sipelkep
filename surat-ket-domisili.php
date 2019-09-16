@@ -1,6 +1,9 @@
     <?php
 		include "header.php"; 
-		include "sidebar.php"; 
+        include "sidebar.php"; 
+        include "koneksi.php";
+
+        $sql = mysqli_query($conn, "SELECT * FROM tb_surat_keterangan_domisili");
 	?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -60,16 +63,23 @@
                                                 <th scope="col">AKSI</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="myTable">
+                                                <?php 
+                                                    $no = 1;
+                                                    while ($data = mysqli_fetch_array($sql)) { 
+                                                ?>
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>aa</td>
-                                                    <td>cc</td>
-                                                    <td>efef</td>
+                                                    <td><?= $no ?></td>
+                                                    <td><?= $data['no_surat_keterangan_domisili'] ?></td>
+                                                    <td><?= $data['no_registrasi'] ?></td>
+                                                    <td><?= $data['nik'] ?></td>
                                                     <td>
-                                                        edit || hapus
+                                                        <a href="ubah-data-surat-ket-domisili.php?id=<?=$data['id'] ?>"><button type="button" class="btn btn-primary"><span class="fa fa-edit"></span></button></a> 
+                                                        || 
+                                                        <a href="proses.php?jenis_surat=surat-ket-domisili&no_surat=<?=$data['no_surat_keterangan_domisili'] ?>" onclick="return confirm('Apakah anda ingin menghapus data ini?')"><button type="button" class="btn btn-danger"><span class="fa fa-trash"></span></button></a> 
                                                     </td>
                                                 </tr>
+                                                <?php $no++; } ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -97,14 +107,23 @@
 	<script src="js/custom.js"></script>
 	<script>
 		window.onload = function () {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-};
+            var chart1 = document.getElementById("line-chart").getContext("2d");
+            window.myLine = new Chart(chart1).Line(lineChartData, {
+            responsive: true,
+            scaleLineColor: "rgba(0,0,0,.2)",
+            scaleGridLineColor: "rgba(0,0,0,.05)",
+            scaleFontColor: "#c5c7cc"
+            });
+        };
+
+        $(document).ready(function(){
+            $("#search").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
 	</script>
 		
 </body>

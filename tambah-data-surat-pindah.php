@@ -28,11 +28,21 @@
                 <div class="panel-body">
                     <form class="form-horizontal" action="proses.php" method="post" enctype="multipart/form-data">
                         <fieldset>
-                            
+                            <?php 
+                                $query = mysqli_query($conn,"SELECT max(no_surat_pindah) AS no_surat FROM tb_surat_pindah");
+                                $data = mysqli_fetch_array($query);
+                                $no_surat = $data['no_surat'];
+                                
+                                $noUrut = (int) substr($no_surat, 5, 5);
+                                $noUrut++;
+                                
+                                $char = "NS-P-";
+                                $no_surat = $char . sprintf("%05s", $noUrut);
+                            ?>
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="no_surat">No Surat</label>
                                 <div class="col-md-9">
-                                    <input id="no_surat" name="no_surat" type="text" placeholder="No Surat" class="form-control">
+                                    <input id="no_surat" name="no_surat" type="text" value="<?= $no_surat ?>" placeholder="No Surat" class="form-control" readonly>
                                 </div>
                             </div>
 
@@ -57,14 +67,14 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="nik">NIK</label>
                                 <div class="col-md-9">
-                                    <input id="nik" name="nik" type="text" placeholder="Nik" class="form-control">
+                                    <input id="nik" name="nik" type="text" placeholder="Nik" class="form-control" readonly>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="nama">Nama</label>
                                 <div class="col-md-9">
-                                    <input id="nama" name="nama" type="text" placeholder="Nama" class="form-control">
+                                    <input id="nama" name="nama" type="text" placeholder="Nama" class="form-control" readonly>
                                 </div>
                             </div>
                             

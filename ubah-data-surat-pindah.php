@@ -51,14 +51,14 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="nik">NIK</label>
                                 <div class="col-md-9">
-                                    <input id="nik" name="nik" type="text" value="<?php echo $data["nik"]; ?>" placeholder="Nik" class="form-control">
+                                    <input id="nik" name="nik" type="text" value="<?php echo $data["nik"]; ?>" placeholder="Nik" class="form-control" readonly>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="nama">Nama</label>
                                 <div class="col-md-9">
-                                    <input id="nama" name="nama" type="text" value="<?php echo $data["nama"]; ?>" placeholder="Nama" class="form-control">
+                                    <input id="nama" name="nama" type="text" value="<?php echo $data["nama"]; ?>" placeholder="Nama" class="form-control" readonly>
                                 </div>
                             </div>
                             
