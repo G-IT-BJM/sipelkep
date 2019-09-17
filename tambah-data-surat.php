@@ -28,11 +28,21 @@
                 <div class="panel-body">
                     <form class="form-horizontal" action="proses.php" method="post" enctype="multipart/form-data">
                         <fieldset>
-                            
+                            <?php 
+                                $query = mysqli_query($conn,"SELECT max(kd_surat) AS kd FROM tb_data_surat");
+                                $data = mysqli_fetch_array($query);
+                                $kd = $data['kd'];
+                                
+                                $noUrut = (int) substr($kd, 4, 4);
+                                $noUrut++;
+                                
+                                $char = "KDS-";
+                                $kd = $char . sprintf("%04s", $noUrut);
+                            ?>
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="kode_surat">Kode Surat</label>
                                 <div class="col-md-9">
-                                    <input id="kode_surat" name="kode_surat" type="text" placeholder="Kode Surat" class="form-control" required>
+                                    <input id="kode_surat" name="kode_surat" type="text" value="<?= $kd ?>" placeholder="Kode Surat" class="form-control" readonly>
                                 </div>
                             </div>
 

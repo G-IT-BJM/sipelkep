@@ -111,8 +111,8 @@
     if(isset($_POST['simpan_data_surat'])) 
     {
         $kd_surat   = $_POST['kode_surat'];
-        $surat      = $_POST['surat'];
-        $syarat     = $_POST['syarat'];
+        $surat      = ucwords($_POST['surat']);
+        $syarat     = ucwords($_POST['syarat']);
         $ket        = $_POST['keterangan'];
 
         $simpan = mysqli_query($conn, "INSERT INTO tb_data_surat VALUES('','$kd_surat','$surat','$syarat','$ket')");
@@ -138,7 +138,7 @@
      * @Date: 2019-09-02 18:32:12 
      * @Desc: UBAH DATA SURAT 
      */    
-    elseif(isset($_POST['ubah_data_surat'])) 
+    elseif (isset($_POST['ubah_data_surat'])) 
     {
         $id         = $_POST['id'];
         $kd_surat   = $_POST['kode_surat'];
@@ -169,7 +169,7 @@
      * @Date: 2019-09-02 19:55:04 
      * @Desc: SIMPAN DATA PENDUDUK 
      */    
-    elseif(isset($_POST['simpan_data_penduduk'])) 
+    elseif (isset($_POST['simpan_data_penduduk'])) 
     {
         $nik        = $_POST['nik'];
         $nama       = $_POST['nama'];
@@ -212,7 +212,7 @@
      * @Date: 2019-09-02 19:55:30 
      * @Desc: UBAH DATA PENDUDUK 
      */    
-    elseif(isset($_POST['ubah_data_penduduk'])) 
+    elseif (isset($_POST['ubah_data_penduduk'])) 
     {
         // $id         = $_POST['id'];
         $nik        = $_POST['nik'];
@@ -256,7 +256,7 @@
      * @Date: 2019-09-05 17:07:36 
      * @Desc: SIMPAN KEBERADAAN LURAH 
      */
-    elseif(isset($_POST['simpan_keberadaan_lurah'])) 
+    elseif (isset($_POST['simpan_keberadaan_lurah'])) 
     {
         $kd        = $_POST['kode'];
         $tgl       = $_POST['tgl'];
@@ -286,7 +286,7 @@
      * @Date: 2019-09-05 17:51:36 
      * @Desc: UBAH KEBERADAAN LURAH 
      */    
-    elseif(isset($_POST['ubah_keberadaan_lurah'])) 
+    elseif (isset($_POST['ubah_keberadaan_lurah'])) 
     {
         $id        = $_POST['id']; 
         $kd        = $_POST['kode'];
@@ -317,7 +317,7 @@
      * @Date: 2019-09-05 18:19:13 
      * @Desc: UBAH SANDI ADMIN 
      */    
-    elseif(isset($_POST['ubah_kata_sandi'])) 
+    elseif (isset($_POST['ubah_kata_sandi'])) 
     {
         $id        = $_POST['id']; 
         $nm        = $_POST['nama'];
@@ -376,7 +376,7 @@
      * @Date: 2019-09-06 19:13:47 
      * @Desc: LOGIN 
      */    
-    elseif(isset($_POST['login'])) 
+    elseif (isset($_POST['login'])) 
     {
         $nm        = $_POST['nama_pengguna'];
         $sandi     = $_POST['kata_sandi'];
@@ -413,7 +413,7 @@
      *
      * @return  [type]  [return description]
      */
-    elseif(isset($_POST['simpan_surat_pindah'])) {                       
+    elseif (isset($_POST['simpan_surat_pindah'])) {                       
         
         $no_surat = $_POST['no_surat'];
         $no_registrasi = $_POST['no_registrasi'];
@@ -465,7 +465,7 @@
 
         }
 
-    } elseif(isset($_POST['ubah_surat_pindah'])) {
+    } elseif (isset($_POST['ubah_surat_pindah'])) {
 
         $id = $_POST['id'];
         $no_surat = $_POST['no_surat'];
@@ -501,7 +501,7 @@
             
         }     
 
-    } elseif(isset($_GET['jenis_surat']) && $_GET['jenis_surat'] == 'surat-pindah') {
+    } elseif (isset($_GET['jenis_surat']) && $_GET['jenis_surat'] == 'surat-pindah') {
 
         $no_surat = $_GET['no_surat'];
         
@@ -526,7 +526,7 @@
      * @Date: 2019-09-09 18:12:57 
      * @Desc: PELAYANAN REGISTRASI SURAT 
      */    
-    elseif(isset($_POST['simpan_pelayanan_regis_surat']))
+    elseif (isset($_POST['simpan_pelayanan_regis_surat']))
     {
         $kd     = $_POST['kd_regis'];
         $nik    = $_POST['nik'];
@@ -577,7 +577,7 @@
      * @Date: 2019-09-16 17:44:00 
      * @Desc: SURAT KELAHIRAN 
      */    
-    elseif(isset($_POST['simpan_surat_kelahiran'])) {                       
+    elseif (isset($_POST['simpan_surat_kelahiran'])) {                       
         
         $no_surat       = $_POST['no_surat'];
         $no_registrasi  = $_POST['no_registrasi'];
@@ -630,7 +630,7 @@
         }
 
     } 
-    elseif(isset($_POST['ubah_surat_kelahiran'])) {
+    elseif (isset($_POST['ubah_surat_kelahiran'])) {
 
         $id             = $_POST['id'];
         $no_surat       = $_POST['no_surat'];
@@ -667,7 +667,7 @@
         }     
 
     } 
-    elseif(isset($_GET['jenis_surat']) && $_GET['jenis_surat'] == 'surat-kelahiran') {
+    elseif (isset($_GET['jenis_surat']) && $_GET['jenis_surat'] == 'surat-kelahiran') {
 
         $no_surat = $_GET['no_surat'];
         
@@ -692,7 +692,7 @@
      * @Date: 2019-09-16 18:04:45 
      * @Desc: SURAT KET DOMISILI 
      */    
-    elseif(isset($_POST['simpan_surat_ket_domisili'])) {                       
+    elseif (isset($_POST['simpan_surat_ket_domisili'])) {                       
         
         $no_surat       = $_POST['no_surat'];
         $no_registrasi  = $_POST['no_registrasi'];
@@ -745,7 +745,7 @@
         }
 
     } 
-    elseif(isset($_POST['ubah_surat_ket_domisili'])) {
+    elseif (isset($_POST['ubah_surat_ket_domisili'])) {
 
         $id             = $_POST['id'];
         $no_surat       = $_POST['no_surat'];
@@ -782,7 +782,7 @@
         }     
 
     } 
-    elseif(isset($_GET['jenis_surat']) && $_GET['jenis_surat'] == 'surat-ket-domisili') {
+    elseif (isset($_GET['jenis_surat']) && $_GET['jenis_surat'] == 'surat-ket-domisili') {
 
         $no_surat = $_GET['no_surat'];
         
@@ -801,14 +801,20 @@
         } 
 
     }
+
+    /** 
+     * @Author: G_IT_BJM 
+     * @Date: 2019-09-17 20:24:58 
+     * @Desc: SURAT PENGANTAR KK 
+     */    
     elseif (isset($_POST['simpan_surat_pengantar_kk'])) {
 
-        $no_surat = $_POST['no_surat'];
-        $no_registrasi = $_POST['no_registrasi'];
-        $nik = $_POST['nik'];
-        $nama = $_POST['nama'];
-        $tgl_keluar = $_POST['tgl_keluar'];
-        $keterangan = $_POST['keterangan'];
+        $no_surat       = $_POST['no_surat'];
+        $no_registrasi  = $_POST['no_registrasi'];
+        $nik            = $_POST['nik'];
+        $nama           = $_POST['nama'];
+        $tgl_keluar     = $_POST['tgl_keluar'];
+        $keterangan     = $_POST['keterangan'];
         $lampiran = array('surat_ket_ahli_waris','surat_pengantar_rt','surat_nikah_meninggal','kk_ahli_waris','ktp_2_orang_saksi','ktp_yg_meninggal');
 
         $cek = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_surat_pengantar_kartu_keluarga WHERE no_surat_pengantar_kk = '$no_surat' AND no_registrasi = '$no_registrasi'"));
@@ -852,5 +858,61 @@
             ";
 
         }
+    }
+    elseif (isset($_POST['ubah_surat_pengantar_kk'])) {
+
+        $id             = $_POST['id'];
+        $no_surat       = $_POST['no_surat'];
+        $no_registrasi  = $_POST['no_registrasi'];
+        $nik            = $_POST['nik'];
+        $nama           = $_POST['nama'];
+        $tgl_keluar     = $_POST['tgl_keluar'];
+        $keterangan     = $_POST['keterangan'];
+        $lampiran       = $_POST['ubah_foto'];
+
+        $cekFoto = $lampiran != '' ? cekFoto($lampiran) : TRUE;
+
+        if ($cekFoto) {         
+
+            $uploadImg = $lampiran != '' ? uploadImg($lampiran,$no_surat) : TRUE;
+
+            if ($uploadImg) {
+
+                $sql = "UPDATE tb_surat_pengantar_kartu_keluarga SET no_surat_pengantar_kk = '$no_surat', no_registrasi='$no_registrasi', nik='$nik', nama='$nama', tgl_keluar='$tgl_keluar', ket='$keterangan' WHERE id='$id'";                
+                mysqli_query($conn,$sql);
+                header('location:surat-pengantar-kk.php');
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Foto tidak memenuhi persyaratan!');
+                    window.location = 'ubah-data-surat-pengantar-kk.php?id=$id';
+                </script>
+            ";
+            
+        }     
+
+    } 
+    elseif (isset($_GET['jenis_surat']) && $_GET['jenis_surat'] == 'surat-pengantar-kk') {
+
+        $no_surat = $_GET['no_surat'];
+        
+        $exec = mysqli_query($conn, "DELETE FROM tb_surat_pengantar_kartu_keluarga WHERE no_surat_pengantar_kk = '$no_surat'");
+
+        if ($exec) {
+            
+            deleteFoto($no_surat);
+
+            echo "
+                <script>                    
+                    window.location = 'surat-pengantar-kk.php';
+                </script>
+            ";
+
+        } 
+
     }
 ?>

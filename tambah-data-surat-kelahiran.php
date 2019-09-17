@@ -52,7 +52,7 @@
                                     <select class="form-control" onchange="cek_()" id="no_registrasi" name="no_registrasi">
                                         <option value="" selected>Pilih No. Reg ---</option>
                                         <?php 
-                                            $sql = mysqli_query($conn, "SELECT * FROM tb_data_surat AS a INNER JOIN tb_register_pelayanan_surat AS b ON a.kd_surat = b.kd_surat WHERE b.kd_surat = 'KDS-0002' AND b.no_registrasi NOT IN (SELECT no_registrasi FROM tb_surat_kelahiran)");
+                                            $sql = mysqli_query($conn, "SELECT * FROM tb_data_surat AS a INNER JOIN tb_register_pelayanan_surat AS b ON a.kd_surat = b.kd_surat WHERE b.kd_surat = 'KDS-00002' AND b.no_registrasi NOT IN (SELECT no_registrasi FROM tb_surat_kelahiran)");
                                             while($data = mysqli_fetch_array($sql)) {
                                                 echo '
                                                     <option value="'.$data["no_registrasi"].'">'.$data["no_registrasi"].'</option>

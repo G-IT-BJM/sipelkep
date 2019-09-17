@@ -80,7 +80,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="ktp">Surat Pengantar Rt</label>
+                                <label class="col-md-3 control-label" for="ktp">KTP</label>
                                 <div class="col-md-5">
                                     <img src="img/<?=$data['fc_ktp']?>" class="img-rounded" width="150" height="150">
                                     <br><br>

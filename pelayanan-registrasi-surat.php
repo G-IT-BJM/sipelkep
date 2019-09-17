@@ -31,10 +31,21 @@
                 <div class="panel-body">
                     <form class="form-horizontal" action="proses.php" method="post" enctype="multipart/form-data">
                         <fieldset>
+                            <?php 
+                                $query = mysqli_query($conn,"SELECT max(no_registrasi) AS no_reg FROM tb_register_pelayanan_surat");
+                                $data = mysqli_fetch_array($query);
+                                $no_reg = $data['no_reg'];
+                                
+                                $noUrut = (int) substr($no_reg, 4, 5);
+                                $noUrut++;
+                                
+                                $char = "KDR-";
+                                $no_reg = $char . sprintf("%05s", $noUrut);
+                            ?>
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="kd_regis">Kode Registrasi</label>
                                 <div class="col-md-5">
-                                    <input id="kd_regis" name="kd_regis" type="text" placeholder="Kode Registrasi" class="form-control">
+                                    <input id="kd_regis" name="kd_regis" type="text" value="<?= $no_reg ?>" placeholder="Kode Registrasi" class="form-control" readonly>
                                 </div>
                             </div>
                             
