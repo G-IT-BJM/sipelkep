@@ -75,7 +75,7 @@
                                     <br><br>
                                     <input type="Checkbox" id="chk_pengantar_rt" onclick="checkboxs(this.value)" name="ubah_foto[]" value='pengantar_rt'> Ceklist Ubah Foto
                                     <br><br>
-                                    <input id="pengantar_rt" name="pengantar_rt" type="file" class="form-control">
+                                    <input id="pengantar_rt" name="pengantar_rt" type="file" class="form-control" disabled>
                                 </div>
                             </div>
 
@@ -84,9 +84,9 @@
                                 <div class="col-md-5">
                                     <img src="img/<?=$data['fc_ktp_bapak']?>" class="img-rounded" width="150" height="150">
                                     <br><br>
-                                    <input type="Checkbox" id="chk_ktp_bpk" onclick="checkboxs(this.value)" name="ubah_foto[]" value='ktp_bapak'> Ceklist Ubah Foto
+                                    <input type="Checkbox" id="chk_ktp_bapak" onclick="checkboxs(this.value)" name="ubah_foto[]" value='ktp_bapak'> Ceklist Ubah Foto
                                     <br><br>
-                                    <input id="ktp_bapak" name="ktp_bapak" type="file" class="form-control">
+                                    <input id="ktp_bapak" name="ktp_bapak" type="file" class="form-control" disabled>
                                 </div>
                             </div>
 
@@ -97,7 +97,7 @@
                                     <br><br>
                                     <input type="Checkbox" id="chk_ktp_ibu" onclick="checkboxs(this.value)" name="ubah_foto[]" value='ktp_ibu'> Ceklist Ubah Foto
                                     <br><br>
-                                    <input id="ktp_ibu" name="ktp_ibu" type="file" class="form-control">
+                                    <input id="ktp_ibu" name="ktp_ibu" type="file" class="form-control" disabled>
                                 </div>
                             </div>
 

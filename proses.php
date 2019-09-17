@@ -501,7 +501,7 @@
             
         }     
 
-    } elseif(isset($_GET['jenis_surat']) == 'surat-pindah') {
+    } elseif(isset($_GET['jenis_surat']) && $_GET['jenis_surat'] == 'surat-pindah') {
 
         $no_surat = $_GET['no_surat'];
         
@@ -667,11 +667,11 @@
         }     
 
     } 
-    elseif(isset($_GET['jenis_surat']) == 'surat-kelahiran') {
+    elseif(isset($_GET['jenis_surat']) && $_GET['jenis_surat'] == 'surat-kelahiran') {
 
         $no_surat = $_GET['no_surat'];
         
-        $exec = mysqli_query($conn, "DELETE FROM tb_surat_kelahiran WHERE no_surat_kelahiran = '$no_surat'");
+        $exec = mysqli_query($conn, "DELETE FROM tb_surat_kelahiran WHERE no_surat_kelahiran = '$no_surat'");        
 
         if ($exec) {
             
@@ -782,7 +782,7 @@
         }     
 
     } 
-    elseif(isset($_GET['jenis_surat']) == 'surat-ket-domisili') {
+    elseif(isset($_GET['jenis_surat']) && $_GET['jenis_surat'] == 'surat-ket-domisili') {
 
         $no_surat = $_GET['no_surat'];
         
@@ -800,5 +800,57 @@
 
         } 
 
+    }
+    elseif (isset($_POST['simpan_surat_pengantar_kk'])) {
+
+        $no_surat = $_POST['no_surat'];
+        $no_registrasi = $_POST['no_registrasi'];
+        $nik = $_POST['nik'];
+        $nama = $_POST['nama'];
+        $tgl_keluar = $_POST['tgl_keluar'];
+        $keterangan = $_POST['keterangan'];
+        $lampiran = array('surat_ket_ahli_waris','surat_pengantar_rt','surat_nikah_meninggal','kk_ahli_waris','ktp_2_orang_saksi','ktp_yg_meninggal');
+
+        $cek = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_surat_pengantar_kartu_keluarga WHERE no_surat_pengantar_kk = '$no_surat' AND no_registrasi = '$no_registrasi'"));
+
+        if ($cek < 1) {
+
+            $cekFoto = cekFoto($lampiran);
+
+            if ($cekFoto) {                            
+
+                $uploadImg = uploadImg($lampiran,$no_surat,'TRUE');
+
+                if ($uploadImg) {                
+
+                    $sql = "INSERT INTO tb_surat_pengantar_kartu_keluarga VALUES ('','$no_surat','$no_registrasi','$nik','$nama','$tgl_keluar',".$uploadImg.",'$keterangan')";                
+
+                    mysqli_query($conn,$sql);
+
+                    header('location:surat-pengantar-kk.php');
+
+                }
+
+            } else {
+
+                echo "
+                    <script>
+                        alert('Foto tidak memenuhi persyaratan!');
+                        window.location = 'tambah-data-surat-pengantar-kk.php';
+                    </script>
+                ";
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Data Sudah Dipakai!');
+                    window.location = 'tambah-data-surat-pengantar-kk.php';
+                </script>
+            ";
+
+        }
     }
 ?>

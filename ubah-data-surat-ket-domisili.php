@@ -75,7 +75,7 @@
                                     <br><br>
                                     <input type="Checkbox" id="chk_pengantar_rt" onclick="checkboxs(this.value)" name="ubah_foto[]" value='pengantar_rt'> Ceklist Ubah Foto
                                     <br><br>
-                                    <input id="pengantar_rt" name="pengantar_rt" type="file" class="form-control">
+                                    <input id="pengantar_rt" name="pengantar_rt" type="file" class="form-control" disabled>
                                 </div>
                             </div>
 
@@ -86,7 +86,7 @@
                                     <br><br>
                                     <input type="Checkbox" id="chk_ktp" onclick="checkboxs(this.value)" name="ubah_foto[]" value='ktp'> Ceklist Ubah Foto
                                     <br><br>
-                                    <input id="ktp" name="ktp" type="file" class="form-control">
+                                    <input id="ktp" name="ktp" type="file" class="form-control" disabled>
                                 </div>
                             </div>
 
