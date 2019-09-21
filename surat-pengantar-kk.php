@@ -66,17 +66,17 @@
                                             <tbody id="myTable">
                                             <?php 
                                                     $no = 1;
-                                                    while ($row = mysqli_fetch_array($sql)) { 
+                                                    while ($data = mysqli_fetch_array($sql)) { 
                                                 ?>
                                                 <tr>
                                                     <td><?=$no?></td>
-                                                    <td><?=$row['no_surat_pengantar_kk']?></td>
-                                                    <td><?=$row['no_registrasi']?></td>
-                                                    <td><?=$row['nik']?></td>
+                                                    <td><?=$data['no_surat_pengantar_kk']?></td>
+                                                    <td><?=$data['no_registrasi']?></td>
+                                                    <td><?=$data['nik']?></td>
                                                     <td>
-                                                        <a href="ubah-data-surat-pengantar-kk.php?id=<?=$row['id'] ?>"><button type="button" class="btn btn-primary"><span class="fa fa-edit"></span></button></a> 
+                                                        <a href="ubah-data-surat-pengantar-kk.php?id=<?=$data['id'] ?>"><button type="button" class="btn btn-primary"><span class="fa fa-edit"></span></button></a> 
                                                         || 
-                                                        <a href="proses.php?jenis_surat=surat-pengantar-kk&no_surat=<?=$row['no_surat_pengantar_kk'] ?>" onclick="return confirm('Apakah anda ingin menghapus data ini?')"><button type="button" class="btn btn-danger"><span class="fa fa-trash"></span></button></a> 
+                                                        <a href="proses.php?jenis_surat=surat-pengantar-kk&no_surat=<?=$data['no_surat_pengantar_kk'] ?>" onclick="return confirm('Apakah anda ingin menghapus data ini?')"><button type="button" class="btn btn-danger"><span class="fa fa-trash"></span></button></a> 
                                                     </td>
                                                 </tr>
                                                 <?php $no++; } ?>
