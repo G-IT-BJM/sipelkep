@@ -52,7 +52,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="nik">NIK</label>
                                 <div class="col-md-5">
-                                    <input id="nik" name="nik" type="text" placeholder="NIK" class="form-control">
+                                    <input id="nik" name="nik" type="text" placeholder="NIK" minlength="16" maxlength="16" onkeypress="return hanyaAngka(event)" class="form-control">
                                 </div>
                             </div>
 
@@ -82,7 +82,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="tgl_regis">Tgl Register</label>
                                 <div class="col-md-3">
-                                    <input id="tgl_regis" name="tgl_regis" type="date" placeholder="Tgl Register" class="form-control">
+                                    <input id="tgl_regis" name="tgl_regis" type="date" min="<?= gmdate("Y-m-d", time()+60*60*7); ?>" value="<?= gmdate("Y-m-d", time()+60*60*7); ?>" placeholder="Tgl Register" class="form-control">
                                 </div>
                             </div>
 
@@ -164,6 +164,14 @@
 			// 	alert("Keep learning");
 			// });
 		});
+
+        function hanyaAngka(evt) {
+		  var charCode = (evt.which) ? evt.which : event.keyCode
+		   if (charCode > 31 && (charCode < 48 || charCode > 57))
+ 
+		    return false;
+		  return true;
+		}
 	</script>
 		
 </body>

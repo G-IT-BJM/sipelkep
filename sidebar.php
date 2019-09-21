@@ -84,9 +84,9 @@
 				<em class="fa fa-navicon">&nbsp;</em> Informasi <span data-toggle="collapse" href="#sub-item-3" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-3">
-					<li><a href="pembuatan-surat.php">
+					<!-- <li><a href="pembuatan-surat.php">
 						 Pembuatan Surat
-					</a></li>
+					</a></li> -->
 					<li><a href="penyelesaian-surat.php">
 						 Penyelesaian Surat
 					</a></li>

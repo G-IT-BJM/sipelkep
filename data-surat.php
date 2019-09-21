@@ -36,7 +36,7 @@
                                     
                                     <div class="col-md-3">
                                         <div class="input-group">
-                                            <a href="tambah-data-surat.php"><button type="button" class="btn btn-primary btn-lg">Tambah Data</button></a>
+                                            <!-- <a href="tambah-data-surat.php"><button type="button" class="btn btn-primary btn-lg">Tambah Data</button></a> -->
                                         </div>
                                     </div>
 
@@ -78,11 +78,12 @@
                                                             <td>'.$data["ket"].'</td>
                                                             <td>
                                                                 <a href="ubah-data-surat.php?id='.$data["id"].'"><button type="button" class="btn btn-primary"><span class="fa fa-edit"></span></button></a> 
-                                                                || 
-                                                                <a href=""><button type="button" class="btn btn-danger"><span class="fa fa-trash"></span></button></a> 
+                                                                 
                                                             </td>
                                                         </tr>
                                                         ';
+                                                        // || 
+                                                        //         <a href=""><button type="button" class="btn btn-danger"><span class="fa fa-trash"></span></button></a>
                                                         $no++;
                                                     }
                                                 ?>
@@ -114,23 +115,23 @@
 	<script src="js/custom.js"></script>
 	<script>
 		window.onload = function () {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-};
+            var chart1 = document.getElementById("line-chart").getContext("2d");
+            window.myLine = new Chart(chart1).Line(lineChartData, {
+            responsive: true,
+            scaleLineColor: "rgba(0,0,0,.2)",
+            scaleGridLineColor: "rgba(0,0,0,.05)",
+            scaleFontColor: "#c5c7cc"
+            });
+        };
 
-    $(document).ready(function(){
-        $("#search").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#myTable tr").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        $(document).ready(function(){
+            $("#search").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
             });
         });
-    });
 	</script>
 		
 </body>
