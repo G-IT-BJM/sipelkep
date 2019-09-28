@@ -2,7 +2,12 @@
 		include "header.php"; 
 		include "sidebar.php"; 
 	?>
-		
+	
+    <style>
+        input{
+            text-transform:uppercase;
+        }
+    </style>
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
@@ -69,7 +74,7 @@
                                 <label class="col-md-3 control-label" for="gol_darah">Gol Darah</label>
                                 <div class="col-md-3">
                                     <select class="form-control" required id="gol_darah" name="gol_darah">
-                                        <option value="" selected disabled>~ Gol. Darah ~</option>
+                                        <option value="" selected disabled>Gol. Darah ~</option>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
                                         <option value="AB">AB</option>
@@ -115,7 +120,7 @@
                                 <label class="col-md-3 control-label" for="agama">Agama</label>
                                 <div class="col-md-3">
                                     <select class="form-control" required id="agama" name="agama">
-                                        <option value="" selected disabled>~ Agama ~</option>
+                                        <option value="" selected disabled>Agama ~</option>
                                         <option value="ISLAM">ISLAM</option>
                                         <option value="KRISTEN PROTESTAN">KRISTEN PROTESTAN</option>
                                         <option value="KATOLIK">KATOLIK</option>
@@ -128,8 +133,14 @@
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="status">Status</label>
-                                <div class="col-md-9">
-                                    <input id="status" name="status" type="text" placeholder="Status" class="form-control" required>
+                                <div class="col-md-3">
+                                    <select class="form-control" required id="status" name="status">
+                                        <option value="" selected disabled>Status ~</option>
+                                        <option value="KAWIN">KAWIN</option>
+                                        <option value="BELUM KAWIN">BELUM KAWIN</option>
+                                        <option value="CERAI HIDUP">CERAI HIDUP</option>
+                                        <option value="CERAI MATI">CERAI MATI</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -143,14 +154,18 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="kewarganegaraan">Kewarganegaraan</label>
                                 <div class="col-md-3">
-                                    <input id="kewarganegaraan" name="kewarganegaraan" type="text" placeholder="Kewarganegaraan" class="form-control" required>
+                                    <select class="form-control" required id="kewarganegaraan" name="kewarganegaraan">
+                                        <option value="" selected disabled>Kewarganegaraan ~</option>
+                                        <option value="WNI">WNI</option>
+                                        <option value="WNA">WNA</option>
+                                    </select>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="telp">Telp / HP</label>
                                 <div class="col-md-5">
-                                    <input id="telp" name="telp" type="text" placeholder="Telp / HP" class="form-control" required>
+                                    <input id="telp" name="telp" type="text" placeholder="Telp / HP" minlength="5" maxlength="12" onkeypress="return hanyaAngka(event)" class="form-control" required>
                                 </div>
                             </div>
 

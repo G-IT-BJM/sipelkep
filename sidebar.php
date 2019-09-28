@@ -87,9 +87,9 @@
 					<!-- <li><a href="pembuatan-surat.php">
 						 Pembuatan Surat
 					</a></li> -->
-					<li><a href="penyelesaian-surat.php">
+					<!-- <li><a href="penyelesaian-surat.php">
 						 Penyelesaian Surat
-					</a></li>
+					</a></li> -->
 					<li><a href="keberadaan-lurah.php">
 						 Keberadaan Lurah
 					</a></li>

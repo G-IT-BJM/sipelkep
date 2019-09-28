@@ -71,7 +71,7 @@
                                                         echo '
                                                         <tr>
                                                             <td>'.$no.'</td>
-                                                            <td>'.$data["nik"].'</td>
+                                                            <td><a style="color: black;" id="custId" data-id='.$data["nik"].' data-toggle="modal" data-target="#myModal">'.$data["nik"].'</a></td>
                                                             <td>'.$data["nama"].'</td>
                                                             <td>'.$data["t_lahir"].'</td>
                                                             <td>
@@ -94,7 +94,25 @@
                 </div>
             </div>
         </div>
-        		
+        
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Detail Penduduk</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="fetched-data"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Keluar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 		<div class="row">
             <br><br><br>
 			<?php include "footer.php"; ?>
@@ -111,23 +129,37 @@
 	<script src="js/custom.js"></script>
 	<script>
 		window.onload = function () {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-};
+            var chart1 = document.getElementById("line-chart").getContext("2d");
+            window.myLine = new Chart(chart1).Line(lineChartData, {
+            responsive: true,
+            scaleLineColor: "rgba(0,0,0,.2)",
+            scaleGridLineColor: "rgba(0,0,0,.05)",
+            scaleFontColor: "#c5c7cc"
+            });
+        };
 
-    $(document).ready(function(){
-        $("#search").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#myTable tr").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        $(document).ready(function(){
+            $("#search").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
             });
         });
-    });
+
+        $(document).ready(function(){
+            $('#myModal').on('show.bs.modal', function (e) {
+                var datanik = $(e.relatedTarget).data('id');
+                $.ajax({
+                    type : 'post',
+                    url : 'detail-modal.php',
+                    data :  'nik='+ datanik,
+                    success : function(data){
+                        $('.fetched-data').html(data);
+                    }
+                });
+            });
+        });
 	</script>
 		
 </body>
