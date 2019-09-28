@@ -40,7 +40,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-5"><br></div>
+                                    <div class="col-md-4"><br></div>
 
                                     <div class="col-md-4">
                                         <div class="input-group">
@@ -52,44 +52,48 @@
                                         <br>
                                     </div>
                                     
-                                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                        <table class="table table-bordered table-striped mb-0">
-                                            <thead>
-                                                <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">KD SURAT</th>
-                                                <th scope="col">JENIS SURAT</th>
-                                                <th scope="col">SYARAT</th>
-                                                <th scope="col">KETERANGAN</th>
-                                                <th scope="col">AKSI</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="myTable">
-                                                <?php 
-                                                    $no = 1;
-                                                    while($data = mysqli_fetch_array($sql))
-                                                    {
-                                                        echo '
+                                    <div class="col-md-12">
+                                        <div class="table-responsive" style="overflow: auto;">
+                                            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                                <table class="table table-bordered table-striped mb-0">
+                                                    <thead>
                                                         <tr>
-                                                            <td>'.$no.'</td>
-                                                            <td>'.$data["kd_surat"].'</td>
-                                                            <td>'.$data["surat"].'</td>
-                                                            <td><textarea class="form-control" rows="5" readonly>'.$data["syarat"].'</textarea></td>
-                                                            <td>'.$data["ket"].'</td>
-                                                            <td>
-                                                                <a href="ubah-data-surat.php?id='.$data["id"].'"><button type="button" class="btn btn-primary"><span class="fa fa-edit"></span></button></a> 
-                                                                 
-                                                            </td>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col">KD SURAT</th>
+                                                            <th scope="col">JENIS SURAT</th>
+                                                            <th scope="col">SYARAT</th>
+                                                            <th scope="col">KETERANGAN</th>
+                                                            <th scope="col">AKSI</th>
                                                         </tr>
-                                                        ';
-                                                        // || 
-                                                        //         <a href=""><button type="button" class="btn btn-danger"><span class="fa fa-trash"></span></button></a>
-                                                        $no++;
-                                                    }
-                                                ?>
-                                                
-                                            </tbody>
-                                        </table>
+                                                    </thead>
+                                                    <tbody id="myTable">
+                                                        <?php 
+                                                            $no = 1;
+                                                            while($data = mysqli_fetch_array($sql))
+                                                            {
+                                                                echo '
+                                                                <tr>
+                                                                    <td>'.$no.'</td>
+                                                                    <td>'.$data["kd_surat"].'</td>
+                                                                    <td>'.$data["surat"].'</td>
+                                                                    <td><textarea class="form-control" rows="5" readonly>'.$data["syarat"].'</textarea></td>
+                                                                    <td>'.$data["ket"].'</td>
+                                                                    <td>
+                                                                        <a href="ubah-data-surat.php?id='.$data["id"].'"><button type="button" class="btn btn-primary"><span class="fa fa-edit"></span></button></a> 
+                                                                        
+                                                                    </td>
+                                                                </tr>
+                                                                ';
+                                                                // || 
+                                                                //         <a href=""><button type="button" class="btn btn-danger"><span class="fa fa-trash"></span></button></a>
+                                                                $no++;
+                                                            }
+                                                        ?>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

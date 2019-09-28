@@ -6,7 +6,12 @@
         $nik = $_GET['nik'];
         $data = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_data_penduduk WHERE nik = '$nik'"));
 	?>
-		
+	
+    <style>
+        input{
+            text-transform:uppercase;
+        }
+    </style>
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
@@ -82,7 +87,7 @@
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="gol_darah">Gol Darah</label>
-                                <div class="col-md-9">
+                                <div class="col-md-3">
                                     <select class="form-control" id="gol_darah" name="gol_darah">
                                         <option value="<?= $data["gol_dar"]; ?>" selected><?= $data["gol_dar"]; ?></option>
                                         <option value="" disabled>~ Gol. Darah ~</option>
@@ -129,10 +134,10 @@
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="agama">Agama</label>
-                                <div class="col-md-9">
+                                <div class="col-md-3">
                                     <select class="form-control" id="agama" name="agama">
-                                        <option value="<?php echo $data["agama"]; ?>" selected><?= $data["agama"]; ?></option>
-                                        <option value="" disabled>~ Agama ~</option>
+                                        <option value="<?= $data["agama"]; ?>" selected><?= $data["agama"]; ?></option>
+                                        <option value="" disabled>Agama ~</option>
                                         <option value="ISLAM">ISLAM</option>
                                         <option value="KRISTEN PROTESTAN">KRISTEN PROTESTAN</option>
                                         <option value="KATOLIK">KATOLIK</option>
@@ -144,9 +149,16 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="status">Status</label>
-                                <div class="col-md-9">
-                                    <input id="status" name="status" type="text" value="<?= $data["status_p"]; ?>" placeholder="Status" class="form-control">
+                                <label class="col-md-3 control-label" for="status">Status Kawin</label>
+                                <div class="col-md-3">
+                                    <select class="form-control" required id="status" name="status">
+                                        <option value="<?= $data["status_p"]; ?>" selected><?= $data["status_p"]; ?></option>
+                                        <option value="" disabled>Status ~</option>
+                                        <option value="KAWIN">KAWIN</option>
+                                        <option value="BELUM KAWIN">BELUM KAWIN</option>
+                                        <option value="CERAI HIDUP">CERAI HIDUP</option>
+                                        <option value="CERAI MATI">CERAI MATI</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -160,13 +172,18 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="kewarganegaraan">Kewarganegaraan</label>
                                 <div class="col-md-3">
-                                    <input id="kewarganegaraan" name="kewarganegaraan" type="text" value="<?= $data["warga"]; ?>" placeholder="Kewarganegaraan" class="form-control">
+                                    <select class="form-control" required id="kewarganegaraan" name="kewarganegaraan">
+                                        <option value="<?= $data["warga"]; ?>" selected><?= $data["warga"]; ?></option>
+                                        <option value="" disabled>Kewarganegaraan ~</option>
+                                        <option value="WNI">WNI</option>
+                                        <option value="WNA">WNA</option>
+                                    </select>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="telp">Telp / HP</label>
-                                <div class="col-md-9">
+                                <div class="col-md-5">
                                     <input id="telp" name="telp" type="text" value="<?= $data["telp"]; ?>" placeholder="Telp / HP" class="form-control">
                                 </div>
                             </div>
@@ -195,8 +212,6 @@
             </div>
         </div>
         
-		
-		
 		<div class="row">
             <br><br><br>
 			<?php include "footer.php"; ?>
@@ -213,14 +228,14 @@
 	<script src="js/custom.js"></script>
 	<script>
 		window.onload = function () {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-};
+            var chart1 = document.getElementById("line-chart").getContext("2d");
+            window.myLine = new Chart(chart1).Line(lineChartData, {
+            responsive: true,
+            scaleLineColor: "rgba(0,0,0,.2)",
+            scaleGridLineColor: "rgba(0,0,0,.05)",
+            scaleFontColor: "#c5c7cc"
+            });
+        };
 	</script>
 		
 </body>

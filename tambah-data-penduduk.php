@@ -132,7 +132,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="status">Status</label>
+                                <label class="col-md-3 control-label" for="status">Status Kawin</label>
                                 <div class="col-md-3">
                                     <select class="form-control" required id="status" name="status">
                                         <option value="" selected disabled>Status ~</option>
@@ -172,7 +172,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="keterangan">Keterangan</label>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" rows="5"></textarea>
+                                    <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" rows="5">-</textarea>
                                 </div>
                             </div>
                             
@@ -193,8 +193,6 @@
             </div>
         </div>
         
-		
-		
 		<div class="row">
             <br><br><br>
 			<?php include "footer.php"; ?>

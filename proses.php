@@ -206,29 +206,23 @@
 
         }
     }
-
-    /** 
-     * @Author: G_IT_BJM 
-     * @Date: 2019-09-02 19:55:30 
-     * @Desc: UBAH DATA PENDUDUK 
-     */    
     elseif (isset($_POST['ubah_data_penduduk'])) 
     {
         // $id         = $_POST['id'];
         $nik        = $_POST['nik'];
-        $nama       = $_POST['nama'];
-        $t_lahir    = $_POST['tempat_lahir'];
+        $nama       = strtoupper($_POST['nama']);
+        $t_lahir    = strtoupper($_POST['tempat_lahir']);
         $tgl_lahir  = $_POST['tgl_lahir'];
         $jk         = $_POST['jenis_kelamin'];
         $gol_darah  = $_POST['gol_darah'];
-        $alamat     = $_POST['alamat'];
+        $alamat     = strtoupper($_POST['alamat']);
         $rt         = $_POST['rt'];
         $rw         = $_POST['rw'];
-        $kel        = $_POST['kelurahan'];
-        $kec        = $_POST['kecamatan'];
+        $kel        = strtoupper($_POST['kelurahan']);
+        $kec        = strtoupper($_POST['kecamatan']);
         $agama      = $_POST['agama'];
-        $stts       = $_POST['status'];
-        $pekerjaan  = $_POST['pekerjaan'];
+        $stts       = strtoupper($_POST['status']);
+        $pekerjaan  = strtoupper($_POST['pekerjaan']);
         $warga      = $_POST['kewarganegaraan'];
         $telp       = $_POST['telp'];
         $ket        = $_POST['keterangan'];
@@ -280,12 +274,6 @@
 
         }
     } 
-
-    /** 
-     * @Author: G_IT_BJM 
-     * @Date: 2019-09-05 17:51:36 
-     * @Desc: UBAH KEBERADAAN LURAH 
-     */    
     elseif (isset($_POST['ubah_keberadaan_lurah'])) 
     {
         $id        = $_POST['id']; 

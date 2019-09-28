@@ -52,40 +52,44 @@
                                         <br>
                                     </div>
                                     
-                                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                        <table class="table table-bordered table-striped mb-0">
-                                            <thead>
-                                                <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">NIK</th>
-                                                <th scope="col">NAMA</th>
-                                                <th scope="col">TEMPAT LAHIR</th>
-                                                <th scope="col">AKSI</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="myTable">
-                                                <?php 
-                                                    $no = 1;
-                                                    while($data = mysqli_fetch_array($sql))
-                                                    {
-                                                        echo '
+                                    <div class="col-md-12">
+                                        <div class="table-responsive" style="overflow: auto;">
+                                            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                                <table class="table table-bordered table-striped mb-0">
+                                                    <thead>
                                                         <tr>
-                                                            <td>'.$no.'</td>
-                                                            <td><a style="color: black;" id="custId" data-id='.$data["nik"].' data-toggle="modal" data-target="#myModal">'.$data["nik"].'</a></td>
-                                                            <td>'.$data["nama"].'</td>
-                                                            <td>'.$data["t_lahir"].'</td>
-                                                            <td>
-                                                                <a href="ubah-data-penduduk.php?nik='.$data["nik"].'"><button type="button" class="btn btn-primary"><span class="fa fa-edit"></span></button></a> 
-                                                                || 
-                                                                <a href=""><button type="button" class="btn btn-danger"><span class="fa fa-trash"></span></button></a> 
-                                                            </td>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col">NIK</th>
+                                                            <th scope="col">NAMA</th>
+                                                            <th scope="col">TEMPAT LAHIR</th>
+                                                            <th scope="col">AKSI</th>
                                                         </tr>
-                                                        ';
-                                                        $no++;
-                                                    }
-                                                ?>
-                                            </tbody>
-                                        </table>
+                                                    </thead>
+                                                    <tbody id="myTable">
+                                                        <?php 
+                                                            $no = 1;
+                                                            while($data = mysqli_fetch_array($sql))
+                                                            {
+                                                                echo '
+                                                                <tr>
+                                                                    <td>'.$no.'</td>
+                                                                    <td><a style="color: black;" id="custId" data-id='.$data["nik"].' data-toggle="modal" data-target="#myModal">'.$data["nik"].'</a></td>
+                                                                    <td>'.$data["nama"].'</td>
+                                                                    <td>'.$data["t_lahir"].'</td>
+                                                                    <td>
+                                                                        <a href="ubah-data-penduduk.php?nik='.$data["nik"].'"><button type="button" class="btn btn-primary"><span class="fa fa-edit"></span></button></a> 
+                                                                        || 
+                                                                        <a href=""><button type="button" class="btn btn-danger"><span class="fa fa-trash"></span></button></a> 
+                                                                    </td>
+                                                                </tr>
+                                                                ';
+                                                                $no++;
+                                                            }
+                                                        ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -100,14 +104,14 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <button type="button" class="close" data-dismiss="modal"><span class="text-danger">&times;</span></button>
                         <h4 class="modal-title">Detail Penduduk</h4>
                     </div>
                     <div class="modal-body">
                         <div class="fetched-data"></div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Keluar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Keluar</button>
                     </div>
                 </div>
             </div>

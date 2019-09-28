@@ -29,16 +29,20 @@
 				<div class="col-xs-6 col-md-3">
 					<div class="panel panel-default">
 						<div class="panel-body easypiechart-panel">
-							<div class="easypiechart" id="easypiechart-blue" data-percent="<?php echo $j_penduduk; ?>" ><span class="percent"><?php echo $j_penduduk; ?></span></div>
-							<p>Jumlah Penduduk</p>
+							<a href="data-penduduk.php" style="text-decoration:none;">
+								<div class="easypiechart" id="easypiechart-blue" data-percent="<?php echo $j_penduduk; ?>" ><span class="percent"><?php echo $j_penduduk; ?></span></div>
+								<p>Jumlah Penduduk</p>
+							</a>
 						</div>
 					</div>
 				</div>
 				<div class="col-xs-6 col-md-3">
 					<div class="panel panel-default">
 						<div class="panel-body easypiechart-panel">
-							<div class="easypiechart" id="easypiechart-orange" data-percent="<?php echo $j_surat; ?>" ><span class="percent"><?php echo $j_surat; ?></span></div>
-							<p>Jumlah Surat</p>
+							<a href="data-surat.php" style="text-decoration:none;">
+								<div class="easypiechart" id="easypiechart-orange" data-percent="<?php echo $j_surat; ?>" ><span class="percent"><?php echo $j_surat; ?></span></div>
+								<p>Jumlah Surat</p>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -102,8 +106,6 @@
 		</div><!--/.row-->
 	</div>	<!--/.main-->
 		
-
-
 	<?php
 		}
 	?>
@@ -120,12 +122,12 @@
 	<script src="js/custom.js"></script>
 	<script>
 		window.onload = function () {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-};
+			var chart1 = document.getElementById("line-chart").getContext("2d");
+			window.myLine = new Chart(chart1).Line(lineChartData, {
+			responsive: true,
+			scaleLineColor: "rgba(0,0,0,.2)",
+			scaleGridLineColor: "rgba(0,0,0,.05)",
+			scaleFontColor: "#c5c7cc"
+			});
+		};
 	</script>

@@ -40,49 +40,49 @@
                                         </div>
                                     </div>
                                     <br><br><br>
-                                <div class="table-responsive">
-                                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                        <table class="table table-bordered table-striped mb-0">
-                                            <thead>
-                                                <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">NIK</th>
-                                                <th scope="col">NAMA</th>
-                                                <th scope="col">TTL</th>
-                                                <th scope="col">JK</th>
-                                                <th scope="col">ALAMAT</th>
-                                                <th scope="col">AGAMA</th>
-                                                <th scope="col">STATUS</th>
-                                                <th scope="col">PEKERJAAN</th>
-                                                <th scope="col">WARGA</th>
-                                                <th scope="col">TELP</th>
-                                                <th scope="col">KET.</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="myTable">
-                                                <?php 
-                                                    $no = 1;
-                                                    while ($data = mysqli_fetch_array($sql)) { 
-                                                ?>
-                                                <tr>
-                                                    <td><?=$no?></td>
-                                                    <td><?=$data['nik']?></td>
-                                                    <td><?=$data['nama']?></td>
-                                                    <td><?=$data['t_lahir'].",".date("d-m-Y",strtotime($data['tgl_lahir']))?></td>
-                                                    <td><?=$data['jk']?></td>
-                                                    <td><?=$data['alamat']?></td>
-                                                    <td><?=$data['agama']?></td>
-                                                    <td><?=$data['status_p']?></td>
-                                                    <td><?=$data['kerja']?></td>
-                                                    <td><?=$data['warga']?></td>
-                                                    <td><?=$data['telp']?></td>
-                                                    <td><?=$data['ket']?></td>
-                                                </tr>
-                                                <?php $no++; } ?>
-                                            </tbody>
-                                        </table>
+                                    <div class="table-responsive" style="overflow: auto;">
+                                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                            <table class="table table-bordered table-striped mb-0">
+                                                <thead>
+                                                    <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">NIK</th>
+                                                    <th scope="col">NAMA</th>
+                                                    <th scope="col">TTL</th>
+                                                    <th scope="col">JK</th>
+                                                    <th scope="col">ALAMAT</th>
+                                                    <th scope="col">AGAMA</th>
+                                                    <th scope="col">STATUS</th>
+                                                    <th scope="col">PEKERJAAN</th>
+                                                    <th scope="col">WARGA</th>
+                                                    <th scope="col">TELP</th>
+                                                    <th scope="col">KET.</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="myTable">
+                                                    <?php 
+                                                        $no = 1;
+                                                        while ($data = mysqli_fetch_array($sql)) { 
+                                                    ?>
+                                                    <tr>
+                                                        <td><?=$no?></td>
+                                                        <td><?=$data['nik']?></td>
+                                                        <td><?=$data['nama']?></td>
+                                                        <td><?=$data['t_lahir'].",".date("d-m-Y",strtotime($data['tgl_lahir']))?></td>
+                                                        <td><?=$data['jk']?></td>
+                                                        <td><?=$data['alamat']?></td>
+                                                        <td><?=$data['agama']?></td>
+                                                        <td><?=$data['status_p']?></td>
+                                                        <td><?=$data['kerja']?></td>
+                                                        <td><?=$data['warga']?></td>
+                                                        <td><?=$data['telp']?></td>
+                                                        <td><?=$data['ket']?></td>
+                                                    </tr>
+                                                    <?php $no++; } ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
-                                </div>
                                 </div>
                             </div>
                         </fieldset>
