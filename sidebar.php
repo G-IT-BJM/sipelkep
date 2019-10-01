@@ -6,7 +6,7 @@
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<div class="profile-sidebar">
 			<div class="profile-userpic">
-				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
+				<img src="img/logo/logo.png" class="img-responsive" style="width:50%;height:auto;" alt="">
 			</div>
 			<!-- <div class="profile-usertitle"> -->
 				<!-- <div class="profile-usertitle-name">Username</div> -->
@@ -130,7 +130,7 @@
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<div class="profile-sidebar">
 			<div class="profile-userpic">
-				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
+				<img src="img/logo/logo.png" class="img-responsive" style="width:50%;height:auto;" alt="">
 			</div>
 			<div class="clear"></div>
 		</div>

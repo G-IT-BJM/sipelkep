@@ -19,15 +19,16 @@
 			</div>
 		</div>
 		
+		<div class="well">
 		<div class="row">
             <div class="col-md-4 col-md-offset-4">
-                <img src="http://placehold.it/60/30a5ff/fff" alt="User Avatar" class="img-circle" width="80%" />
+                <img src="img/logo/logo.png" alt="User Avatar" class="img-circle" width="80%" />
             </div>
         </div>
         
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
-                <h3 class="timeline-title">PELAYANAN PENDUDUKAN ADMINISTRASI KELURAHAN SUNGAI JINGAH</h3>
+                <h3 class="timeline-title"><b>PELAYANAN PENDUDUKAN ADMINISTRASI KELURAHAN SUNGAI JINGAH</b></h3>
                 <hr>
 			</div>
         </div>
@@ -39,6 +40,7 @@
                 <a href="pelayanan-registrasi-surat.php"><button type="button" class="btn btn-primary"> REGISTRASI</button></a>
             </div>
         </div>
+		</div>
 		
 		<div class="row">
             <br><br><br>
@@ -56,14 +58,14 @@
 	<script src="js/custom.js"></script>
 	<script>
 		window.onload = function () {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-};
+			var chart1 = document.getElementById("line-chart").getContext("2d");
+			window.myLine = new Chart(chart1).Line(lineChartData, {
+			responsive: true,
+			scaleLineColor: "rgba(0,0,0,.2)",
+			scaleGridLineColor: "rgba(0,0,0,.05)",
+			scaleFontColor: "#c5c7cc"
+			});
+		};
 	</script>
 		
 </body>

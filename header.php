@@ -15,6 +15,55 @@
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+
+	<style>
+		body {
+			background: url(img/logo/b.jpg) no-repeat center center fixed;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+		}
+		.myBackground {
+			background-color: rgba(255,255,255, 0.5);
+			color: inherit;
+		}
+
+		html,body {
+			height:auto;
+			width:100%;
+			position:relative;
+		}
+		#background-carousel{
+			position:fixed;
+			width:100%;
+			height:80%;
+			z-index:-1;
+		}
+		.carousel,.carousel-inner {
+			width:100%;
+			height:100%;
+			z-index:0;
+			overflow:hidden;
+		}
+		.item {
+			width:100%;
+			height:100%;
+			background-position:center center;
+			background-size:cover;
+			z-index:0;
+		}
+		
+		#content-wrapper {
+			position:absolute;
+			z-index:1 !important;
+			min-width:100%;
+			min-height:100%;
+		}
+		.well {
+			opacity:0.85;
+		}
+	</style>
 </head>
 <body>
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
