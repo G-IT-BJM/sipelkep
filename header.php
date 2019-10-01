@@ -73,7 +73,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span></button>
-				<a class="navbar-brand" href=""><span>Si </span>PelKep</a>
+				<a class="navbar-brand" href=""><span style="color:yellow;">Si </span>PelKep</a>
 				<ul class="nav navbar-top-links navbar-right">
 					
 				</ul>
