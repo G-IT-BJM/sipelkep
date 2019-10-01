@@ -45,18 +45,18 @@
                                             <table class="table table-bordered table-striped mb-0">
                                                 <thead>
                                                     <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">NIK</th>
-                                                    <th scope="col">NAMA</th>
-                                                    <th scope="col">TTL</th>
-                                                    <th scope="col">JK</th>
-                                                    <th scope="col">ALAMAT</th>
-                                                    <th scope="col">AGAMA</th>
-                                                    <th scope="col">STATUS</th>
-                                                    <th scope="col">PEKERJAAN</th>
-                                                    <th scope="col">WARGA</th>
-                                                    <th scope="col">TELP</th>
-                                                    <th scope="col">KET.</th>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">NIK</th>
+                                                        <th scope="col">NAMA</th>
+                                                        <th scope="col">TTL</th>
+                                                        <th scope="col">JK</th>
+                                                        <th scope="col">ALAMAT</th>
+                                                        <th scope="col">AGAMA</th>
+                                                        <th scope="col">STATUS</th>
+                                                        <th scope="col">PEKERJAAN</th>
+                                                        <th scope="col">WARGA</th>
+                                                        <th scope="col">TELP</th>
+                                                        <th scope="col">KET.</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="myTable">
