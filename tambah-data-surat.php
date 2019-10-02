@@ -33,11 +33,11 @@
                                 $data = mysqli_fetch_array($query);
                                 $kd = $data['kd'];
                                 
-                                $noUrut = (int) substr($kd, 4, 4);
+                                $noUrut = (int) substr($kd, 4, 5);
                                 $noUrut++;
                                 
                                 $char = "KDS-";
-                                $kd = $char . sprintf("%04s", $noUrut);
+                                $kd = $char . sprintf("%05s", $noUrut);
                             ?>
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="kode_surat">Kode Surat</label>

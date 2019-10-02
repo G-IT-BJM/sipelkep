@@ -33,7 +33,7 @@
                                 $data = mysqli_fetch_array($query);
                                 $no_surat = $data['no_surat'];
                                 
-                                $noUrut = (int) substr($no_surat, 5, 5);
+                                $noUrut = (int) substr($no_surat, 6, 5);
                                 $noUrut++;
                                 
                                 $char = "NS-KK-";
@@ -130,7 +130,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="keterangan">Keterangan</label>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" rows="5"></textarea>
+                                    <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" rows="5">-</textarea>
                                 </div>
                             </div>
                             

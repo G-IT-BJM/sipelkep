@@ -903,4 +903,1030 @@
         } 
 
     }
+
+    /** 
+     * @Author: G_IT_BJM 
+     * @Date: 2019-10-02 20:30:40 
+     * @Desc: SURAT PENGANTAR KTP 
+     */    
+    elseif (isset($_POST['simpan_surat_pengantar_ktp'])) {
+
+        $no_surat       = $_POST['no_surat'];
+        $no_registrasi  = $_POST['no_registrasi'];
+        $nik            = $_POST['nik'];
+        $nama           = $_POST['nama'];
+        $tgl_keluar     = $_POST['tgl_keluar'];
+        $keterangan     = $_POST['keterangan'];
+        $lampiran = array('surat_pengantar_rt','ktp_bpk_kandung','ktp_ibu_kandung');
+
+        $cek = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_surat_pengantar_ktp WHERE no_surat_pengantar_ktp = '$no_surat' AND no_registrasi = '$no_registrasi'"));
+
+        if ($cek < 1) {
+
+            $cekFoto = cekFoto($lampiran);
+
+            if ($cekFoto) {                            
+
+                $uploadImg = uploadImg($lampiran,$no_surat,'TRUE');
+
+                if ($uploadImg) {                
+
+                    $sql = "INSERT INTO tb_surat_pengantar_ktp VALUES ('','$no_surat','$no_registrasi','$nik','$nama','$tgl_keluar',".$uploadImg.",'$keterangan')";
+
+                    mysqli_query($conn,$sql);
+
+                    header('location:surat-pengantar-ktp.php');
+
+                }
+
+            } else {
+
+                echo "
+                    <script>
+                        alert('Foto tidak memenuhi persyaratan!');
+                        window.location = 'tambah-data-surat-pengantar-ktp.php';
+                    </script>
+                ";
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Data Sudah Dipakai!');
+                    window.location = 'tambah-data-surat-pengantar-ktp.php';
+                </script>
+            ";
+
+        }
+    }
+    elseif (isset($_POST['ubah_surat_pengantar_ktp'])) {
+
+        $id             = $_POST['id'];
+        $no_surat       = $_POST['no_surat'];
+        $no_registrasi  = $_POST['no_registrasi'];
+        $nik            = $_POST['nik'];
+        $nama           = $_POST['nama'];
+        $tgl_keluar     = $_POST['tgl_keluar'];
+        $keterangan     = $_POST['keterangan'];
+        $lampiran       = $_POST['ubah_foto'];
+
+        $cekFoto = $lampiran != '' ? cekFoto($lampiran) : TRUE;
+
+        if ($cekFoto) {         
+
+            $uploadImg = $lampiran != '' ? uploadImg($lampiran,$no_surat) : TRUE;
+
+            if ($uploadImg) {
+
+                $sql = "UPDATE tb_surat_pengantar_ktp SET no_surat_pengantar_ktp = '$no_surat', no_registrasi='$no_registrasi', nik='$nik', nama='$nama', tgl_keluar='$tgl_keluar', ket='$keterangan' WHERE id='$id'";
+                mysqli_query($conn,$sql);
+                header('location:surat-pengantar-ktp.php');
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Foto tidak memenuhi persyaratan!');
+                    window.location = 'ubah-data-surat-pengantar-ktp.php?id=$id';
+                </script>
+            ";
+            
+        }     
+
+    } 
+    elseif (isset($_GET['jenis_surat']) && $_GET['jenis_surat'] == 'surat-pengantar-ktp') {
+
+        $no_surat = $_GET['no_surat'];
+        
+        $exec = mysqli_query($conn, "DELETE FROM tb_surat_pengantar_ktp WHERE no_surat_pengantar_ktp = '$no_surat'");
+
+        if ($exec) {
+            
+            deleteFoto($no_surat);
+
+            echo "
+                <script>                    
+                    window.location = 'surat-pengantar-ktp.php';
+                </script>
+            ";
+
+        } 
+
+    }
+
+    /** 
+     * @Author: G_IT_BJM 
+     * @Date: 2019-10-02 20:41:38 
+     * @Desc: SURAT KEHILANGAN 
+     */    
+    elseif (isset($_POST['simpan_surat_kehilangan'])) {
+
+        $no_surat       = $_POST['no_surat'];
+        $no_registrasi  = $_POST['no_registrasi'];
+        $nik            = $_POST['nik'];
+        $nama           = $_POST['nama'];
+        $tgl_keluar     = $_POST['tgl_keluar'];
+        $keterangan     = $_POST['keterangan'];
+        $lampiran = array('ktp');
+
+        $cek = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_surat_kehilangan WHERE no_surat_kehilangan = '$no_surat' AND no_registrasi = '$no_registrasi'"));
+
+        if ($cek < 1) {
+
+            $cekFoto = cekFoto($lampiran);
+
+            if ($cekFoto) {                            
+
+                $uploadImg = uploadImg($lampiran,$no_surat,'TRUE');
+
+                if ($uploadImg) {                
+
+                    $sql = "INSERT INTO tb_surat_kehilangan VALUES ('','$no_surat','$no_registrasi','$nik','$nama','$tgl_keluar',".$uploadImg.",'$keterangan')";
+
+                    mysqli_query($conn,$sql);
+
+                    header('location:surat-kehilangan.php');
+
+                }
+
+            } else {
+
+                echo "
+                    <script>
+                        alert('Foto tidak memenuhi persyaratan!');
+                        window.location = 'tambah-data-surat-kehilangan.php';
+                    </script>
+                ";
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Data Sudah Dipakai!');
+                    window.location = 'tambah-data-surat-kehilangan.php';
+                </script>
+            ";
+
+        }
+    }
+    elseif (isset($_POST['ubah_surat_kehilangan'])) {
+
+        $id             = $_POST['id'];
+        $no_surat       = $_POST['no_surat'];
+        $no_registrasi  = $_POST['no_registrasi'];
+        $nik            = $_POST['nik'];
+        $nama           = $_POST['nama'];
+        $tgl_keluar     = $_POST['tgl_keluar'];
+        $keterangan     = $_POST['keterangan'];
+        $lampiran       = $_POST['ubah_foto'];
+
+        $cekFoto = $lampiran != '' ? cekFoto($lampiran) : TRUE;
+
+        if ($cekFoto) {         
+
+            $uploadImg = $lampiran != '' ? uploadImg($lampiran,$no_surat) : TRUE;
+
+            if ($uploadImg) {
+
+                $sql = "UPDATE tb_surat_kehilangan SET no_surat_kehilangan = '$no_surat', no_registrasi='$no_registrasi', nik='$nik', nama='$nama', tgl_keluar='$tgl_keluar', ket='$keterangan' WHERE id='$id'";
+                mysqli_query($conn,$sql);
+                header('location:surat-kehilangan.php');
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Foto tidak memenuhi persyaratan!');
+                    window.location = 'ubah-data-surat-kehilangan.php?id=$id';
+                </script>
+            ";
+            
+        }     
+
+    } 
+    elseif (isset($_GET['jenis_surat']) && $_GET['jenis_surat'] == 'surat-kehilangan') {
+
+        $no_surat = $_GET['no_surat'];
+        
+        $exec = mysqli_query($conn, "DELETE FROM tb_surat_kehilangan WHERE no_surat_kehilangan = '$no_surat'");
+
+        if ($exec) {
+            
+            deleteFoto($no_surat);
+
+            echo "
+                <script>                    
+                    window.location = 'surat-kehilangan.php';
+                </script>
+            ";
+
+        } 
+
+    }
+
+    /** 
+     * @Author: G_IT_BJM 
+     * @Date: 2019-10-02 21:29:46 
+     * @Desc: SURAT BELUM MENIKAH 
+     */    
+    elseif (isset($_POST['simpan_surat_belum_menikah'])) {
+
+        $no_surat       = $_POST['no_surat'];
+        $no_registrasi  = $_POST['no_registrasi'];
+        $nik            = $_POST['nik'];
+        $nama           = $_POST['nama'];
+        $tgl_keluar     = $_POST['tgl_keluar'];
+        $keterangan     = $_POST['keterangan'];
+        $lampiran = array('surat_pengantar_rt');
+
+        $cek = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_surat_keterangan_belum_menikah WHERE no_surat_belum_menikah = '$no_surat' AND no_registrasi = '$no_registrasi'"));
+
+        if ($cek < 1) {
+
+            $cekFoto = cekFoto($lampiran);
+
+            if ($cekFoto) {                            
+
+                $uploadImg = uploadImg($lampiran,$no_surat,'TRUE');
+
+                if ($uploadImg) {                
+
+                    $sql = "INSERT INTO tb_surat_keterangan_belum_menikah VALUES ('','$no_surat','$no_registrasi','$nik','$nama','$tgl_keluar',".$uploadImg.",'$keterangan')";
+
+                    mysqli_query($conn,$sql);
+
+                    header('location:surat-ket-belum-nikah.php');
+
+                }
+
+            } else {
+
+                echo "
+                    <script>
+                        alert('Foto tidak memenuhi persyaratan!');
+                        window.location = 'tambah-data-surat-ket-belum-nikah.php';
+                    </script>
+                ";
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Data Sudah Dipakai!');
+                    window.location = 'tambah-data-surat-ket-belum-nikah.php';
+                </script>
+            ";
+
+        }
+    }
+    elseif (isset($_POST['ubah_surat_belum_menikah'])) {
+
+        $id             = $_POST['id'];
+        $no_surat       = $_POST['no_surat'];
+        $no_registrasi  = $_POST['no_registrasi'];
+        $nik            = $_POST['nik'];
+        $nama           = $_POST['nama'];
+        $tgl_keluar     = $_POST['tgl_keluar'];
+        $keterangan     = $_POST['keterangan'];
+        $lampiran       = $_POST['ubah_foto'];
+
+        $cekFoto = $lampiran != '' ? cekFoto($lampiran) : TRUE;
+
+        if ($cekFoto) {         
+
+            $uploadImg = $lampiran != '' ? uploadImg($lampiran,$no_surat) : TRUE;
+
+            if ($uploadImg) {
+
+                $sql = "UPDATE tb_surat_keterangan_belum_menikah SET no_surat_belum_menikah = '$no_surat', no_registrasi='$no_registrasi', nik='$nik', nama='$nama', tgl_keluar='$tgl_keluar', ket='$keterangan' WHERE id='$id'";
+                mysqli_query($conn,$sql);
+                header('location:surat-ket-belum-nikah.php');
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Foto tidak memenuhi persyaratan!');
+                    window.location = 'ubah-data-surat-ket-belum-nikah.php?id=$id';
+                </script>
+            ";
+            
+        }     
+
+    } 
+    elseif (isset($_GET['jenis_surat']) && $_GET['jenis_surat'] == 'surat-belum-menikah') {
+
+        $no_surat = $_GET['no_surat'];
+        
+        $exec = mysqli_query($conn, "DELETE FROM tb_surat_keterangan_belum_menikah WHERE no_surat_belum_menikah = '$no_surat'");
+
+        if ($exec) {
+            
+            deleteFoto($no_surat);
+
+            echo "
+                <script>                    
+                    window.location = 'surat-ket-belum-nikah.php';
+                </script>
+            ";
+
+        } 
+
+    }
+
+    /** 
+     * @Author: G_IT_BJM 
+     * @Date: 2019-10-02 22:00:53 
+     * @Desc: SURAT PENGANTAR NIKAH 
+     */    
+    elseif (isset($_POST['simpan_surat_pengantar_nikah'])) {
+
+        $no_surat       = $_POST['no_surat'];
+        $no_registrasi  = $_POST['no_registrasi'];
+        $nik            = $_POST['nik'];
+        $nama           = $_POST['nama'];
+        $tgl_keluar     = $_POST['tgl_keluar'];
+        $keterangan     = $_POST['keterangan'];
+        $lampiran = array('surat_pengantar_rt','ktp');
+
+        $cek = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_surat_pengantar_nikah WHERE no_surat_nikah = '$no_surat' AND no_registrasi = '$no_registrasi'"));
+
+        if ($cek < 1) {
+
+            $cekFoto = cekFoto($lampiran);
+
+            if ($cekFoto) {                            
+
+                $uploadImg = uploadImg($lampiran,$no_surat,'TRUE');
+
+                if ($uploadImg) {                
+
+                    $sql = "INSERT INTO tb_surat_pengantar_nikah VALUES ('','$no_surat','$no_registrasi','$nik','$nama','$tgl_keluar',".$uploadImg.",'$keterangan')";
+
+                    mysqli_query($conn,$sql);
+
+                    header('location:surat-pengantar-nikah.php');
+
+                }
+
+            } else {
+
+                echo "
+                    <script>
+                        alert('Foto tidak memenuhi persyaratan!');
+                        window.location = 'tambah-data-surat-pengantar-nikah.php';
+                    </script>
+                ";
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Data Sudah Dipakai!');
+                    window.location = 'tambah-data-surat-pengantar-nikah.php';
+                </script>
+            ";
+
+        }
+    }
+    elseif (isset($_POST['ubah_surat_pengantar_nikah'])) {
+
+        $id             = $_POST['id'];
+        $no_surat       = $_POST['no_surat'];
+        $no_registrasi  = $_POST['no_registrasi'];
+        $nik            = $_POST['nik'];
+        $nama           = $_POST['nama'];
+        $tgl_keluar     = $_POST['tgl_keluar'];
+        $keterangan     = $_POST['keterangan'];
+        $lampiran       = $_POST['ubah_foto'];
+
+        $cekFoto = $lampiran != '' ? cekFoto($lampiran) : TRUE;
+
+        if ($cekFoto) {         
+
+            $uploadImg = $lampiran != '' ? uploadImg($lampiran,$no_surat) : TRUE;
+
+            if ($uploadImg) {
+
+                $sql = "UPDATE tb_surat_pengantar_nikah SET no_surat_nikah = '$no_surat', no_registrasi='$no_registrasi', nik='$nik', nama='$nama', tgl_keluar='$tgl_keluar', ket='$keterangan' WHERE id='$id'";
+                mysqli_query($conn,$sql);
+                header('location:surat-pengantar-nikah.php');
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Foto tidak memenuhi persyaratan!');
+                    window.location = 'ubah-data-surat-pengantar-nikah.php?id=$id';
+                </script>
+            ";
+            
+        }     
+
+    } 
+    elseif (isset($_GET['jenis_surat']) && $_GET['jenis_surat'] == 'surat-pengantar-nikah') {
+
+        $no_surat = $_GET['no_surat'];
+        
+        $exec = mysqli_query($conn, "DELETE FROM tb_surat_pengantar_nikah WHERE no_surat_nikah = '$no_surat'");
+
+        if ($exec) {
+            
+            deleteFoto($no_surat);
+
+            echo "
+                <script>                    
+                    window.location = 'surat-pengantar-nikah.php';
+                </script>
+            ";
+
+        } 
+
+    }
+
+    /** 
+     * @Author: G_IT_BJM 
+     * @Date: 2019-10-02 22:36:02 
+     * @Desc: SURAT TIDAK MAMPU 
+     */    
+    elseif (isset($_POST['simpan_surat_tidak_mampu'])) {
+
+        $no_surat       = $_POST['no_surat'];
+        $no_registrasi  = $_POST['no_registrasi'];
+        $nik            = $_POST['nik'];
+        $nama           = $_POST['nama'];
+        $tgl_keluar     = $_POST['tgl_keluar'];
+        $keterangan     = $_POST['keterangan'];
+        $lampiran = array('surat_pengantar_rt','ktp');
+
+        $cek = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_surat_keterangan_tidak_mampu WHERE no_surat_tidak_mampu = '$no_surat' AND no_registrasi = '$no_registrasi'"));
+
+        if ($cek < 1) {
+
+            $cekFoto = cekFoto($lampiran);
+
+            if ($cekFoto) {                            
+
+                $uploadImg = uploadImg($lampiran,$no_surat,'TRUE');
+
+                if ($uploadImg) {                
+
+                    $sql = "INSERT INTO tb_surat_keterangan_tidak_mampu VALUES ('','$no_surat','$no_registrasi','$nik','$nama','$tgl_keluar',".$uploadImg.",'$keterangan')";
+
+                    mysqli_query($conn,$sql);
+
+                    header('location:surat-ket-tidak-mampu.php');
+
+                }
+
+            } else {
+
+                echo "
+                    <script>
+                        alert('Foto tidak memenuhi persyaratan!');
+                        window.location = 'tambah-data-surat-ket-tidak-mampu.php';
+                    </script>
+                ";
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Data Sudah Dipakai!');
+                    window.location = 'tambah-data-surat-ket-tidak-mampu.php';
+                </script>
+            ";
+
+        }
+    }
+    elseif (isset($_POST['ubah_surat_tidak_mampu'])) {
+
+        $id             = $_POST['id'];
+        $no_surat       = $_POST['no_surat'];
+        $no_registrasi  = $_POST['no_registrasi'];
+        $nik            = $_POST['nik'];
+        $nama           = $_POST['nama'];
+        $tgl_keluar     = $_POST['tgl_keluar'];
+        $keterangan     = $_POST['keterangan'];
+        $lampiran       = $_POST['ubah_foto'];
+
+        $cekFoto = $lampiran != '' ? cekFoto($lampiran) : TRUE;
+
+        if ($cekFoto) {         
+
+            $uploadImg = $lampiran != '' ? uploadImg($lampiran,$no_surat) : TRUE;
+
+            if ($uploadImg) {
+
+                $sql = "UPDATE tb_surat_keterangan_tidak_mampu SET no_surat_tidak_mampu = '$no_surat', no_registrasi='$no_registrasi', nik='$nik', nama='$nama', tgl_keluar='$tgl_keluar', ket='$keterangan' WHERE id='$id'";
+                mysqli_query($conn,$sql);
+                header('location:surat-ket-tidak-mampu.php');
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Foto tidak memenuhi persyaratan!');
+                    window.location = 'ubah-data-surat-ket-tidak-mampu.php?id=$id';
+                </script>
+            ";
+            
+        }     
+
+    } 
+    elseif (isset($_GET['jenis_surat']) && $_GET['jenis_surat'] == 'surat-tidak-mampu') {
+
+        $no_surat = $_GET['no_surat'];
+        
+        $exec = mysqli_query($conn, "DELETE FROM tb_surat_keterangan_tidak_mampu WHERE no_surat_tidak_mampu = '$no_surat'");
+
+        if ($exec) {
+            
+            deleteFoto($no_surat);
+
+            echo "
+                <script>                    
+                    window.location = 'surat-ket-tidak-mampu.php';
+                </script>
+            ";
+
+        } 
+
+    }
+
+    /** 
+     * @Author: G_IT_BJM 
+     * @Date: 2019-10-02 23:08:15 
+     * @Desc: SURAT AHLI WARIS 
+     */    
+    elseif (isset($_POST['simpan_surat_ahli_waris'])) {
+
+        $no_surat       = $_POST['no_surat'];
+        $no_registrasi  = $_POST['no_registrasi'];
+        $nik            = $_POST['nik'];
+        $nama           = $_POST['nama'];
+        $tgl_keluar     = $_POST['tgl_keluar'];
+        $keterangan     = $_POST['keterangan'];
+        $lampiran = array('surat_ket_ahli_waris','surat_pengantar_rt','surat_nikah_yg_meninggal','kk_ahli_waris','ktp_2_orang_saksi','pbb_tahun_berjalan','ktp_yg_meninggal');
+
+        $cek = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_surat_ahli_waris WHERE no_surat_ahli_waris = '$no_surat' AND no_registrasi = '$no_registrasi'"));
+
+        if ($cek < 1) {
+
+            $cekFoto = cekFoto($lampiran);
+
+            if ($cekFoto) {                            
+
+                $uploadImg = uploadImg($lampiran,$no_surat,'TRUE');
+
+                if ($uploadImg) {                
+
+                    $sql = "INSERT INTO tb_surat_ahli_waris VALUES ('','$no_surat','$no_registrasi','$nik','$nama','$tgl_keluar',".$uploadImg.",'$keterangan')";
+
+                    mysqli_query($conn,$sql);
+
+                    header('location:surat-ahli-waris.php');
+
+                }
+
+            } else {
+
+                echo "
+                    <script>
+                        alert('Foto tidak memenuhi persyaratan!');
+                        window.location = 'tambah-data-surat-ahli-waris.php';
+                    </script>
+                ";
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Data Sudah Dipakai!');
+                    window.location = 'tambah-data-surat-ahli-waris.php';
+                </script>
+            ";
+
+        }
+    }
+    elseif (isset($_POST['ubah_surat_ahli_waris'])) {
+
+        $id             = $_POST['id'];
+        $no_surat       = $_POST['no_surat'];
+        $no_registrasi  = $_POST['no_registrasi'];
+        $nik            = $_POST['nik'];
+        $nama           = $_POST['nama'];
+        $tgl_keluar     = $_POST['tgl_keluar'];
+        $keterangan     = $_POST['keterangan'];
+        $lampiran       = $_POST['ubah_foto'];
+
+        $cekFoto = $lampiran != '' ? cekFoto($lampiran) : TRUE;
+
+        if ($cekFoto) {         
+
+            $uploadImg = $lampiran != '' ? uploadImg($lampiran,$no_surat) : TRUE;
+
+            if ($uploadImg) {
+
+                $sql = "UPDATE tb_surat_ahli_waris SET no_surat_ahli_waris = '$no_surat', no_registrasi='$no_registrasi', nik='$nik', nama='$nama', tgl_keluar='$tgl_keluar', ket='$keterangan' WHERE id='$id'";
+                mysqli_query($conn,$sql);
+                header('location:surat-ahli-waris.php');
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Foto tidak memenuhi persyaratan!');
+                    window.location = 'ubah-data-surat-ahli-waris.php?id=$id';
+                </script>
+            ";
+            
+        }     
+
+    } 
+    elseif (isset($_GET['jenis_surat']) && $_GET['jenis_surat'] == 'surat-ahli-waris') {
+
+        $no_surat = $_GET['no_surat'];
+        
+        $exec = mysqli_query($conn, "DELETE FROM tb_surat_ahli_waris WHERE no_surat_ahli_Waris = '$no_surat'");
+
+        if ($exec) {
+            
+            deleteFoto($no_surat);
+
+            echo "
+                <script>                    
+                    window.location = 'surat-ahli-waris.php';
+                </script>
+            ";
+
+        } 
+
+    }
+
+    /** 
+     * @Author: G_IT_BJM 
+     * @Date: 2019-10-02 23:37:10 
+     * @Desc: SURAT IMB 
+     */    
+    elseif (isset($_POST['simpan_surat_imb'])) {
+
+        $no_surat       = $_POST['no_surat'];
+        $no_registrasi  = $_POST['no_registrasi'];
+        $nik            = $_POST['nik'];
+        $nama           = $_POST['nama'];
+        $tgl_keluar     = $_POST['tgl_keluar'];
+        $keterangan     = $_POST['keterangan'];
+        $lampiran = array('surat_pengantar_rt','ktp','sertifikat_tanah','surat_tidak_keberatan','ktp_tetangga','lunas_pbb_tahun_berjalan');
+
+        $cek = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_surat_izin_mendirikan_bangunan WHERE no_surat_imb = '$no_surat' AND no_registrasi = '$no_registrasi'"));
+
+        if ($cek < 1) {
+
+            $cekFoto = cekFoto($lampiran);
+
+            if ($cekFoto) {                            
+
+                $uploadImg = uploadImg($lampiran,$no_surat,'TRUE');
+
+                if ($uploadImg) {                
+
+                    $sql = "INSERT INTO tb_surat_izin_mendirikan_bangunan VALUES ('','$no_surat','$no_registrasi','$nik','$nama','$tgl_keluar',".$uploadImg.",'$keterangan')";
+
+                    mysqli_query($conn,$sql);
+
+                    header('location:surat-imb.php');
+
+                }
+
+            } else {
+
+                echo "
+                    <script>
+                        alert('Foto tidak memenuhi persyaratan!');
+                        window.location = 'tambah-data-surat-imb.php';
+                    </script>
+                ";
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Data Sudah Dipakai!');
+                    window.location = 'tambah-data-surat-imb.php';
+                </script>
+            ";
+
+        }
+    }
+    elseif (isset($_POST['ubah_surat_imb'])) {
+
+        $id             = $_POST['id'];
+        $no_surat       = $_POST['no_surat'];
+        $no_registrasi  = $_POST['no_registrasi'];
+        $nik            = $_POST['nik'];
+        $nama           = $_POST['nama'];
+        $tgl_keluar     = $_POST['tgl_keluar'];
+        $keterangan     = $_POST['keterangan'];
+        $lampiran       = $_POST['ubah_foto'];
+
+        $cekFoto = $lampiran != '' ? cekFoto($lampiran) : TRUE;
+
+        if ($cekFoto) {         
+
+            $uploadImg = $lampiran != '' ? uploadImg($lampiran,$no_surat) : TRUE;
+
+            if ($uploadImg) {
+
+                $sql = "UPDATE tb_surat_izin_mendirikan_bangunan SET no_surat_imb = '$no_surat', no_registrasi='$no_registrasi', nik='$nik', nama='$nama', tgl_keluar='$tgl_keluar', ket='$keterangan' WHERE id='$id'";
+                mysqli_query($conn,$sql);
+                header('location:surat-imb.php');
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Foto tidak memenuhi persyaratan!');
+                    window.location = 'ubah-data-surat-imb.php?id=$id';
+                </script>
+            ";
+            
+        }     
+
+    } 
+    elseif (isset($_GET['jenis_surat']) && $_GET['jenis_surat'] == 'surat-imb') {
+
+        $no_surat = $_GET['no_surat'];
+        
+        $exec = mysqli_query($conn, "DELETE FROM tb_surat_izin_mendirikan_bangunan WHERE no_surat_imb = '$no_surat'");
+
+        if ($exec) {
+            
+            deleteFoto($no_surat);
+
+            echo "
+                <script>                    
+                    window.location = 'surat-imb.php';
+                </script>
+            ";
+
+        } 
+
+    }
+
+    /** 
+     * @Author: G_IT_BJM 
+     * @Date: 2019-10-03 00:03:04 
+     * @Desc: SURAT IZIN TEMPAT USAHA 
+     */    
+    elseif (isset($_POST['simpan_surat_itu'])) {
+
+        $no_surat       = $_POST['no_surat'];
+        $no_registrasi  = $_POST['no_registrasi'];
+        $nik            = $_POST['nik'];
+        $nama           = $_POST['nama'];
+        $tgl_keluar     = $_POST['tgl_keluar'];
+        $keterangan     = $_POST['keterangan'];
+        $lampiran = array('surat_pengantar_rt','ktp','sertifikat_tanah','imb','surat_permohonan','lunas_pbb_tahun_berjalan','pernyataan_tidak_keberatan','akta_notaris','ktp_tetangga','npwp');
+
+        $cek = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_surat_izin_tempat_usaha WHERE no_surat_izin_usaha = '$no_surat' AND no_registrasi = '$no_registrasi'"));
+
+        if ($cek < 1) {
+
+            $cekFoto = cekFoto($lampiran);
+
+            if ($cekFoto) {                            
+
+                $uploadImg = uploadImg($lampiran,$no_surat,'TRUE');
+
+                if ($uploadImg) {                
+
+                    $sql = "INSERT INTO tb_surat_izin_tempat_usaha VALUES ('','$no_surat','$no_registrasi','$nik','$nama','$tgl_keluar',".$uploadImg.",'$keterangan')";
+
+                    mysqli_query($conn,$sql);
+
+                    header('location:surat-izin-tempat-usaha.php');
+
+                }
+
+            } else {
+
+                echo "
+                    <script>
+                        alert('Foto tidak memenuhi persyaratan!');
+                        window.location = 'tambah-data-surat-izin-tempat-usaha.php';
+                    </script>
+                ";
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Data Sudah Dipakai!');
+                    window.location = 'tambah-data-surat-izin-tempat-usaha.php';
+                </script>
+            ";
+
+        }
+    }
+    elseif (isset($_POST['ubah_surat_itu'])) {
+
+        $id             = $_POST['id'];
+        $no_surat       = $_POST['no_surat'];
+        $no_registrasi  = $_POST['no_registrasi'];
+        $nik            = $_POST['nik'];
+        $nama           = $_POST['nama'];
+        $tgl_keluar     = $_POST['tgl_keluar'];
+        $keterangan     = $_POST['keterangan'];
+        $lampiran       = $_POST['ubah_foto'];
+
+        $cekFoto = $lampiran != '' ? cekFoto($lampiran) : TRUE;
+
+        if ($cekFoto) {         
+
+            $uploadImg = $lampiran != '' ? uploadImg($lampiran,$no_surat) : TRUE;
+
+            if ($uploadImg) {
+
+                $sql = "UPDATE tb_surat_izin_tempat_usaha SET no_surat_izin_usaha = '$no_surat', no_registrasi='$no_registrasi', nik='$nik', nama='$nama', tgl_keluar='$tgl_keluar', ket='$keterangan' WHERE id='$id'";
+                mysqli_query($conn,$sql);
+                header('location:surat-izin-tempat-usaha.php');
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Foto tidak memenuhi persyaratan!');
+                    window.location = 'ubah-data-surat-izin-tempat-usaha.php?id=$id';
+                </script>
+            ";
+            
+        }     
+
+    } 
+    elseif (isset($_GET['jenis_surat']) && $_GET['jenis_surat'] == 'surat-itu') {
+
+        $no_surat = $_GET['no_surat'];
+        
+        $exec = mysqli_query($conn, "DELETE FROM tb_surat_izin_tempat_usaha WHERE no_surat_izin_usaha = '$no_surat'");
+
+        if ($exec) {
+            
+            deleteFoto($no_surat);
+
+            echo "
+                <script>                    
+                    window.location = 'surat-izin-tempat-usaha.php';
+                </script>
+            ";
+
+        } 
+
+    }
+
+    /** 
+     * @Author: G_IT_BJM 
+     * @Date: 2019-10-03 00:26:05 
+     * @Desc: SURAT KETERANGAN USAHA 
+     */   
+    elseif (isset($_POST['simpan_surat_ket_usaha'])) {
+
+        $no_surat       = $_POST['no_surat'];
+        $no_registrasi  = $_POST['no_registrasi'];
+        $nik            = $_POST['nik'];
+        $nama           = $_POST['nama'];
+        $tgl_keluar     = $_POST['tgl_keluar'];
+        $keterangan     = $_POST['keterangan'];
+        $lampiran = array('surat_pengantar_rt','ktp','ket_domisili');
+
+        $cek = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_surat_keterangan_usaha WHERE no_surat_ket_usaha = '$no_surat' AND no_registrasi = '$no_registrasi'"));
+
+        if ($cek < 1) {
+
+            $cekFoto = cekFoto($lampiran);
+
+            if ($cekFoto) {                            
+
+                $uploadImg = uploadImg($lampiran,$no_surat,'TRUE');
+
+                if ($uploadImg) {                
+
+                    $sql = "INSERT INTO tb_surat_keterangan_usaha VALUES ('','$no_surat','$no_registrasi','$nik','$nama','$tgl_keluar',".$uploadImg.",'$keterangan')";
+
+                    mysqli_query($conn,$sql);
+
+                    header('location:surat-ket-usaha.php');
+
+                }
+
+            } else {
+
+                echo "
+                    <script>
+                        alert('Foto tidak memenuhi persyaratan!');
+                        window.location = 'tambah-data-surat-ket-usaha.php';
+                    </script>
+                ";
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Data Sudah Dipakai!');
+                    window.location = 'tambah-data-surat-ket-usaha.php';
+                </script>
+            ";
+
+        }
+    }
+    elseif (isset($_POST['ubah_surat_ket_usaha'])) {
+
+        $id             = $_POST['id'];
+        $no_surat       = $_POST['no_surat'];
+        $no_registrasi  = $_POST['no_registrasi'];
+        $nik            = $_POST['nik'];
+        $nama           = $_POST['nama'];
+        $tgl_keluar     = $_POST['tgl_keluar'];
+        $keterangan     = $_POST['keterangan'];
+        $lampiran       = $_POST['ubah_foto'];
+
+        $cekFoto = $lampiran != '' ? cekFoto($lampiran) : TRUE;
+
+        if ($cekFoto) {         
+
+            $uploadImg = $lampiran != '' ? uploadImg($lampiran,$no_surat) : TRUE;
+
+            if ($uploadImg) {
+
+                $sql = "UPDATE tb_surat_keterangan_usaha SET no_surat_ket_usaha = '$no_surat', no_registrasi='$no_registrasi', nik='$nik', nama='$nama', tgl_keluar='$tgl_keluar', ket='$keterangan' WHERE id='$id'";
+                mysqli_query($conn,$sql);
+                header('location:surat-ket-usaha.php');
+
+            }
+
+        } else {
+
+            echo "
+                <script>
+                    alert('Foto tidak memenuhi persyaratan!');
+                    window.location = 'ubah-data-surat-ket-usaha.php?id=$id';
+                </script>
+            ";
+            
+        }     
+
+    } 
+    elseif (isset($_GET['jenis_surat']) && $_GET['jenis_surat'] == 'surat-ket-usaha') {
+
+        $no_surat = $_GET['no_surat'];
+        
+        $exec = mysqli_query($conn, "DELETE FROM tb_surat_keterangan_usaha WHERE no_surat_ket_usaha = '$no_surat'");
+
+        if ($exec) {
+            
+            deleteFoto($no_surat);
+
+            echo "
+                <script>                    
+                    window.location = 'surat-ket-usaha.php';
+                </script>
+            ";
+
+        } 
+
+    } 
 ?>
