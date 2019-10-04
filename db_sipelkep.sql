@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2019 at 11:27 AM
+-- Generation Time: Oct 04, 2019 at 11:44 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -103,7 +103,12 @@ INSERT INTO `tb_data_surat` (`id`, `kd_surat`, `surat`, `syarat`, `ket`) VALUES
 (5, 'KDS-00005', 'Surat Pengantar KTP', '1. Surat Pengantar RT\r\n2. KTP Bapak Kandung\r\n3. KTP Ibu Kandung', ''),
 (6, 'KDS-00006', 'Surat Kehilangan', '1. Surat Pengantar RT\r\n2. KTP', ''),
 (7, 'KDS-00007', 'Surat Keterangan Belum Menikah', '1. Surat Pengantar RT', ''),
-(8, 'KDS-00008', 'Surat Pengantar Nikah', '1. Surat Pengantar RT\r\n2. KTP', '');
+(8, 'KDS-00008', 'Surat Pengantar Nikah', '1. Surat Pengantar RT\r\n2. KTP', ''),
+(9, 'KDS-00009', 'Surat Keterangan Tidak Mampu', '1. Surat Pengantar RT\r\n2. KTP', ''),
+(10, 'KDS-00010', 'Surat Ahli Waris', '1. Surat Keterangan Ahli Waris\r\n2. Surat Pengantar RT\r\n3. Surat Nikah Yg Meninggal\r\n4. KK Ahli Waris\r\n5. KTP 2 Orang Saksi\r\n6. PBB Tahun Berjalan\r\n7. KTP Yg Meninggal', ''),
+(11, 'KDS-00011', 'Surat IMB', '1. Surat Pengantar RT\r\n2. KTP\r\n3. Sertifikat Tanah\r\n4. Surat Pernyataan Tidak Keberatan\r\n5. KTP  Tetangga Yg Berbatasan Langsung\r\n6. Lunas PBB Tahun Berjalan', ''),
+(12, 'KDS-00012', 'Surat Izin Tempat Usaha', '1. Surat Pengantar RT\r\n2. KTP\r\n3. Sertifikat Tanah\r\n4. IMB\r\n5. Surat Permohonan\r\n6. Tanda Lunas PBB Tahun Berjalan\r\n7. Surat Pernyataan Tidak Keberatan\r\n8. Akta Notaris\r\n9. KTP Tetangga Yg Berbatasan Langsung\r\n10. NPWP', ''),
+(13, 'KDS-00013', 'Surat Keterangan Usaha', '1. Surat Pengantar RT\r\n2. KTP Pemohon\r\n3. Keterangan Domisili', '');
 
 -- --------------------------------------------------------
 
@@ -643,7 +648,7 @@ ALTER TABLE `tb_data_penduduk`
 -- AUTO_INCREMENT for table `tb_data_surat`
 --
 ALTER TABLE `tb_data_surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `tb_informasi_pembuatan_surat_admin`
 --
