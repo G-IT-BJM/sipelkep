@@ -40,7 +40,7 @@
                                         </div>
                                     </div>
                                     <br><br><br>
-                                    <div class="table-responsive" style="overflow: auto;">
+                                    <div class="table-responsive" style="height:500px;overflow:auto;">
                                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                             <table class="table table-bordered table-striped mb-0">
                                                 <thead>

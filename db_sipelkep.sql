@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2019 at 01:24 PM
+-- Generation Time: Oct 04, 2019 at 11:27 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -72,7 +72,10 @@ CREATE TABLE `tb_data_penduduk` (
 --
 
 INSERT INTO `tb_data_penduduk` (`id`, `nik`, `nama`, `t_lahir`, `tgl_lahir`, `jk`, `gol_dar`, `alamat`, `rt`, `rw`, `kel`, `kec`, `agama`, `status_p`, `kerja`, `warga`, `telp`, `ket`) VALUES
-(1, '5104387654128764', 'Miko', 'Denpasar', '1997-05-02', 'L', 'O', 'jl. perintis bandaira no 12 x', '07', '08', 'Pasar Lama', 'Banjarmasin Tengah', 'ISLAM', 'Lajang', 'Pengusaha', 'WNI', '081339674916', '');
+(1, '5104387654128764', 'Miko', 'Denpasar', '1997-05-02', 'L', 'O', 'jl. perintis bandaira no 12 x ry 01 rw02 kecoe oewjpweoj ei poewjfpewj', '07', '08', 'Pasar Lama', 'Banjarmasin Tengah', 'ISLAM', 'Lajang', 'Pengusaha', 'WNI', '081339674916', ''),
+(2, '5104387654128000', 'Rifki', 'Banjarmasin', '2019-09-01', 'L', 'O', 'bjm', '07', '08', 'Pasar Lama', 'Banjarmasin Tengah', 'ISLAM', 'Lajang', 'Pengusaha', 'WNI', '081339674916', ''),
+(3, '5104387654128002', 'Putri', 'Lombok', '2002-02-02', 'P', 'B', 'st', '07', '08', 'Pasar Lama', 'Banjarmasin Tengah', 'ISLAM', 'Lajang', 'Pengusaha', 'WNI', '081339674916', ''),
+(4, '5104387654128763', 'coba', 'Banjarmasin', '2019-09-25', 'L', 'B', 'asd', '1', '2', 'as', 'as', 'ISLAM', 'as', 'as', 'as', '081339674916', 'jkhuiash iaugha sdiuahdaoihs aoiaoiaoisoi aoihsa osihao');
 
 -- --------------------------------------------------------
 
@@ -83,7 +86,7 @@ INSERT INTO `tb_data_penduduk` (`id`, `nik`, `nama`, `t_lahir`, `tgl_lahir`, `jk
 CREATE TABLE `tb_data_surat` (
   `id` int(11) NOT NULL,
   `kd_surat` varchar(50) NOT NULL,
-  `surat` text NOT NULL,
+  `surat` varchar(50) NOT NULL,
   `syarat` text NOT NULL,
   `ket` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -93,9 +96,14 @@ CREATE TABLE `tb_data_surat` (
 --
 
 INSERT INTO `tb_data_surat` (`id`, `kd_surat`, `surat`, `syarat`, `ket`) VALUES
-(1, 'KDS-0001', 'Surat Pindah', '1. Surat Pengantar RT\r\n2. FC KTP\r\n3. FC KK\r\n4. Surat Kuasa Bermaterai (Jika DiWakilkan)', ''),
-(2, 'KDS-0002', 'Surat Kelahiran', '1. Surat Pengantar RT\r\n2. FC KTP Bapak dan Ibu Kandung', ''),
-(3, 'KDS-0003', 'Surat Keterangan Domisili', '1. Surat Pengantar RT\r\n2. FC KTP Pemohon', '');
+(1, 'KDS-00001', 'Surat Pindah', '1. Surat Pengantar RT\r\n2. FC KTP\r\n3. FC KK\r\n4. Surat Kuasa Bermaterai (Jika DiWakilkan)', ''),
+(2, 'KDS-00002', 'Surat Kelahiran', '1. Surat Pengantar RT\r\n2. FC KTP Bapak dan Ibu Kandung', ''),
+(3, 'KDS-00003', 'Surat Keterangan Domisili', '1. Surat Pengantar RT\r\n2. FC KTP Pemohon', ''),
+(4, 'KDS-00004', 'Surat Pengantar Kartu Keluarga', '1. Surat Keterangan Ahli Waris\r\n2. Pengantar Rt\r\n3. Surat Nikah Yang Meninggal\r\n4. Kartu Keluarga Ahli Waris\r\n5. KTP 2 Orang Saksi\r\n6. KTP Yang Meninggal', ''),
+(5, 'KDS-00005', 'Surat Pengantar KTP', '1. Surat Pengantar RT\r\n2. KTP Bapak Kandung\r\n3. KTP Ibu Kandung', ''),
+(6, 'KDS-00006', 'Surat Kehilangan', '1. Surat Pengantar RT\r\n2. KTP', ''),
+(7, 'KDS-00007', 'Surat Keterangan Belum Menikah', '1. Surat Pengantar RT', ''),
+(8, 'KDS-00008', 'Surat Pengantar Nikah', '1. Surat Pengantar RT\r\n2. KTP', '');
 
 -- --------------------------------------------------------
 
@@ -204,8 +212,11 @@ CREATE TABLE `tb_register_pelayanan_surat` (
 --
 
 INSERT INTO `tb_register_pelayanan_surat` (`id`, `no_registrasi`, `nik`, `nama`, `kd_surat`, `tgl_registrasi`, `ket`) VALUES
-(1, 'KDR-001', '5104387654128764', 'Miko', 'KDS-0001', '2019-09-08', ''),
-(4, 'KDR-002', '5104387654128000', 'Miko andri', 'KDS-0003', '2019-05-19', '');
+(1, 'KDR-00001', '5104387654128764', 'Miko', 'KDS-00001', '2019-09-08', ''),
+(6, 'KDR-00002', '5104387654128002', 'Putri', 'KDS-00002', '2019-09-10', ''),
+(7, 'KDR-00003', '5104387654128000', 'Rifki', 'KDS-00003', '2019-09-02', ''),
+(8, 'KDR-00004', '5104387654128764', 'Miko', 'KDS-00004', '2019-09-10', ''),
+(10, 'KDR-00005', '5104387654128763', 'coba', 'KDS-00005', '2019-09-04', 'wdxed');
 
 -- --------------------------------------------------------
 
@@ -244,6 +255,7 @@ CREATE TABLE `tb_surat_izin_mendirikan_bangunan` (
   `nama` varchar(60) NOT NULL,
   `tgl_keluar` date NOT NULL,
   `fc_pengantar_rt` text NOT NULL,
+  `fc_ktp` text NOT NULL,
   `fc_sertifikat_tanah` text NOT NULL,
   `fc_surat_tidak_keberatan` text NOT NULL,
   `fc_ktp_tetangga` text NOT NULL,
@@ -469,7 +481,7 @@ CREATE TABLE `tb_surat_pindah` (
 --
 
 INSERT INTO `tb_surat_pindah` (`id`, `no_surat_pindah`, `no_registrasi`, `nik`, `nama`, `tgl_keluar`, `fc_pengantar_rt`, `fc_ktp`, `fc_kk`, `fc_surat_kuasa`, `ket`) VALUES
-(12, 'KD-S-001', 'KDR-001', '5104387654128764', 'Miko', '2019-09-11', 'KD-S-001-pengantar_rt.jpg', 'KD-S-001-ktp.jpg', 'KD-S-001-kk.jpg', 'KD-S-001-surat_kuasa.jpg', '-');
+(1, 'NS-P-00001', 'KDR-00005', '5104387654128763', 'coba', '2019-09-12', 'NS-P-00001-pengantar_rt.jpg', 'NS-P-00001-ktp.jpg', 'NS-P-00001-kk.jpg', 'NS-P-00001-surat_kuasa.jpg', 'dw');
 
 --
 -- Indexes for dumped tables
@@ -626,12 +638,12 @@ ALTER TABLE `tb_admin`
 -- AUTO_INCREMENT for table `tb_data_penduduk`
 --
 ALTER TABLE `tb_data_penduduk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tb_data_surat`
 --
 ALTER TABLE `tb_data_surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `tb_informasi_pembuatan_surat_admin`
 --
@@ -666,7 +678,7 @@ ALTER TABLE `tb_keberadaan_lurah_user`
 -- AUTO_INCREMENT for table `tb_register_pelayanan_surat`
 --
 ALTER TABLE `tb_register_pelayanan_surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tb_surat_ahli_waris`
 --
@@ -731,7 +743,7 @@ ALTER TABLE `tb_surat_pengantar_nikah`
 -- AUTO_INCREMENT for table `tb_surat_pindah`
 --
 ALTER TABLE `tb_surat_pindah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
