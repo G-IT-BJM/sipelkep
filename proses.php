@@ -189,21 +189,31 @@
         $telp       = $_POST['telp'];
         $ket        = $_POST['keterangan'];
 
-        $simpan = mysqli_query($conn, "INSERT INTO tb_data_penduduk VALUES('','$nik','$nama','$t_lahir','$tgl_lahir','$jk','$gol_darah','$alamat','$rt','$rw','$kel','$kec','$agama','$stts','$pekerjaan','$warga','$telp','$ket')");
-
-        if($simpan) {
-
-            header("location: data-penduduk.php");
-
-        } else {
-
+        $simpan = "INSERT INTO tb_data_penduduk VALUES('','$nik','$nama','$t_lahir','$tgl_lahir','$jk','$gol_darah','$alamat','$rt','$rw','$kel','$kec','$agama','$stts','$pekerjaan','$warga','$telp','$ket')";
+        $cek = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM tb_data_penduduk WHERE nik = '$nik'"));
+        if($cek > 0) {
             echo "
                 <script>
-                    alert('Data Gagal Di Simpan . . . ');
+                    alert('Data Sudah Ada . . . ');
                     window.location = 'tambah-data-penduduk.php';
                 </script>
             ";
-
+        } else {
+            if(mysqli_query($conn,$simpan)) {
+                echo "
+                    <script>
+                        alert('Data Berhasil Disimpan . . . ');
+                    </script>
+                ";
+                header("location: data-penduduk.php");
+            } else {
+                echo "
+                    <script>
+                        alert('Data Gagal Di Simpan . . . ');
+                        window.location = 'tambah-data-penduduk.php';
+                    </script>
+                ";
+            }
         }
     }
     elseif (isset($_POST['ubah_data_penduduk'])) 
@@ -303,7 +313,7 @@
     /** 
      * @Author: G_IT_BJM 
      * @Date: 2019-09-05 18:19:13 
-     * @Desc: UBAH SANDI ADMIN 
+     * @Desc: UBAH KATA SANDI ADMIN 
      */    
     elseif (isset($_POST['ubah_kata_sandi'])) 
     {
@@ -323,7 +333,13 @@
     
                 if($ubah) {
 
-                    header("location: beranda.php");
+                    echo "
+                        <script>
+                            alert('Berhasil Merubah Password . . . ');
+                            window.location = 'ubah-sandi.php';
+                        </script>
+                    ";
+                    // header("location: hal-beranda.php");
 
                 } else {
 
@@ -368,19 +384,19 @@
     {
         $nm        = $_POST['nama_pengguna'];
         $sandi     = $_POST['kata_sandi'];
-        $stts      = 1;
+        // $stts      = 1;
 
         $q = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_admin"));
 
         if($q["nama_pengguna"] == $nm && $q["kata_sandi"] == $sandi) {
 
             // mysqli_query($conn, "UPDATE tb_admin SET status = '$stts' WHERE nama_pengguna = '$nm' AND kata_sandi = '$sandi'");
-            $_SESSION['nama_pengguna'] = $username;
+            $_SESSION['nama_pengguna'] = $q["nama_pengguna"];
 
             echo "
                 <script>
                     alert('Berhasil Login . . . ');
-                    window.location = 'beranda.php';
+                    window.location = 'hal-beranda.php';
                 </script>
             ";
 

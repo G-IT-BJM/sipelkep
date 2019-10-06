@@ -21,7 +21,7 @@
 			</div>
 		</form> -->
 		<ul class="nav menu">
-			<li><a href="beranda.php"><em class="fa fa-home">&nbsp;</em> Beranda</a></li>
+			<li><a href="hal-beranda.php"><em class="fa fa-home">&nbsp;</em> Beranda</a></li>
 			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
 				<em class="fa fa-navicon">&nbsp;</em> Master <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
@@ -123,7 +123,7 @@
 			<li><a href="panels.php"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li> -->
 			<li><a href="logout.php"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 		</ul>
-	</div><!--/.sidebar-->
+	</div>
 <?php
 	} else {
 ?>
@@ -164,7 +164,7 @@
 			</li>
 			<li><a href="login.php"><em class="fa fa-sign-in">&nbsp;</em> LogIn</a></li>
 		</ul>
-	</div><!--/.sidebar-->
+	</div>
 <?php
 	}
 ?>

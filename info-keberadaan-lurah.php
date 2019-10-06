@@ -34,7 +34,7 @@
                             <div class="form-group">
                                 <!-- <label class="col-md-3 control-label" for="message"></label> -->
                                 <div class="col-md-12">
-									<textarea class="form-control" id="isi" name="isi" rows="5" readonly><?php 
+									<textarea class="form-control" id="isi" name="isi" rows="5" readonly style="resize:none;"><?php 
 										echo 
 										'Tanggal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: '.$data["tgl"].
 										'&#13;&#10;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: '.$data["status"].
@@ -49,8 +49,6 @@
             </div>
         </div>
         
-		
-		
 		<div class="row">
             <br><br><br>
 			<?php include "footer.php"; ?>
@@ -67,14 +65,14 @@
 	<script src="js/custom.js"></script>
 	<script>
 		window.onload = function () {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-};
+			var chart1 = document.getElementById("line-chart").getContext("2d");
+			window.myLine = new Chart(chart1).Line(lineChartData, {
+			responsive: true,
+			scaleLineColor: "rgba(0,0,0,.2)",
+			scaleGridLineColor: "rgba(0,0,0,.05)",
+			scaleFontColor: "#c5c7cc"
+			});
+		};
 	</script>
 		
 </body>

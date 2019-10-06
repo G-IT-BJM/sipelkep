@@ -38,7 +38,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="message"></label>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="isi" name="isi" rows="5" readonly></textarea>
+                                    <textarea class="form-control" id="isi" name="isi" rows="5" readonly style="resize:none;"></textarea>
                                 </div>
                             </div>
                         </fieldset>
@@ -47,8 +47,6 @@
             </div>
         </div>
         
-		
-		
 		<div class="row">
             <br><br><br>
 			<?php include "footer.php"; ?>
@@ -65,14 +63,32 @@
 	<script src="js/custom.js"></script>
 	<script>
 		window.onload = function () {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-};
+			var chart1 = document.getElementById("line-chart").getContext("2d");
+			window.myLine = new Chart(chart1).Line(lineChartData, {
+			responsive: true,
+			scaleLineColor: "rgba(0,0,0,.2)",
+			scaleGridLineColor: "rgba(0,0,0,.05)",
+			scaleFontColor: "#c5c7cc"
+			});
+		};
+
+		$(function() {
+			$("#no_reg_permohonan").change(function(){
+				var noreg = $("#no_reg_permohonan").val();
+				$.ajax({
+					url: 'ajax_cek.php',
+					type: 'POST',
+					dataType: 'json',
+					data: {
+						'no_registrasi': noreg
+					},
+					success: function (data) {
+						// $("#isi").val("Tanggal Selesai : \n"+data['tgl_keluar']);
+						$("#isi").val("Tanggal Selesai : \n"+data);
+					}
+				});
+			});
+		});
 	</script>
 		
 </body>

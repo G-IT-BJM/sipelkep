@@ -1,11 +1,11 @@
 <?php
 
-$files = scandir('img');
-foreach ($files as $file) {
-    if (strpos($file, 'qew') !== false) {
-         echo $file ."</br>";
-    }
-}
+// $files = scandir('img');
+// foreach ($files as $file) {
+//     if (strpos($file, 'qew') !== false) {
+//          echo $file ."</br>";
+//     }
+// }
 
 // $no_reg = 'qew';
 
@@ -57,4 +57,28 @@ foreach ($files as $file) {
 
 // echo $txt;
 
+// include "koneksi.php";
+// error_reporting(0);
+// $a = "KDR-00005";
+// $sql = mysqli_query($conn,"SHOW TABLES"); // Select all tables
+// while($table = mysqli_fetch_array($sql)) {
+//      $sqlT = mysqli_query($conn,"SELECT tgl_keluar FROM $table[0] WHERE no_registrasi = '$a'");
+//      while($rtable = mysqli_fetch_array($sqlT)) {
+//           // data of the table
+//         //   echo $table[0];
+//         //   echo "<br>";
+//         //   echo $rtable["no_surat_pindah"];
+//         //   echo "<br>";
+//         //   echo $rtable["no_registrasi"];
+//         //   echo "<br>";
+//           echo $rtable["nik"];
+//           echo "<br>";
+//           echo $rtable["tgl_keluar"];
+//           echo "<br>";
+//      }
+// }
+// if ($sql) {
+//     printf("Error: %s\n", mysqli_error($conn));
+//     exit();
+// }
 ?>

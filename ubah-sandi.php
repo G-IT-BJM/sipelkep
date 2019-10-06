@@ -3,7 +3,7 @@
         include "sidebar.php"; 
         include "koneksi.php";
 
-        $sql = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_admin WHERE status = 1"));
+        $sql = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_admin WHERE nama_pengguna = '".$_SESSION['nama_pengguna']."'"));
 	?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">

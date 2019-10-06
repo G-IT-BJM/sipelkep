@@ -3,7 +3,7 @@
         include "sidebar.php"; 
         include "koneksi.php";
         
-        $sql = mysqli_query($conn, "SELECT * FROM tb_data_penduduk");
+        $sql = mysqli_query($conn, "SELECT * FROM tb_data_surat");
 	?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -12,7 +12,7 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Laporan / Laporan Data Penduduk</li>
+				<li class="active">Laporan / Laporan Data Surat</li>
 			</ol>
 		</div>
 		
@@ -25,18 +25,18 @@
 		<div class="row">
             <div class="panel panel-default col-md-10 col-md-offset-1">
                 <div class="panel-heading">
-                    Laporan Data Penduduk
+                    Laporan Data Surat
                     <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal" action="view-laporan-data-surat.php" target="_BLANK" method="post" enctype="multipart/form-data">
                         <fieldset>
                             <div class="form-group">
                                 <div class="col-md-12">
 
                                     <div class="col-md-3">
                                         <div class="input-group">
-                                            <a href="view-laporan-data-penduduk.php" target="_BLANK"><button type="button" class="btn btn-primary btn-lg">Cetak Laporan</button></a>
+                                            <button type="submit" class="btn btn-primary btn-lg">Cetak Laporan</button>
                                         </div>
                                     </div>
                                     <br><br><br>
@@ -46,17 +46,8 @@
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">#</th>
-                                                        <th scope="col">NIK</th>
-                                                        <th scope="col">NAMA</th>
-                                                        <th scope="col">TTL</th>
-                                                        <th scope="col">JK</th>
-                                                        <th scope="col">ALAMAT</th>
-                                                        <th scope="col">AGAMA</th>
-                                                        <th scope="col">STATUS</th>
-                                                        <th scope="col">PEKERJAAN</th>
-                                                        <th scope="col">WARGA</th>
-                                                        <th scope="col">TELP</th>
-                                                        <th scope="col">KET.</th>
+                                                        <th scope="col">Jenis Surat</th>
+                                                        <th scope="col">Keterangan</th>                                                        
                                                     </tr>
                                                 </thead>
                                                 <tbody id="myTable">
@@ -65,17 +56,8 @@
                                                         while ($data = mysqli_fetch_array($sql)) { 
                                                     ?>
                                                     <tr>
-                                                        <td><?=$no?></td>
-                                                        <td><?=$data['nik']?></td>
-                                                        <td><?=$data['nama']?></td>
-                                                        <td nowrap><?=$data['t_lahir'].",".date("d-m-Y",strtotime($data['tgl_lahir']))?></td>
-                                                        <td><?=$data['jk']?></td>
-                                                        <td><?=$data['alamat']?></td>
-                                                        <td><?=$data['agama']?></td>
-                                                        <td><?=$data['status_p']?></td>
-                                                        <td><?=$data['kerja']?></td>
-                                                        <td><?=$data['warga']?></td>
-                                                        <td><?=$data['telp']?></td>
+                                                        <td width="3%"><?=$no?></td>
+                                                        <td width="30%"><?=$data['surat']?></td>
                                                         <td><?=$data['ket']?></td>
                                                     </tr>
                                                     <?php $no++; } ?>

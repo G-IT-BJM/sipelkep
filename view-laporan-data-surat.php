@@ -1,6 +1,6 @@
 <?php
     include "koneksi.php";
-    $sql = mysqli_query($conn, "SELECT * FROM tb_data_penduduk");
+    $sql = mysqli_query($conn, "SELECT * FROM tb_data_surat");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,21 +21,17 @@
         table.d {
             table-layout: fixed;
             width: 100%;
-            text-align: justify;
         }
         hr {
             border: 1px solid black;
         }
-        td.a {
-            white-space:pre-wrap; word-wrap:break-word;
-        }
     </style>
 </head>
 <body style="font-family: Times New Roman; background-color:white;">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-            <table align="center">
+            <div class="col-md-10 col-md-offset-2">
+            <table>
                 <tr>
                     <td>
                         <img src="img/logo/logo.png" width="200">
@@ -53,46 +49,31 @@
         </div>
         <hr>
         <div class="row">
-            <h4>Laporan Data Penduduk</h5>
+            <h4>Laporan Data Surat</h5>
             <br>
             <table class="table table-bordered table-striped mb-0 d">
                 <thead>
                     <tr>
                         <th scope="col" width="3%">#</th>
-                        <th scope="col" width="12%">Nik</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col" width="11%">TTL</th>
-                        <th scope="col" width="3%">Jk</th>
-                        <th scope="col">Alamat</th>
-                        <th scope="col" width="8%">Agama</th>
-                        <th scope="col">Status Perkawinan</th>
-                        <th scope="col">Pekerjaan</th>
-                        <th scope="col" width="6%">KWRG</th>
-                        <th scope="col" width="10%">Telp</th>
+                        <th scope="col">Jenis Surat</th>
+                        <!-- <th scope="col" width="20%">Jenis Surat</th> -->
+                        <!-- <th scope="col">Syarat</th> -->
                         <th scope="col">Keterangan</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php 
                     $no = 1;
-                    while ($data = mysqli_fetch_array($sql)) { 
+                    while($data = mysqli_fetch_array($sql)){
+                        echo '<tr>
+                        <td>'.$no.'</td>
+                        <td>'.$data["surat"].'</td>
+                        <td>'.$data["ket"].'</td>
+                        </tr>';
+                        $no++;
+                    }
                 ?>
-                <tr>
-                    <td class="a"><?=$no?></td>
-                    <!-- <td class="a" style="text-align: center; vertical-align: middle;"><?php// echo $no?></td> -->
-                    <td class="a"><?=$data['nik']?></td>
-                    <td class="a"><?=$data['nama']?></td>
-                    <td class="a"><?=$data['t_lahir']."<br>".date("d-m-Y",strtotime($data['tgl_lahir']))?></td>
-                    <td class="a"><?=$data['jk']?></td>
-                    <td class="a"><?=$data['alamat']?></td>
-                    <td class="a"><?=$data['agama']?></td>
-                    <td class="a"><?=$data['status_p']?></td>
-                    <td class="a"><?=$data['kerja']?></td>
-                    <td class="a"><?=$data['warga']?></td>
-                    <td class="a"><?=$data['telp']?></td>
-                    <td class="a"><?=$data['ket']?></td>
-                </tr>
-                <?php $no++; } ?>
+                <!-- <td style="white-space:pre-wrap; word-wrap:break-word">'.$data["syarat"].'</td> -->
                 </tbody>
             </table>
         </div>
