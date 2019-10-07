@@ -57,7 +57,7 @@
                         <th scope="col" width="3%">#</th>
                         <th scope="col">Jenis Surat</th>
                         <!-- <th scope="col" width="20%">Jenis Surat</th> -->
-                        <!-- <th scope="col">Syarat</th> -->
+                        <th scope="col">Syarat</th>
                         <th scope="col">Keterangan</th>
                     </tr>
                 </thead>
@@ -68,6 +68,7 @@
                         echo '<tr>
                         <td>'.$no.'</td>
                         <td>'.$data["surat"].'</td>
+                        <td>'.nl2br($data["syarat"]).'</td>
                         <td>'.$data["ket"].'</td>
                         </tr>';
                         $no++;

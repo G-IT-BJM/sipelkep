@@ -255,6 +255,22 @@
         }
     }
 
+    elseif (isset($_GET['hapus']) && $_GET['hapus'] == 'data_penduduk') {
+        $id = $_GET['id'];
+        
+        $exec = mysqli_query($conn, "DELETE FROM tb_data_penduduk WHERE id = '$id'");
+
+        if ($exec) {            
+
+            echo "
+                <script>                    
+                    window.location = 'data-penduduk.php';
+                </script>
+            ";
+
+        } 
+    }
+
     /** 
      * @Author: G_IT_BJM 
      * @Date: 2019-09-05 17:07:36 
@@ -395,7 +411,7 @@
 
             echo "
                 <script>
-                    alert('Berhasil Login . . . ');
+                    alert('Berhasil Masuk . . . ');
                     window.location = 'hal-beranda.php';
                 </script>
             ";
@@ -404,7 +420,7 @@
 
             echo "
                 <script>
-                    alert('Gagal Login . . . ');
+                    alert('Gagal Masuk . . . ');
                     window.location = 'beranda.php';
                 </script>
             ";
@@ -647,9 +663,11 @@
 
         $cekFoto = $lampiran != '' ? cekFoto($lampiran) : TRUE;
 
+        // var_dump($lampiran);
+
         if ($cekFoto) {         
 
-            $uploadImg = $lampiran != '' ? uploadImg($lampiran,$no_surat) : TRUE;
+            $uploadImg = $lampiran != '' ? uploadImg($lampiran,$no_surat) : TRUE;            
 
             if ($uploadImg) {
 

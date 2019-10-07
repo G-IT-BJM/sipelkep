@@ -121,7 +121,7 @@
 			</li>
 			<!-- <li><a href="widgets.php"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
 			<li><a href="panels.php"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li> -->
-			<li><a href="logout.php"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+			<li><a href="logout.php"><em class="fa fa-power-off">&nbsp;</em> Keluar</a></li>
 		</ul>
 	</div>
 <?php
@@ -162,7 +162,7 @@
 					</a></li>
 				</ul>
 			</li>
-			<li><a href="login.php"><em class="fa fa-sign-in">&nbsp;</em> LogIn</a></li>
+			<li><a href="login.php"><em class="fa fa-sign-in">&nbsp;</em> Masuk</a></li>
 		</ul>
 	</div>
 <?php

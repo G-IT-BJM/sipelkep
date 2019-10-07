@@ -47,6 +47,7 @@
                                                     <tr>
                                                         <th scope="col">#</th>
                                                         <th scope="col">Jenis Surat</th>
+                                                        <th scope="col">Syarat</th>
                                                         <th scope="col">Keterangan</th>                                                        
                                                     </tr>
                                                 </thead>
@@ -58,6 +59,7 @@
                                                     <tr>
                                                         <td width="3%"><?=$no?></td>
                                                         <td width="30%"><?=$data['surat']?></td>
+                                                        <td><?=nl2br($data['syarat'])?></td>
                                                         <td><?=$data['ket']?></td>
                                                     </tr>
                                                     <?php $no++; } ?>

@@ -79,7 +79,7 @@
                                                                     <td>
                                                                         <a href="ubah-data-penduduk.php?nik='.$data["nik"].'"><button type="button" class="btn btn-primary"><span class="fa fa-edit"></span></button></a> 
                                                                         || 
-                                                                        <a href=""><button type="button" class="btn btn-danger"><span class="fa fa-trash"></span></button></a> 
+                                                                        <a href="proses.php?hapus=data_penduduk&id='.$data['id'].'" onclick="return confirm(\'Apakah anda ingin menghapus data ini?\')"><button type="button" class="btn btn-danger"><span class="fa fa-trash"></span></button></a> 
                                                                     </td>
                                                                 </tr>
                                                                 ';

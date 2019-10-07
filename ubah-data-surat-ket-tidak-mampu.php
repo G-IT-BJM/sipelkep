@@ -4,7 +4,7 @@
         include "koneksi.php";
 
         $id = $_GET['id'];
-        $data = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_surat_keterengan_tidak_mampu WHERE id = '$id'"));
+        $data = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_surat_keterangan_tidak_mampu WHERE id = '$id'"));
 	?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
