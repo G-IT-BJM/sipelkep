@@ -26,17 +26,28 @@
                     <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" action="" method="post">
+                    <form class="form-horizontal" action="proses.php" method="post" target="_blank">
                         <fieldset>
                             
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="pilih_data">Pilih Data</label>
                                 <div class="col-md-9">
                                     <select class="form-control" id="pilih_data" name="pilih_data">
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
-                                        <option>Option 4</option>
+                                        <option value=''>Pilih Data</option>
+                                        <option value='tb_data_penduduk'>Data Penduduk</option>
+                                        <option value='tb_data_surat'>Data Surat</option>
+                                        <option value='tb_surat_ahli_waris'>Data Surat Ahli Waris</option>
+										<option value="tb_surat_izin_mendirikan_bangunan">Data Surat Izin Mendirikan Bangunan</option>
+										<option value="tb_surat_izin_tempat_usaha">Data Surat Izin Tempat Usaha</option>
+										<option value="tb_surat_kehilangan">Data Surat Kehilangan</option>
+										<option value="tb_surat_keterangan_belum_menikah">Data Surat Belum tb_surat_keterangan_belum_menikah</option>
+										<option value="tb_surat_keterangan_domisili">Data Surat Keterangan Domisili</option>
+										<option value="tb_surat_keterangan_tidak_mampu">Data Surat Keterangan Tidak Mampu</option>
+										<option value="tb_surat_keterangan_usaha">Data Surat Keterangan Usaha</option>
+										<option value="tb_surat_pengantar_kartu_keluarga">Data Surat Pengantar KK</option>
+										<option value="tb_surat_pengantar_ktp">Data Surat Pengantar KTP</option>
+										<option value="tb_surat_pengatar_nikah">Data Surat Pengatar Nikah</option>
+										<option value="tb_surat_pindah">Data Surat Pindah</option>
                                     </select>
                                 </div>
                             </div>
@@ -48,7 +59,7 @@
                                         <!-- <button type="submit" class="btn btn-danger btn-md pull-right">Kembali</button> -->
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="submit" class="btn btn-success btn-md pull-right">Salin</button>
+                                        <button type="submit" name="salin_data" class="btn btn-success btn-md pull-right">Salin</button>
                                     </div>
                                 </div>
                             </div>

@@ -51,6 +51,31 @@
         }
                 
     }
+
+    /**
+     * [name_table description]
+     *
+     * @return  array  return array name of table
+     */
+    function name_table($table)
+    {
+
+        global $conn;
+
+        $name_table = array();
+        
+        $query = mysqli_query($conn,"SELECT * FROM $table");
+
+        while ($name = mysqli_fetch_field($query)) {
+            
+            $name_table[] = $name->name;
+
+        }
+
+        return $name_table;
+
+    }
+
     /**
      * [cekFoto description]
      *
@@ -1961,6 +1986,35 @@
             ";
 
         } 
+
+    } elseif (isset($_POST['salin_data'])) {
+        
+        $pilih = $_POST['pilih_data'];
+
+        $name_table = name_table($pilih);
+
+        $q = mysqli_query($conn,"SELECT * FROM $pilih");
+
+        header("Content-Type: application/vnd.ms-excel; charset=utf-8");
+        header("Content-Disposition: attachment; filename=".$pilih."-".date("d-m-Y")."-".microtime().".xls");
+        header("Expires: 0");
+        header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+        header("Cache-Control: private",false);
+
+        echo "<table border='1'>";
+        echo "<tr>";
+        foreach ($name_table as $key) {
+            echo "<td>".$key."</td>";
+        }
+        echo "</tr>";
+        while ($row = mysqli_fetch_array($q)) {        
+        echo "<tr>";        
+        foreach ($name_table as $key) {
+            echo "<td>".$row[$key]."</td>";
+        }
+        echo "</tr>";
+        }
+        echo "</table>";
 
     } 
 ?>

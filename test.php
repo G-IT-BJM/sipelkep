@@ -1,5 +1,22 @@
 <?php
 
+// include 'koneksi.php';
+
+// $query = mysqli_query($conn,"SHOW COLUMNS FROM tb_admin");
+
+// $query = mysqli_query($conn,"select * from tb_admin");
+
+// echo mysqli_num_fields($query);
+
+// while ($property = mysqli_fetch_field($query)) {
+//     //echo $property->name;
+//     var_dump($property);
+// }
+
+// if ($query) {
+//     var_dump($query);
+// }
+
 // $files = scandir('img');
 // foreach ($files as $file) {
 //     if (strpos($file, 'qew') !== false) {
