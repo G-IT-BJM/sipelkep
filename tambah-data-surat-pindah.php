@@ -116,7 +116,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="keterangan">Keterangan</label>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" rows="5"></textarea>
+                                    <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" rows="5">-</textarea>
                                 </div>
                             </div>
                             
@@ -151,6 +151,7 @@
 	<script src="js/easypiechart-data.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/custom.js"></script>
+	<script src="js/required.js"></script>
     
 	<script>
 		window.onload = function () {
@@ -176,6 +177,6 @@
         });
     }
 	</script>
-		
+	
 </body>
 </html>

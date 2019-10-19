@@ -73,13 +73,13 @@
                                                         <tr>
                                                             <td>'.$no.'</td>
                                                             <td>'.$data["kd_lurah"].'</td>
-                                                            <td>'.$data["tgl"].'</td>
+                                                            <td>'.date("d-m-Y", strtotime($data["tgl"])).'</td>
                                                             <td>'.$data["status"].'</td>
                                                             <td>'.$data["ket"].'</td>
                                                             <td>
                                                                 <a href="ubah-data-keberadaan-lurah.php?id='.$data["id"].'"><button type="button" class="btn btn-primary"><span class="fa fa-edit"></span></button></a> 
                                                                 || 
-                                                                <a href=""><button type="button" class="btn btn-danger"><span class="fa fa-trash"></span></button></a> 
+                                                                <a href="proses.php?hapus=data_keberadaan_lurah&id='.$data['id'].'" onclick="return confirm(\'Apakah anda ingin menghapus data ini?\')"><button type="button" class="btn btn-danger"><span class="fa fa-trash"></span></button></a> 
                                                             </td>
                                                         </tr>
                                                         ';
@@ -113,14 +113,14 @@
 	<script src="js/custom.js"></script>
 	<script>
 		window.onload = function () {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-};
+            var chart1 = document.getElementById("line-chart").getContext("2d");
+            window.myLine = new Chart(chart1).Line(lineChartData, {
+            responsive: true,
+            scaleLineColor: "rgba(0,0,0,.2)",
+            scaleGridLineColor: "rgba(0,0,0,.05)",
+            scaleFontColor: "#c5c7cc"
+            });
+        };
 	</script>
 		
 </body>

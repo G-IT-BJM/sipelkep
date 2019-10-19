@@ -37,7 +37,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="nik">NIK</label>
                                 <div class="col-md-9">
-                                    <input id="nik" name="nik" type="text" placeholder="NIK" minlength="16" maxlength="16" onkeypress="return hanyaAngka(event)" class="form-control" required>
+                                    <input id="nik" name="nik" type="text" placeholder="NIK" minlength="16" maxlength="16" class="form-control" required>
                                 </div>
                             </div>
 
@@ -207,6 +207,7 @@
 	<script src="js/easypiechart-data.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/custom.js"></script>
+	
 	<script>
 		window.onload = function () {
             var chart1 = document.getElementById("line-chart").getContext("2d");
@@ -218,14 +219,26 @@
             });
         };
 
-        function hanyaAngka(evt) {
-		  var charCode = (evt.which) ? evt.which : event.keyCode
-		   if (charCode > 31 && (charCode < 48 || charCode > 57))
- 
-		    return false;
-		  return true;
-		}
+        $(document).ready(function(){
+            var a = "#nama,#tempat_lahir,#kelurahan,#kecamatan,#pekerjaan";
+            $(a).keypress(function(){
+                var charCode = (a.which) ? a.which : event.keyCode
+                if ((charCode < 65 || charCode > 90)&&(charCode < 97 || charCode > 122)&&charCode>32)
+                    return false;
+                return true;
+            });
+
+            var b = "#nik,#rt,#rw,#telp";
+            $(b).keypress(function(){
+                var charCode = (b.which) ? b.which : event.keyCode
+                if (charCode > 31 && (charCode < 48 || charCode > 57))
+        
+                    return false;
+                return true;
+            });
+        });
+
 	</script>
-		
+	<script src="js/required.js"></script>
 </body>
 </html>

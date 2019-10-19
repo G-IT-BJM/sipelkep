@@ -171,6 +171,7 @@
 	<script src="js/easypiechart-data.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/custom.js"></script>
+    <script src="js/required.js"></script>
 	<script>
 		window.onload = function () {
             var chart1 = document.getElementById("line-chart").getContext("2d");

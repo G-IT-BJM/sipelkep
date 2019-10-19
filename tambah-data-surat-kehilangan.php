@@ -87,7 +87,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="ktp">KTP</label>
                                 <div class="col-md-5">
-                                    <input id="ktp" name="ktp" type="file" class="form-control">
+                                    <input id="ktp" name="ktp" type="file" class="form-control" required>
                                 </div>
                             </div>
 
@@ -129,6 +129,7 @@
 	<script src="js/easypiechart-data.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/custom.js"></script>
+    <script src="js/required.js"></script>
 	<script>
 		window.onload = function () {
             var chart1 = document.getElementById("line-chart").getContext("2d");

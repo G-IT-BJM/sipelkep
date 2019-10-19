@@ -350,6 +350,21 @@
 
         }
     } 
+    elseif (isset($_GET['hapus']) && $_GET['hapus'] == 'data_keberadaan_lurah') {
+        $id = $_GET['id'];
+        
+        $exec = mysqli_query($conn, "DELETE FROM tb_keberadaan_lurah_admin WHERE id = '$id'");
+
+        if ($exec) {            
+
+            echo "
+                <script>                    
+                    window.location = 'keberadaan-lurah.php';
+                </script>
+            ";
+
+        } 
+    }
 
     /** 
      * @Author: G_IT_BJM 

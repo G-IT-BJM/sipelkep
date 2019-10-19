@@ -191,7 +191,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="keterangan">Keterangan</label>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" rows="5"><?= $data["ket"]; ?></textarea>
+                                    <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" rows="5"><?= $data["ket"]; ?>-</textarea>
                                 </div>
                             </div>
                             
@@ -236,7 +236,28 @@
             scaleFontColor: "#c5c7cc"
             });
         };
+
+        $(document).ready(function(){
+            var a = "#nama,#tempat_lahir,#kelurahan,#kecamatan,#pekerjaan";
+            $(a).keypress(function(){
+                var charCode = (a.which) ? a.which : event.keyCode
+                if ((charCode < 65 || charCode > 90)&&(charCode < 97 || charCode > 122)&&charCode>32)
+                    return false;
+                return true;
+            });
+
+            var b = "#nik,#rt,#rw,#telp";
+            $(b).keypress(function(){
+                var charCode = (b.which) ? b.which : event.keyCode
+                if (charCode > 31 && (charCode < 48 || charCode > 57))
+        
+                    return false;
+                return true;
+            });
+        });
+
 	</script>
+	<script src="js/required.js"></script>
 		
 </body>
 </html>
