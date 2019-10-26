@@ -1,6 +1,6 @@
 <?php
     include "koneksi.php";
-    $sql = mysqli_query($conn, "SELECT * FROM tb_data_surat");
+    $sql = mysqli_query($conn, "SELECT * FROM tb_register_pelayanan_surat WHERE tgl_registrasi BETWEEN '".$_POST['tgl_dari']."' AND '".$_POST['tgl_sampai']."'");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,15 +50,17 @@
         </div>
         <hr>
         <div class="row">
-            <h4>Laporan Data Surat</h5>
+            <h4>Laporan Data Registrasi</h5>
             <br>
             <table class="table table-bordered table-striped mb-0 d">
                 <thead>
                     <tr>
                         <th scope="col" width="3%">#</th>
-                        <th scope="col">Jenis Surat</th>
-                        <!-- <th scope="col" width="20%">Jenis Surat</th> -->
-                        <th scope="col">Syarat</th>
+                        <th scope="col">No. Registrasi</th>
+                        <th scope="col">NIK</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Surat</th>
+                        <th scope="col">Tgl Registrasi</th>
                         <th scope="col">Keterangan</th>
                     </tr>
                 </thead>
@@ -66,10 +68,15 @@
                 <?php 
                     $no = 1;
                     while($data = mysqli_fetch_array($sql)){
+                        $sql1 = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_data_surat WHERE kd_surat = '$data[kd_surat]'"));
+
                         echo '<tr>
                         <td>'.$no.'</td>
-                        <td>'.$data["surat"].'</td>
-                        <td>'.nl2br($data["syarat"]).'</td>
+                        <td>'.$data["no_registrasi"].'</td>
+                        <td>'.$data["nik"].'</td>
+                        <td>'.$data["nama"].'</td>
+                        <td>'.$sql1["surat"].'</td>
+                        <td>'.date("d-m-Y", strtotime($data["tgl_registrasi"])).'</td>
                         <td>'.$data["ket"].'</td>
                         </tr>';
                         $no++;

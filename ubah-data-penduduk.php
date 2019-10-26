@@ -41,7 +41,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="nik">NIK</label>
                                 <div class="col-md-9">
-                                    <input id="nik" name="nik" type="text" value="<?= $data["nik"]; ?>" placeholder="NIK" class="form-control">
+                                    <input id="nik" name="nik" type="text" value="<?= $data["nik"]; ?>" placeholder="NIK" minlength="16" maxlength="16" oninvalid="this.setCustomValidity('Nik Kurang!')" required class="form-control">
                                 </div>
                             </div>
 

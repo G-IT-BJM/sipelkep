@@ -105,6 +105,9 @@
 					<li><a href="laporan-data-surat.php">
 						 Laporan Data Surat
 					</a></li>
+					<li><a href="laporan-data-registrasi.php">
+						 Laporan Data Registrasi
+					</a></li>
 				</ul>
             </li>
             <li class="parent "><a data-toggle="collapse" href="#sub-item-5">

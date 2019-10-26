@@ -37,7 +37,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="nik">NIK</label>
                                 <div class="col-md-9">
-                                    <input id="nik" name="nik" type="text" placeholder="NIK" minlength="16" maxlength="16" class="form-control" required>
+                                    <input id="nik" name="nik" type="text" placeholder="NIK" minlength="16" maxlength="16" oninvalid="this.setCustomValidity('Nik Kurang!')" class="form-control" required>
                                 </div>
                             </div>
 
