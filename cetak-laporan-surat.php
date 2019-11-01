@@ -1,6 +1,6 @@
 <?php
     include "koneksi.php";
-    $sql = mysqli_query($conn, "SELECT * FROM tb_register_pelayanan_surat WHERE tgl_registrasi BETWEEN '".$_POST['tgl_dari']."' AND '".$_POST['tgl_sampai']."'");
+    $sql = mysqli_query($conn, "SELECT * FROM tb_data_surat");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,18 +31,6 @@
 <body style="font-family: Times New Roman; background-color:white;">
     <div class="container">
         <div class="row">
-            <form class="form-horizontal" action="cetak-laporan-registrasi.php" target="_BLANK" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="tgl_dari" value="<?= $_POST['tgl_dari'] ?>">
-                <input type="hidden" name="tgl_sampai" value="<?= $_POST['tgl_sampai'] ?>">
-                <div class="col-md-3">
-                    <div class="input-group">
-                        <a href="cetak-laporan-registrasi.php" target="_BLANK"><button type="submit" class="btn btn-primary btn-lg">Cetak Laporan <span class="fa fa-print"></span></button></a>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <br><br>
-        <div class="row">
             <div class="col-md-10 col-md-offset-2">
             <table>
                 <tr>
@@ -62,17 +50,15 @@
         </div>
         <hr>
         <div class="row">
-            <h4>Laporan Data Registrasi</h5>
+            <h4>Laporan Data Surat</h5>
             <br>
             <table class="table table-bordered table-striped mb-0 d">
                 <thead>
                     <tr>
                         <th scope="col" width="3%">#</th>
-                        <th scope="col">No. Registrasi</th>
-                        <th scope="col">NIK</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Surat</th>
-                        <th scope="col">Tgl Registrasi</th>
+                        <th scope="col">Jenis Surat</th>
+                        <!-- <th scope="col" width="20%">Jenis Surat</th> -->
+                        <th scope="col">Syarat</th>
                         <th scope="col">Keterangan</th>
                     </tr>
                 </thead>
@@ -80,15 +66,10 @@
                 <?php 
                     $no = 1;
                     while($data = mysqli_fetch_array($sql)){
-                        $sql1 = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_data_surat WHERE kd_surat = '$data[kd_surat]'"));
-
                         echo '<tr>
                         <td>'.$no.'</td>
-                        <td>'.$data["no_registrasi"].'</td>
-                        <td>'.$data["nik"].'</td>
-                        <td>'.$data["nama"].'</td>
-                        <td>'.$sql1["surat"].'</td>
-                        <td>'.date("d-m-Y", strtotime($data["tgl_registrasi"])).'</td>
+                        <td>'.$data["surat"].'</td>
+                        <td>'.nl2br($data["syarat"]).'</td>
                         <td>'.$data["ket"].'</td>
                         </tr>';
                         $no++;
@@ -102,6 +83,6 @@
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/custom.js"></script>
-    <!-- <script>window.print();</script> -->
+    <script>window.print();</script>
 </body>
 </html>

@@ -100,13 +100,16 @@
 				</a>
 				<ul class="children collapse" id="sub-item-4">
 					<li><a href="laporan-data-penduduk.php">
-						 Laporan Data Penduduk
+						 Lap. Penduduk
 					</a></li>
 					<li><a href="laporan-data-surat.php">
-						 Laporan Data Surat
+						 Lap. Surat
 					</a></li>
 					<li><a href="laporan-data-registrasi.php">
-						 Laporan Data Registrasi
+						 Lap. Registrasi
+					</a></li>
+					<li><a href="laporan-data-penyelesaian-surat.php">
+						 Lap. Penyelesaian Surat
 					</a></li>
 				</ul>
             </li>

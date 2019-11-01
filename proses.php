@@ -604,7 +604,7 @@
 
                 echo "
                     <script>
-                        alert('Data Berhasil Di Simpan . . . ');
+                        alert('Registrasi Berhasil\\nNomor Registrasi Anda Adalah $kd\\nHarap Simpan dan Catat Nomor Registrasi Ini Untuk Proses Selanjutnya');
                         window.location = 'beranda.php';
                     </script>
                 ";

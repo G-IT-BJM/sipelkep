@@ -40,7 +40,7 @@
 										<option value="tb_surat_izin_mendirikan_bangunan">Data Surat Izin Mendirikan Bangunan</option>
 										<option value="tb_surat_izin_tempat_usaha">Data Surat Izin Tempat Usaha</option>
 										<option value="tb_surat_kehilangan">Data Surat Kehilangan</option>
-										<option value="tb_surat_keterangan_belum_menikah">Data Surat Belum tb_surat_keterangan_belum_menikah</option>
+										<option value="tb_surat_keterangan_belum_menikah">Data Surat Belum Menikah</option>
 										<option value="tb_surat_keterangan_domisili">Data Surat Keterangan Domisili</option>
 										<option value="tb_surat_keterangan_tidak_mampu">Data Surat Keterangan Tidak Mampu</option>
 										<option value="tb_surat_keterangan_usaha">Data Surat Keterangan Usaha</option>

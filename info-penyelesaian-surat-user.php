@@ -30,15 +30,19 @@
                         <fieldset>
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="no_reg_permohonan">No Reg. Permohonan</label>
-                                <div class="col-md-9">
-                                    <input id="no_reg_permohonan" name="no_reg_permohonan" type="text" placeholder="Isikan Nomor Registrasi Permohonan" class="form-control">
+                                <div class="col-md-8">
+                                    <input id="no_reg_permohonan" name="no_reg_permohonan" type="text" placeholder="Isikan Nomor Registrasi Permohonan" class="form-control" value="KDR-">
                                 </div>
+								<div class="col-md-1">
+									<button type="button" id="carinoreg" name="carinoreg" class="btn btn-primary pull-right" style="height: 45px;">Cari <span class="fa fa-search"></span></button>
+								</div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="message"></label>
+                                <label class="col-md-3 control-label" for="message">Tanggal Selesai</label>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" id="isi" name="isi" rows="5" readonly style="resize:none;"></textarea>
+                                    <!-- <textarea class="form-control" id="isi" name="isi" rows="5" readonly style="resize:none;"></textarea> -->
+									<input id="isi" name="isi" type="text" class="form-control" readonly>
                                 </div>
                             </div>
                         </fieldset>
@@ -73,7 +77,8 @@
 		};
 
 		$(function() {
-			$("#no_reg_permohonan").change(function(){
+			// $("#no_reg_permohonan").change(function(){
+			$("#carinoreg").on('click',function(){
 				var noreg = $("#no_reg_permohonan").val();
 				$.ajax({
 					url: 'ajax_cek.php',
@@ -84,7 +89,8 @@
 					},
 					success: function (data) {
 						// $("#isi").val("Tanggal Selesai : \n"+data['tgl_keluar']);
-						$("#isi").val("Tanggal Selesai : \n"+data);
+						// $("#isi").val("Tanggal Selesai : \n"+data);
+						$("#isi").val(data);
 					}
 				});
 			});

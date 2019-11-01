@@ -81,7 +81,7 @@
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="tgl_regis">Tgl Register</label>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <input id="tgl_regis" name="tgl_regis" type="date" min="<?= gmdate("Y-m-d", time()+60*60*7); ?>" value="<?= gmdate("Y-m-d", time()+60*60*7); ?>" placeholder="Tgl Register" class="form-control">
                                 </div>
                             </div>

@@ -31,18 +31,6 @@
 <body style="font-family: Times New Roman; background-color:white;">
     <div class="container">
         <div class="row">
-            <form class="form-horizontal" action="cetak-laporan-registrasi.php" target="_BLANK" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="tgl_dari" value="<?= $_POST['tgl_dari'] ?>">
-                <input type="hidden" name="tgl_sampai" value="<?= $_POST['tgl_sampai'] ?>">
-                <div class="col-md-3">
-                    <div class="input-group">
-                        <a href="cetak-laporan-registrasi.php" target="_BLANK"><button type="submit" class="btn btn-primary btn-lg">Cetak Laporan <span class="fa fa-print"></span></button></a>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <br><br>
-        <div class="row">
             <div class="col-md-10 col-md-offset-2">
             <table>
                 <tr>
@@ -102,6 +90,6 @@
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/custom.js"></script>
-    <!-- <script>window.print();</script> -->
+    <script>window.print();</script>
 </body>
 </html>

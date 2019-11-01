@@ -36,7 +36,7 @@
 
                                     <div class="col-md-3">
                                         <div class="input-group">
-                                            <button type="submit" class="btn btn-primary btn-lg">Cetak Laporan</button>
+                                            <button type="submit" class="btn btn-primary btn-lg">Preview <span class="fa fa-file-text"></span></button>
                                         </div>
                                     </div>
                                     <br><br><br>

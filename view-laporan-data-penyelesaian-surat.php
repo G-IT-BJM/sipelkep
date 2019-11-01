@@ -1,6 +1,66 @@
 <?php
     include "koneksi.php";
-    $sql = mysqli_query($conn, "SELECT * FROM tb_register_pelayanan_surat WHERE tgl_registrasi BETWEEN '".$_POST['tgl_dari']."' AND '".$_POST['tgl_sampai']."'");
+        $a      = $_POST['nama_surat'];
+        $sql    = mysqli_query($conn, "SELECT * FROM $a WHERE tgl_keluar BETWEEN '".$_POST['tgl_dari1']."' AND '".$_POST['tgl_sampai1']."'");        
+        $no     = 1;
+        
+        switch ($a) {
+            case 'tb_surat_pindah':
+                $a = "Surat Pindah";
+            break;
+
+            case 'tb_surat_kelahiran':
+                $a = "Surat Kelahiran";
+            break;
+
+            case 'tb_surat_keterangan_domisili':
+                $a = "Surat Keterangan Domisili";
+            break;
+
+            case 'tb_surat_pengantar_kartu_keluarga':
+                $a = "Surat Pengantar KK";
+            break;
+
+            case 'tb_surat_pengantar_ktp':
+                $a = "Surat Pengantar KTP";
+            break;
+
+            case 'tb_surat_kehilangan':
+                $a = "Surat Kehilangan";
+            break;
+
+            case 'tb_surat_keterangan_belum_menikah':
+                $a = "Surat Keterangan Belum Menikah";
+            break;
+
+            case 'tb_surat_pengantar_nikah':
+                $a = "Surat Pengantar Nikah";
+            break;
+
+            case 'tb_surat_keterangan_tidak_mampu':
+                $a = "Surat Keterangan Tidak Mampu";
+            break;
+
+            case 'tb_surat_ahli_waris':
+                $a = "Surat Ahli Waris";
+            break;
+
+            case 'tb_surat_izin_mendirikan_bangunan':
+                $a = "Surat IMB";
+            break;
+
+            case 'tb_surat_izin_tempat_usaha':
+                $a = "Surat SITU";
+            break;
+
+            case 'tb_surat_keterangan_usaha':
+                $a = "Surat Keterangan Usaha";
+            break;
+            
+            default:
+                $a = "";
+            break;
+        }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,12 +91,13 @@
 <body style="font-family: Times New Roman; background-color:white;">
     <div class="container">
         <div class="row">
-            <form class="form-horizontal" action="cetak-laporan-registrasi.php" target="_BLANK" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="tgl_dari" value="<?= $_POST['tgl_dari'] ?>">
-                <input type="hidden" name="tgl_sampai" value="<?= $_POST['tgl_sampai'] ?>">
+            <form class="form-horizontal" action="cetak-laporan-penyelesaian-surat.php" target="_BLANK" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="nama_surat" value="<?= $_POST['nama_surat'] ?>">
+                <input type="hidden" name="tgl_dari1" value="<?= $_POST['tgl_dari1'] ?>">
+                <input type="hidden" name="tgl_sampai1" value="<?= $_POST['tgl_sampai1'] ?>">
                 <div class="col-md-3">
                     <div class="input-group">
-                        <a href="cetak-laporan-registrasi.php" target="_BLANK"><button type="submit" class="btn btn-primary btn-lg">Cetak Laporan <span class="fa fa-print"></span></button></a>
+                        <a href="cetak-laporan-penyelesaian-surat.php" target="_BLANK"><button type="submit" class="btn btn-primary btn-lg">Cetak Laporan <span class="fa fa-print"></span></button></a>
                     </div>
                 </div>
             </form>
@@ -62,34 +123,30 @@
         </div>
         <hr>
         <div class="row">
-            <h4>Laporan Data Registrasi</h5>
+            <h4>Laporan Data Penyelesaian Surat</h5>
             <br>
             <table class="table table-bordered table-striped mb-0 d">
                 <thead>
                     <tr>
                         <th scope="col" width="3%">#</th>
-                        <th scope="col">No. Registrasi</th>
+                        <th scope="col">No Registrasi</th>
                         <th scope="col">NIK</th>
-                        <th scope="col">Nama</th>
+                        <th scope="col">Nama</th> 
                         <th scope="col">Surat</th>
-                        <th scope="col">Tgl Registrasi</th>
-                        <th scope="col">Keterangan</th>
+                        <th scope="col">Tanggal Penyelesaian</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php 
                     $no = 1;
                     while($data = mysqli_fetch_array($sql)){
-                        $sql1 = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_data_surat WHERE kd_surat = '$data[kd_surat]'"));
-
                         echo '<tr>
                         <td>'.$no.'</td>
                         <td>'.$data["no_registrasi"].'</td>
                         <td>'.$data["nik"].'</td>
                         <td>'.$data["nama"].'</td>
-                        <td>'.$sql1["surat"].'</td>
-                        <td>'.date("d-m-Y", strtotime($data["tgl_registrasi"])).'</td>
-                        <td>'.$data["ket"].'</td>
+                        <td>'.$a.'</td>
+                        <td>'.date("d-m-Y", strtotime($data["tgl_keluar"])).'</td>
                         </tr>';
                         $no++;
                     }

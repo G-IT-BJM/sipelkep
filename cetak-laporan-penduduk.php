@@ -1,6 +1,6 @@
 <?php
     include "koneksi.php";
-    $sql = mysqli_query($conn, "SELECT * FROM tb_register_pelayanan_surat WHERE tgl_registrasi BETWEEN '".$_POST['tgl_dari']."' AND '".$_POST['tgl_sampai']."'");
+    $sql = mysqli_query($conn, "SELECT * FROM tb_data_penduduk");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,29 +22,21 @@
         table.d {
             table-layout: fixed;
             width: 100%;
+            text-align: justify;
         }
         hr {
             border: 1px solid black;
         }
+        td.a {
+            white-space:pre-wrap; word-wrap:break-word;
+        }
     </style>
 </head>
 <body style="font-family: Times New Roman; background-color:white;">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <form class="form-horizontal" action="cetak-laporan-registrasi.php" target="_BLANK" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="tgl_dari" value="<?= $_POST['tgl_dari'] ?>">
-                <input type="hidden" name="tgl_sampai" value="<?= $_POST['tgl_sampai'] ?>">
-                <div class="col-md-3">
-                    <div class="input-group">
-                        <a href="cetak-laporan-registrasi.php" target="_BLANK"><button type="submit" class="btn btn-primary btn-lg">Cetak Laporan <span class="fa fa-print"></span></button></a>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <br><br>
-        <div class="row">
-            <div class="col-md-10 col-md-offset-2">
-            <table>
+            <div class="col-md-10 col-md-offset-1">
+            <table align="center">
                 <tr>
                     <td>
                         <img src="img/logo/logo.png" width="200">
@@ -62,39 +54,46 @@
         </div>
         <hr>
         <div class="row">
-            <h4>Laporan Data Registrasi</h5>
+            <h4>Laporan Data Penduduk</h5>
             <br>
             <table class="table table-bordered table-striped mb-0 d">
                 <thead>
                     <tr>
                         <th scope="col" width="3%">#</th>
-                        <th scope="col">No. Registrasi</th>
-                        <th scope="col">NIK</th>
+                        <th scope="col" width="12%">Nik</th>
                         <th scope="col">Nama</th>
-                        <th scope="col">Surat</th>
-                        <th scope="col">Tgl Registrasi</th>
+                        <th scope="col" width="11%">TTL</th>
+                        <th scope="col" width="3%">Jk</th>
+                        <th scope="col">Alamat</th>
+                        <th scope="col" width="8%">Agama</th>
+                        <th scope="col">Status Perkawinan</th>
+                        <th scope="col">Pekerjaan</th>
+                        <th scope="col" width="6%">KWRG</th>
+                        <th scope="col" width="10%">Telp</th>
                         <th scope="col">Keterangan</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php 
                     $no = 1;
-                    while($data = mysqli_fetch_array($sql)){
-                        $sql1 = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_data_surat WHERE kd_surat = '$data[kd_surat]'"));
-
-                        echo '<tr>
-                        <td>'.$no.'</td>
-                        <td>'.$data["no_registrasi"].'</td>
-                        <td>'.$data["nik"].'</td>
-                        <td>'.$data["nama"].'</td>
-                        <td>'.$sql1["surat"].'</td>
-                        <td>'.date("d-m-Y", strtotime($data["tgl_registrasi"])).'</td>
-                        <td>'.$data["ket"].'</td>
-                        </tr>';
-                        $no++;
-                    }
+                    while ($data = mysqli_fetch_array($sql)) { 
                 ?>
-                <!-- <td style="white-space:pre-wrap; word-wrap:break-word">'.$data["syarat"].'</td> -->
+                <tr>
+                    <td class="a"><?=$no?></td>
+                    <!-- <td class="a" style="text-align: center; vertical-align: middle;"><?php// echo $no?></td> -->
+                    <td class="a"><?=$data['nik']?></td>
+                    <td class="a"><?=$data['nama']?></td>
+                    <td class="a"><?=$data['t_lahir']."<br>".date("d-m-Y",strtotime($data['tgl_lahir']))?></td>
+                    <td class="a"><?=$data['jk']?></td>
+                    <td class="a"><?=$data['alamat']?></td>
+                    <td class="a"><?=$data['agama']?></td>
+                    <td class="a"><?=$data['status_p']?></td>
+                    <td class="a"><?=$data['kerja']?></td>
+                    <td class="a"><?=$data['warga']?></td>
+                    <td class="a"><?=$data['telp']?></td>
+                    <td class="a"><?=$data['ket']?></td>
+                </tr>
+                <?php $no++; } ?>
                 </tbody>
             </table>
         </div>
@@ -102,6 +101,6 @@
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/custom.js"></script>
-    <!-- <script>window.print();</script> -->
+    <script>window.print();</script>
 </body>
 </html>

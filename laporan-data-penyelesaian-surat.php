@@ -1,9 +1,6 @@
     <?php
 		include "header.php"; 
         include "sidebar.php"; 
-        include "koneksi.php";
-        
-        $sql = mysqli_query($conn, "SELECT * FROM tb_register_pelayanan_surat");
 	?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
@@ -12,7 +9,7 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Laporan / Laporan Data Registrasi</li>
+				<li class="active">Laporan / Laporan Data Penyelesaian Surat</li>
 			</ol>
 		</div>
 		
@@ -25,34 +22,59 @@
 		<div class="row">
             <div class="panel panel-default col-md-10 col-md-offset-1">
                 <div class="panel-heading">
-                    Laporan Data Registrasi
+                    Laporan Data Penyelesaian Surat
                     <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
                 </div>
                 <div class="panel-body">
                     <fieldset>
                         <div class="form-group">
                             <div class="col-md-12">
-                                <div class="row">
-                                    <form class="form-horizontal" action="view-laporan-data-registrasi.php" target="_BLANK" method="post" enctype="multipart/form-data">
+                                <form class="form-horizontal" action="view-laporan-data-penyelesaian-surat.php" target="_BLANK" method="post" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="col-md-4">
+                                                    <label>Nama Surat</label>
+                                                    <select class="form-control" id="nama_surat" name="nama_surat">
+                                                        <option value='' selected disabled>Pilih Surat . . .</option>
+                                                        <option value="tb_surat_pindah">Surat Pindah</option>
+                                                        <option value='tb_surat_kelahiran'>Surat Kelahiran</option>
+                                                        <option value="tb_surat_keterangan_domisili">Surat Keterangan Domisili</option>
+                                                        <option value="tb_surat_pengantar_kartu_keluarga">Surat Pengantar KK</option>
+                                                        <option value="tb_surat_pengantar_ktp">Surat Pengantar KTP</option>
+                                                        <option value="tb_surat_kehilangan">Surat Kehilangan</option>
+                                                        <option value="tb_surat_keterangan_belum_menikah">Surat Belum Menikah</option>
+                                                        <option value="tb_surat_pengantar_nikah">Surat Pengatar Nikah</option>
+                                                        <option value="tb_surat_keterangan_tidak_mampu">Surat Keterangan Tidak Mampu</option>
+                                                        <option value='tb_surat_ahli_waris'>Surat Ahli Waris</option>
+                                                        <option value="tb_surat_izin_mendirikan_bangunan">Surat Izin Mendirikan Bangunan</option>
+                                                        <option value="tb_surat_izin_tempat_usaha">Surat Izin Tempat Usaha</option>
+                                                        <option value="tb_surat_keterangan_usaha">Surat Keterangan Usaha</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <div class="col-md-4">
                                                     <label>Dari Tanggal :</label>
-                                                    <input type="date" id="tgl_dari" name="tgl_dari" class="form-control">
+                                                    <input type="date" id="tgl_dari1" name="tgl_dari1" class="form-control">
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>Sampai Tanggal :</label>
-                                                    <input type="date" id="tgl_sampai" name="tgl_sampai" class="form-control">
+                                                    <input type="date" id="tgl_sampai1" name="tgl_sampai1" class="form-control">
                                                 </div>
                                                 <div class="col-md-4">
                                                     <h1></h1>
-                                                    <button type="button" name="lihat_data_reg" id="lihat_data_reg" class="btn btn-primary btn-lg">Lihat <span class="fa fa-search"></span></button>
-                                                    <a href="view-laporan-data-registrasi.php" target="_BLANK"><button type="submit" class="btn btn-primary btn-lg" name="btn" id="btn">Preview <span class="fa fa-print"></span></button></a>
+                                                    <button type="button" name="lihat_data_sel_surat" id="lihat_data_sel_surat" class="btn btn-primary btn-lg">Lihat <span class="fa fa-search"></span></button>
+                                                    <a href="view-laporan-data-penyelesaian-surat.php" target="_BLANK"><button type="submit" class="btn btn-primary btn-lg" name="btn" id="btn">Preview <span class="fa fa-print"></span></button></a>
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
                                 <hr>
                                 <div class="table-responsive" style="height:500px;overflow:auto;">
                                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
@@ -64,8 +86,7 @@
                                                     <th scope="col">NIK</th>
                                                     <th scope="col">Nama</th> 
                                                     <th scope="col">Surat</th>
-                                                    <th scope="col">Tgl Registrasi</th>
-                                                    <th scope="col">Keterangan</th>
+                                                    <th scope="col">Tanggal Penyelesaian</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="myTable">
@@ -116,15 +137,17 @@
         });
 
         $(function() {
-			$("#lihat_data_reg").on('click',function(){
-				var tgldari = $("#tgl_dari").val();
-				var tglsampai = $("#tgl_sampai").val();
+			$("#lihat_data_sel_surat").on('click',function(){
+				var namasurat   = $("#nama_surat").val();
+				var tgldari     = $("#tgl_dari1").val();
+				var tglsampai   = $("#tgl_sampai1").val();
 				$.ajax({
 					url: 'ajax_cek.php',
 					type: 'POST',
 					data: {
-                        'tgl_dari': tgldari,
-                        'tgl_sampai': tglsampai
+                        'nama_surat': namasurat,
+                        'tgl_dari1': tgldari,
+                        'tgl_sampai1': tglsampai
 					},
 					success: function (data) {
                         $( '#myTable' ).html(data);

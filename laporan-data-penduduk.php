@@ -33,10 +33,9 @@
                         <fieldset>
                             <div class="form-group">
                                 <div class="col-md-12">
-
                                     <div class="col-md-3">
                                         <div class="input-group">
-                                            <a href="view-laporan-data-penduduk.php" target="_BLANK"><button type="button" class="btn btn-primary btn-lg">Cetak Laporan</button></a>
+                                            <a href="view-laporan-data-penduduk.php" target="_BLANK"><button type="button" class="btn btn-primary btn-lg">Preview <span class="fa fa-file-text"></span></button></a>
                                         </div>
                                     </div>
                                     <br><br><br>
