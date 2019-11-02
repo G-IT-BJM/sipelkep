@@ -1,8 +1,10 @@
 <?php
     include "koneksi.php";
-        $a      = $_POST['nama_surat'];
-        $sql    = mysqli_query($conn, "SELECT * FROM $a WHERE tgl_keluar BETWEEN '".$_POST['tgl_dari1']."' AND '".$_POST['tgl_sampai1']."'");        
-        $no     = 1;
+        $a              = $_POST['nama_surat'];
+        $tgl_dari1      = date("Y-m-d", strtotime($_POST['tgl_dari1']));
+        $tgl_sampai1    = date("Y-m-d", strtotime($_POST['tgl_sampai1']));
+        $sql            = mysqli_query($conn, "SELECT * FROM $a WHERE tgl_keluar BETWEEN '".$tgl_dari1."' AND '".$tgl_sampai1."'");        
+        $no             = 1;
         
         switch ($a) {
             case 'tb_surat_pindah':

@@ -39,8 +39,10 @@
     }
     elseif(isset($_POST['tgl_dari']))
     {
-        $sql    = mysqli_query($conn, "SELECT * FROM tb_register_pelayanan_surat WHERE tgl_registrasi BETWEEN '".$_POST['tgl_dari']."' AND '".$_POST['tgl_sampai']."'");
-        $no     = 1;
+        $tgl_dari   = date("Y-m-d", strtotime($_POST['tgl_dari']));
+        $tgl_sampai = date("Y-m-d", strtotime($_POST['tgl_sampai']));
+        $sql        = mysqli_query($conn, "SELECT * FROM tb_register_pelayanan_surat WHERE tgl_registrasi BETWEEN '".$tgl_dari."' AND '".$tgl_sampai."'");
+        $no         = 1;
         while ($data = mysqli_fetch_array($sql)) { 
             $join = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_register_pelayanan_surat AS a INNER JOIN tb_data_surat AS b ON a.kd_surat = b.kd_surat WHERE b.kd_surat = '".$data["kd_surat"]."'"));
             echo '
@@ -59,9 +61,11 @@
     }
     elseif(isset($_POST['nama_surat']))
     {
-        $a      = $_POST['nama_surat'];
-        $sql    = mysqli_query($conn, "SELECT * FROM $a WHERE tgl_keluar BETWEEN '".$_POST['tgl_dari1']."' AND '".$_POST['tgl_sampai1']."'");        
-        $no     = 1;
+        $a              = $_POST['nama_surat'];
+        $tgl_dari1      = date("Y-m-d", strtotime($_POST['tgl_dari1']));
+        $tgl_sampai1    = date("Y-m-d", strtotime($_POST['tgl_sampai1']));
+        $sql            = mysqli_query($conn, "SELECT * FROM $a WHERE tgl_keluar BETWEEN '".$tgl_dari1."' AND '".$tgl_sampai1."'");        
+        $no             = 1;
         
         switch ($a) {
             case 'tb_surat_pindah':

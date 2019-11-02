@@ -1,6 +1,8 @@
 <?php
     include "koneksi.php";
-    $sql = mysqli_query($conn, "SELECT * FROM tb_register_pelayanan_surat WHERE tgl_registrasi BETWEEN '".$_POST['tgl_dari']."' AND '".$_POST['tgl_sampai']."'");
+    $tgl_dari   = date("Y-m-d", strtotime($_POST['tgl_dari']));
+    $tgl_sampai = date("Y-m-d", strtotime($_POST['tgl_sampai']));
+    $sql        = mysqli_query($conn, "SELECT * FROM tb_register_pelayanan_surat WHERE tgl_registrasi BETWEEN '".$tgl_dari."' AND '".$tgl_sampai."'");
 ?>
 <!DOCTYPE html>
 <html lang="en">

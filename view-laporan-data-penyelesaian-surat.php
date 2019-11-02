@@ -1,8 +1,10 @@
 <?php
     include "koneksi.php";
-        $a      = $_POST['nama_surat'];
-        $sql    = mysqli_query($conn, "SELECT * FROM $a WHERE tgl_keluar BETWEEN '".$_POST['tgl_dari1']."' AND '".$_POST['tgl_sampai1']."'");        
-        $no     = 1;
+        $a              = $_POST['nama_surat'];
+        $tgl_dari1      = date("Y-m-d", strtotime($_POST['tgl_dari1']));
+        $tgl_sampai1    = date("Y-m-d", strtotime($_POST['tgl_sampai1']));
+        $sql            = mysqli_query($conn, "SELECT * FROM $a WHERE tgl_keluar BETWEEN '".$tgl_dari1."' AND '".$tgl_sampai1."'");        
+        $no             = 1;
         
         switch ($a) {
             case 'tb_surat_pindah':
@@ -93,8 +95,8 @@
         <div class="row">
             <form class="form-horizontal" action="cetak-laporan-penyelesaian-surat.php" target="_BLANK" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="nama_surat" value="<?= $_POST['nama_surat'] ?>">
-                <input type="hidden" name="tgl_dari1" value="<?= $_POST['tgl_dari1'] ?>">
-                <input type="hidden" name="tgl_sampai1" value="<?= $_POST['tgl_sampai1'] ?>">
+                <input type="hidden" name="tgl_dari1" value="<?= $tgl_dari1 ?>">
+                <input type="hidden" name="tgl_sampai1" value="<?= $tgl_sampai1 ?>">
                 <div class="col-md-3">
                     <div class="input-group">
                         <a href="cetak-laporan-penyelesaian-surat.php" target="_BLANK"><button type="submit" class="btn btn-primary btn-lg">Cetak Laporan <span class="fa fa-print"></span></button></a>

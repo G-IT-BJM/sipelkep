@@ -60,11 +60,11 @@
                                             <div class="form-group">
                                                 <div class="col-md-4">
                                                     <label>Dari Tanggal :</label>
-                                                    <input type="date" id="tgl_dari1" name="tgl_dari1" class="form-control">
+                                                    <input type="text" id="tgl_dari1" name="tgl_dari1" class="form-control datepicker">
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>Sampai Tanggal :</label>
-                                                    <input type="date" id="tgl_sampai1" name="tgl_sampai1" class="form-control">
+                                                    <input type="text" id="tgl_sampai1" name="tgl_sampai1" class="form-control datepicker">
                                                 </div>
                                                 <div class="col-md-4">
                                                     <h1></h1>
