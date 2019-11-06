@@ -69,7 +69,25 @@
                                                 </tr>
                                             </thead>
                                             <tbody id="myTable">
-                                                
+                                            <?php 
+                                                $sql        = mysqli_query($conn, "SELECT * FROM tb_register_pelayanan_surat");
+                                                $no         = 1;
+                                                while ($data = mysqli_fetch_array($sql)) { 
+                                                    $join = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM tb_register_pelayanan_surat AS a INNER JOIN tb_data_surat AS b ON a.kd_surat = b.kd_surat WHERE b.kd_surat = '".$data["kd_surat"]."'"));
+                                                    echo '
+                                                        <tr>
+                                                            <td width="3%">'.$no.'</td>
+                                                            <td nowrap>'.$data["no_registrasi"].'</td>
+                                                            <td nowrap>'.$data["nik"].'</td>
+                                                            <td nowrap>'.$data["nama"].'</td>
+                                                            <td nowrap>'.$join["surat"].'</td>
+                                                            <td nowrap>'.date("d-m-Y", strtotime($data["tgl_registrasi"])).'</td>
+                                                            <td nowrap>'.$data["ket"].'</td>
+                                                        </tr>
+                                                    ';
+                                                $no++; 
+                                                } 
+                                            ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -127,6 +145,7 @@
                         'tgl_sampai': tglsampai
 					},
 					success: function (data) {
+                        $( '#myTable' ).html("");
                         $( '#myTable' ).html(data);
                         // $('#btn').removeAttr('disabled');
                     }

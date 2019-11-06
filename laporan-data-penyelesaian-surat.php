@@ -90,7 +90,98 @@
                                                 </tr>
                                             </thead>
                                             <tbody id="myTable">
-                                                
+                                            <?php 
+                                                $a = ""; $b = "";
+                                                $no  = 1;
+                                                for($x = 1; $x <= 13; $x++) {
+                                                    switch ($x) {
+                                                        case '1':
+                                                            $a = "tb_surat_pindah";
+                                                            $b = "Surat Pindah";
+                                                        break;
+                                            
+                                                        case '2':
+                                                            $a = "tb_surat_kelahiran";
+                                                            $b = "Surat Kelahiran";
+                                                        break;
+                                            
+                                                        case '3':
+                                                            $a = "tb_surat_keterangan_domisili";
+                                                            $b = "Surat Keterangan Domisili";
+                                                        break;
+                                            
+                                                        case '4':
+                                                            $a = "tb_surat_pengantar_kartu_keluarga";
+                                                            $b = "Surat Pengantar KK";
+                                                        break;
+                                            
+                                                        case '5':
+                                                            $a = "tb_surat_pengantar_ktp";
+                                                            $b = "Surat Pengantar KTP";
+                                                        break;
+                                            
+                                                        case '6':
+                                                            $a = "tb_surat_kehilangan";
+                                                            $b = "Surat Kehilangan";
+                                                        break;
+                                            
+                                                        case '7':
+                                                            $a = "tb_surat_keterangan_belum_menikah";
+                                                            $b = "Surat Keterangan Belum Menikah";
+                                                        break;
+                                            
+                                                        case '8':
+                                                            $a = "tb_surat_pengantar_nikah";
+                                                            $b = "Surat Pengantar Nikah";
+                                                        break;
+                                            
+                                                        case '9':
+                                                            $a = "tb_surat_keterangan_tidak_mampu";
+                                                            $b = "Surat Keterangan Tidak Mampu";
+                                                        break;
+                                            
+                                                        case '10':
+                                                            $a = "tb_surat_ahli_waris";
+                                                            $b = "Surat Ahli Waris";
+                                                        break;
+                                            
+                                                        case '11':
+                                                            $a = "tb_surat_izin_mendirikan_bangunan";
+                                                            $b = "Surat IMB";
+                                                        break;
+                                            
+                                                        case '12':
+                                                            $a = "tb_surat_izin_tempat_usaha";
+                                                            $b = "Surat Izin Tempat Usaha";
+                                                        break;
+                                            
+                                                        case '13':
+                                                            $a = "tb_surat_keterangan_usaha";
+                                                            $b = "Surat Keterangan Usaha";
+                                                        break;
+                                                        
+                                                        default:
+                                                            $a = "";
+                                                        break;
+                                                    }
+
+                                                    $sql = mysqli_query($conn, "SELECT * FROM $a");                                                    
+
+                                                    while ($data = mysqli_fetch_array($sql)) { 
+                                                        echo '
+                                                            <tr>
+                                                                <td width="3%">'.$no.'</td>
+                                                                <td nowrap>'.$data["no_registrasi"].'</td>
+                                                                <td nowrap>'.$data["nik"].'</td>
+                                                                <td nowrap>'.$data["nama"].'</td>
+                                                                <td nowrap>'.$b.'</td>
+                                                                <td nowrap>'.date("d-m-Y", strtotime($data["tgl_keluar"])).'</td>
+                                                            </tr>
+                                                        ';
+                                                    $no++; 
+                                                    } 
+                                                }
+                                            ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -150,6 +241,7 @@
                         'tgl_sampai1': tglsampai
 					},
 					success: function (data) {
+                        $( '#myTable' ).html("");
                         $( '#myTable' ).html(data);
                         // $('#btn').removeAttr('disabled');
                     }
